@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseURL = `${import.meta.en.VITE_COFFEE_API}/auth`;
+const baseURL = `${import.meta.env.VITE_COFFEE_API}/auth`;
 
 export const signup = user => {
   return axios.post(`${baseURL}/signup`, user);
