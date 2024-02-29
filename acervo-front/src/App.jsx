@@ -30,9 +30,9 @@ function App() {
           path='/coffeetaste/edit/:coffeeId'
           element={<EditCoffeeTaste />}
         />
+        <Route path='/signup' element={<SignUp />} />
+        <Route path='/login' element={<Login />} />
       </Routes>
-      <Route path='/signup' element={<SignUp />} />
-      <Route path='/login' element={<Login />} />
     </div>
   );
 }
