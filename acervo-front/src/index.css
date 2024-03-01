@@ -3,3 +3,7 @@
   background-color: #ffefd6;
   max-width: none !important;
 }
+
+.root {
+  padding: none !important;
+}

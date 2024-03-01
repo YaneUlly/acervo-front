@@ -2,15 +2,31 @@ import { useState, useContext } from 'react';
 import { login } from '../api/auth.api';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/auth.context';
+import {
+  Box,
+  Flex,
+  Text,
+  Input,
+  Button,
+  InputGroup,
+  InputRightAddon,
+} from '@chakra-ui/react';
+import { FormControl, FormLabel, FormErrorMessage } from '@chakra-ui/react';
+import LoginImageTest from '../assets/LoginImageTest.png';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [show, setShow] = useState(false);
   const [error, setError] = useState(null);
 
   const { storeToken, authenticateUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
+
+  const handleClick = () => {
+    setShow(!show);
+  };
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -27,33 +43,96 @@ function Login() {
       setError(error.response.data.message);
     }
   };
+
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <label>Email:</label>
-        <input
-          type='email'
-          name='email'
-          value={email}
-          onChange={({ target }) => setEmail(target.value)}
-        ></input>
+    <Flex
+      flexDirection={{ base: 'column', md: 'row' }}
+      justifyContent='space-around'
+      alignItems='center'
+      alignContent='center'
+      minHeight='80vh'
+    >
+      {/* Display image only for desktop */}
+      <Box
+        display={{ base: 'none', md: 'block' }}
+        width={{ base: '0', md: '40%' }}
+      >
+        <img src={LoginImageTest} alt='dog-drinking-coffee' width='100%' />
+      </Box>
+      <Box
+        width={{ base: '100%', md: '40%' }}
+        display='flex'
+        flexDirection='column'
+        alignItems='center'
+        padding={{ base: '20px', md: '0 20px' }}
+      >
+        <Text fontFamily='Gluten' fontSize='5xl' marginBottom='20px'>
+          Login
+        </Text>
 
-        <label>Password:</label>
-        <input
-          type='password'
-          name='password'
-          value={password}
-          onChange={({ target }) => setPassword(target.value)}
-        ></input>
-        <button type='submit'>Login</button>
-      </form>
+        <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+          <FormControl isRequired marginBottom='20px' width='100%'>
+            <FormLabel>Email:</FormLabel>
+            <Input
+              type='email'
+              placeholder='Email'
+              borderColor='#0B0B03'
+              value={email}
+              onChange={({ target }) => setEmail(target.value)}
+            />
+            <FormErrorMessage>Email is required.</FormErrorMessage>
+          </FormControl>
 
-      {error && <p>{error}</p>}
+          <FormControl isRequired marginBottom='20px' width='100%'>
+            <FormLabel>Password:</FormLabel>
+            <InputGroup>
+              <Input
+                size='md'
+                type={show ? 'text' : 'password'}
+                placeholder='Password'
+                borderColor='#0B0B03'
+                value={password}
+                onChange={({ target }) => setPassword(target.value)}
+              />
+              <InputRightAddon width='4.5rem' bgColor='#0B0B03'>
+                <Button
+                  size='sm'
+                  bgColor='#0B0B03'
+                  color='#FFEFD6'
+                  onClick={handleClick}
+                  _hover={{
+                    bgColor: '#0B0B03',
+                  }}
+                >
+                  {' '}
+                  {show ? 'Hide' : 'Show'}
+                </Button>
+              </InputRightAddon>
+            </InputGroup>
+            <FormErrorMessage>Password is required.</FormErrorMessage>
+          </FormControl>
 
-      <p>Do not have an account?</p>
-      <Link to={'/signup'}>Sign up</Link>
-    </div>
+          <Button
+            marginTop='10px'
+            marginBottom='15px'
+            width='100%'
+            bgColor='#028AEB'
+            color='#FFEFD6'
+            _hover={{
+              bgColor: '#0B0B03',
+            }}
+            type='submit'
+          >
+            Login
+          </Button>
+        </form>
+
+        {error && <p>{error}</p>}
+
+        <Text fontSize='md'>Do not have an account?</Text>
+        <Link to={'/signup'}>Sign up</Link>
+      </Box>
+    </Flex>
   );
 }
 

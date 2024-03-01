@@ -86,7 +86,7 @@ function Navbar() {
         {/* Desktop Navigation */}
         <Box
           display={{ base: 'none', lg: 'flex' }}
-          width='600px'
+          width={isLoggedIn ? '600px' : '380px'}
           justifyContent='space-between'
           alignItems='center'
         >
