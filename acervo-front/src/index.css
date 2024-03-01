@@ -1,4 +1,5 @@
 * {
   font-family: 'Red Hat Display', sans-serif;
   background-color: #ffefd6;
+  max-width: none !important;
 }
