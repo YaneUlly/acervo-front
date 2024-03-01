@@ -1,6 +1,17 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { signup } from '../api/auth.api';
+import SingUpImage from '../assets/SingUpImage.png';
+import {
+  Box,
+  Flex,
+  Text,
+  Input,
+  Button,
+  InputGroup,
+  InputRightAddon,
+} from '@chakra-ui/react';
+import { FormControl, FormLabel, FormErrorMessage } from '@chakra-ui/react';
 
 function SignUp() {
   const [name, setName] = useState('');
@@ -8,11 +19,16 @@ function SignUp() {
   const [password, setPassword] = useState('');
   const [image, setImage] = useState();
   const [error, setError] = useState(null);
+  const [show, setShow] = useState(false);
 
   const navigate = useNavigate();
 
   const handleImage = ({ target }) => {
     setImage(target.files[0]);
+  };
+
+  const handleClick = () => {
+    setShow(!show);
   };
 
   const handleSubmit = async e => {
@@ -39,45 +55,131 @@ function SignUp() {
   };
 
   return (
-    <div>
-      <h1> Sign Up </h1>
-      <form onSubmit={handleSubmit}>
-        <label>Name:</label>
-        <input
-          type='text'
-          name='name'
-          value={name}
-          onChange={e => setName(e.target.value)}
-        ></input>
+    <Flex
+      flexDirection={{ base: 'column', md: 'row' }}
+      justifyContent='space-around'
+      alignItems='center'
+      alignContent='center'
+      minHeight='80vh'
+    >
+      <Box
+        width={{ base: '100%', md: '40%' }}
+        display='flex'
+        flexDirection='column'
+        alignItems='center'
+        padding={{ base: '20px', md: '0 20px' }}
+      >
+        <Text fontFamily='Gluten' fontSize='5xl' marginBottom='20px'>
+          {' '}
+          Sign Up{' '}
+        </Text>
+        <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+          <FormControl isRequired marginBottom='20px' width='100%'>
+            <FormLabel>Name:</FormLabel>
+            <Input
+              type='text'
+              placeholder='Name'
+              borderColor='#0B0B03'
+              value={name}
+              onChange={e => setName(e.target.value)}
+            ></Input>
+            <FormErrorMessage>Name is required.</FormErrorMessage>
+          </FormControl>
 
-        <label>Email:</label>
-        <input
-          type='email'
-          name='email'
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-        ></input>
+          <FormControl isRequired marginBottom='20px' width='100%'>
+            <FormLabel>Email:</FormLabel>
+            <Input
+              type='email'
+              placeholder='Email'
+              borderColor='#0B0B03'
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            ></Input>
+            <FormErrorMessage>Email is required.</FormErrorMessage>
+          </FormControl>
 
-        <label>Password:</label>
-        <input
-          type='password'
-          name='password'
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        ></input>
+          <FormControl isRequired marginBottom='20px' width='100%'>
+            <FormLabel>Password:</FormLabel>
+            <InputGroup>
+              <Input
+                type='password'
+                placeholder='Password'
+                value={password}
+                borderColor='#0B0B03'
+                onChange={e => setPassword(e.target.value)}
+              ></Input>
+              <InputRightAddon width='4.5rem' bgColor='#0B0B03'>
+                <Button
+                  size='sm'
+                  bgColor='#0B0B03'
+                  color='#FFEFD6'
+                  onClick={handleClick}
+                  _hover={{
+                    bgColor: '#0B0B03',
+                  }}
+                >
+                  {' '}
+                  {show ? 'Hide' : 'Show'}
+                </Button>
+              </InputRightAddon>
+            </InputGroup>
+            <FormErrorMessage>Password is required.</FormErrorMessage>
+          </FormControl>
 
-        <label>Profile Photo:</label>
-        <input type='file' onChange={handleImage}></input>
-        <button type='submit'>Add</button>
+          <FormLabel>Profile Photo:</FormLabel>
+          <Input
+            type='file'
+            onChange={handleImage}
+            display='none'
+            id='profilePhoto'
+          ></Input>
+          <label htmlFor='profilePhoto'>
+            <Button
+              as='span'
+              size='md'
+              bgColor='#0B0B03'
+              color='#FFEFD6'
+              marginTop='1'
+              marginBottom='2'
+              width='100%'
+              _hover={{
+                bgColor: '#0B0B03',
+              }}
+            >
+              Choose File
+            </Button>
+          </label>
 
-        <button type='submit'> Sign up</button>
-      </form>
+          <Button
+            type='submit'
+            marginTop='5'
+            marginBottom='5'
+            width='100%'
+            bgColor='#028AEB'
+            color='#FFEFD6'
+            _hover={{
+              bgColor: '#0B0B03',
+            }}
+          >
+            {' '}
+            Sign up
+          </Button>
+        </form>
 
-      {error && <p>{error}</p>}
+        {error && <p>{error}</p>}
 
-      <p>Already have an account?</p>
-      <Link to={'/login'}>Login</Link>
-    </div>
+        <Text fontSize='md'>Already have an account?</Text>
+        <Link to={'/login'}>Login</Link>
+      </Box>
+
+      {/* Display image only for desktop  */}
+      <Box
+        display={{ base: 'none', md: 'block' }}
+        width={{ base: '0', md: '40%' }}
+      >
+        <img src={SingUpImage} alt='coffe-hi' width='100%'></img>
+      </Box>
+    </Flex>
   );
 }
 
