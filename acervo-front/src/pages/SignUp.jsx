@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { signup } from '../api/auth.api';
+import { signup, upload } from '../api/auth.api';
 import SingUpImage from '../assets/SingUpImage.png';
 import {
   Box,
@@ -32,21 +32,23 @@ function SignUp() {
   };
 
   const handleSubmit = async e => {
-    e.preventDefault();
-
     try {
+      e.preventDefault();
+
       const user = { name, email, password };
 
       if (image) {
         const uploadData = new FormData();
-        uploadData.append('File', image);
+        uploadData.append('file', image);
 
-        const response = await uploadData(uploadData);
+        const response = await upload(uploadData);
         console.log(response.data);
 
         user.photoUrl = response.data.photoUrl;
       }
+
       await signup(user);
+
       navigate('/login');
     } catch (error) {
       console.log('Error signup', error);
@@ -102,7 +104,7 @@ function SignUp() {
             <FormLabel>Password:</FormLabel>
             <InputGroup>
               <Input
-                type='password'
+                type={show ? 'text' : 'password'}
                 placeholder='Password'
                 value={password}
                 borderColor='#0B0B03'
@@ -127,28 +129,8 @@ function SignUp() {
           </FormControl>
 
           <FormLabel>Profile Photo:</FormLabel>
-          <Input
-            type='file'
-            onChange={handleImage}
-            display='none'
-            id='profilePhoto'
-          ></Input>
-          <label htmlFor='profilePhoto'>
-            <Button
-              as='span'
-              size='md'
-              bgColor='#0B0B03'
-              color='#FFEFD6'
-              marginTop='1'
-              marginBottom='2'
-              width='100%'
-              _hover={{
-                bgColor: '#0B0B03',
-              }}
-            >
-              Choose File
-            </Button>
-          </label>
+          <input type='file' onChange={handleImage}></input>
+          <button type='submit'>Add</button>
 
           <Button
             type='submit'

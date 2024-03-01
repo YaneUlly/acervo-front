@@ -16,3 +16,7 @@ export const verify = storedToken => {
     },
   });
 };
+
+export const upload = image => {
+  return axios.post(`${baseURL}/upload`, image);
+};
