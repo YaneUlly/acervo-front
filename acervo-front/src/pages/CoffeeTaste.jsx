@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllCoffeesTaste } from '../api/coffees.api';
+import CoffeeCard from '../components/CoffeeCard';
 
 function CoffeeTaste() {
   const [coffees, setCoffees] = useState([]);
@@ -22,18 +23,7 @@ function CoffeeTaste() {
     <div>
       <h1>My Coffees Track</h1>
 
-      {coffees.map(coffee => {
-        return (
-          <div key={coffee._id}>
-            <Link to={`/coffeetaste/${coffee._id}`}>
-              <h3>{coffee.coffeeName}</h3>
-              {coffee.coffeeImgUrl && (
-                <img src={coffee.coffeeImgUrl} width={100} />
-              )}
-            </Link>
-          </div>
-        );
-      })}
+      <CoffeeCard />
     </div>
   );
 }
