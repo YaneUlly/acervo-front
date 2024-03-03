@@ -10,10 +10,10 @@ import {
   Flex,
   Avatar,
   Button,
-  Box,
 } from '@chakra-ui/react';
 
 function CoffeeCard({
+  coffeeId,
   coffeeName,
   coffeeImgUrl,
   region,
@@ -22,6 +22,7 @@ function CoffeeCard({
   method,
   storeUrl,
   createdBy,
+  share,
 }) {
   return (
     <div>
@@ -58,6 +59,7 @@ function CoffeeCard({
             <Text py='2'>Varieties: {varieties}</Text>
             <Text py='2'>Process: {process}</Text>
             <Text py='2'>Method used: {method}</Text>
+            <Text py='2'>Shared: {share ? 'Yes' : 'No'}</Text>
             <Text>Created By:</Text>
             {createdBy && (
               <Flex
@@ -85,7 +87,7 @@ function CoffeeCard({
               <Link to={storeUrl}>Buy Coffee</Link>
             </Button>
             <Button variant='outline' borderColor='#0B0B03'>
-              More Info
+              <Link to={`/coffeetaste/${coffeeId}`}>More Info</Link>
             </Button>
           </CardFooter>
         </Stack>

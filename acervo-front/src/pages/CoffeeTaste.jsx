@@ -43,6 +43,7 @@ function CoffeeTaste() {
         return (
           <div key={coffee._id}>
             <CoffeeCard
+              coffeeId={coffee._id}
               coffeeName={coffee.coffeeName}
               coffeeImgUrl={coffee.coffeeImgUrl}
               region={coffee.region}
@@ -51,6 +52,7 @@ function CoffeeTaste() {
               method={coffee.method}
               storeUrl={coffee.storeUrl}
               createdBy={createdBy}
+              share={coffee.share}
             />
           </div>
         );
