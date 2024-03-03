@@ -7,61 +7,89 @@ import {
   CardBody,
   Text,
   Stack,
+  Flex,
+  Avatar,
   Button,
+  Box,
 } from '@chakra-ui/react';
-import { getAllCoffeesTaste } from '../api/coffees.api';
-import { useState, useEffect } from 'react';
 
-function CoffeeCard() {
-  const [coffees, setCoffees] = useState([]);
-
-  const getCoffeesTaste = async () => {
-    try {
-      const response = await getAllCoffeesTaste();
-      setCoffees(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getCoffeesTaste();
-  }, []);
-
+function CoffeeCard({
+  coffeeName,
+  coffeeImgUrl,
+  region,
+  varieties,
+  process,
+  method,
+  storeUrl,
+  createdBy,
+}) {
   return (
     <div>
-      {coffees.map(coffee => {
-        return (
-          <div key={coffee._id}>
-            <Card
-              direction={{ base: 'column', sm: 'row' }}
-              overflow='hidden'
-              variant='outline'
-            >
-              <Image
-                objectFit='cover'
-                maxW={{ base: '100%', sm: '100px' }}
-                src={coffee.coffeeImgUrl}
-                alt='Coffee Image'
-              />
+      <Card
+        direction={{ base: 'column', sm: 'row' }}
+        overflow='hidden'
+        variant='outline'
+        width='600px'
+        borderColor='#0B0B03'
+      >
+        <Flex align='center'>
+          <Image
+            width='300px'
+            height='400px'
+            margin='10px'
+            borderRadius='10px'
+            objectFit='cover'
+            src={coffeeImgUrl}
+            alt='Coffee Bag'
+          />
+        </Flex>
 
-              <Stack>
-                <CardBody>
-                  <Heading size='md'>{coffee.coffeeName}</Heading>
+        <Stack
+          marginTop={{ base: '15px', sm: '0' }}
+          flex={1}
+          paddingLeft='5px'
+          paddingTop='10px'
+        >
+          <CardBody align='left' marginTop='10px' padding='0px'>
+            <Heading size='lg'>{coffeeName}</Heading>
 
-                  <Text py='2'>{coffee.description}</Text>
-                </CardBody>
+            <Text py='2'>{region}</Text>
 
-                <CardFooter>
-                  <Button variant='solid' colorScheme='blue'>
-                    Buy Latte
-                  </Button>
-                </CardFooter>
-              </Stack>
-            </Card>
-          </div>
-        );
-      })}
+            <Text py='2'>Varieties: {varieties}</Text>
+            <Text py='2'>Process: {process}</Text>
+            <Text py='2'>Method used: {method}</Text>
+            <Text>Created By:</Text>
+            {createdBy && (
+              <Flex
+                direction='row'
+                alignItems='center'
+                justifyContent='space-between'
+                width='160px'
+              >
+                <Avatar src={createdBy.photoUrl} size='md' />
+                <Text fontSize='lg' marginLeft='10px'>
+                  {createdBy.name}
+                </Text>
+              </Flex>
+            )}
+          </CardBody>
+
+          <CardFooter
+            flexDirection='row'
+            alignItems='center'
+            justifyContent='space-between'
+            paddingLeft='0px'
+            width='250px'
+          >
+            <Button variant='solid' colorScheme='blue' marginLeft='5px'>
+              <Link to={storeUrl}>Buy Coffee</Link>
+            </Button>
+            <Button variant='outline' borderColor='#0B0B03'>
+              More Info
+            </Button>
+          </CardFooter>
+        </Stack>
+      </Card>
     </div>
   );
 }

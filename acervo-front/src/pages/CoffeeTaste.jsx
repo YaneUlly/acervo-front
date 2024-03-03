@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { getAllCoffeesTaste } from '../api/coffees.api';
 import CoffeeCard from '../components/CoffeeCard';
 
@@ -10,6 +9,7 @@ function CoffeeTaste() {
     try {
       const response = await getAllCoffeesTaste();
       setCoffees(response.data);
+      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -23,7 +23,38 @@ function CoffeeTaste() {
     <div>
       <h1>My Coffees Track</h1>
 
-      <CoffeeCard />
+      {coffees.map(coffee => {
+        {
+          /* console.log('CreatedBy:', coffee.createdBy);
+        console.log(
+          'Name:',
+          coffee.createdBy && coffee.createdBy[0] && coffee.createdBy[0].name
+        );
+        console.log(
+          'Photo:',
+          coffee.createdBy &&
+            coffee.createdBy[0] &&
+            coffee.createdBy[0].photoUrl
+        ); */
+        }
+
+        const createdBy = coffee.createdBy && coffee.createdBy[0];
+
+        return (
+          <div key={coffee._id}>
+            <CoffeeCard
+              coffeeName={coffee.coffeeName}
+              coffeeImgUrl={coffee.coffeeImgUrl}
+              region={coffee.region}
+              varieties={coffee.varieties}
+              process={coffee.process}
+              method={coffee.method}
+              storeUrl={coffee.storeUrl}
+              createdBy={createdBy}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 }
