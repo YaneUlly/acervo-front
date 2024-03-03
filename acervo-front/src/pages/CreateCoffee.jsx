@@ -62,7 +62,7 @@ function CreateCoffee() {
         uploadData.append('file', image);
 
         const response = await upload(uploadData);
-        console.log(response.data);
+        console.log('Response Upload Data', response.data);
 
         requestBody.coffeeImgUrl = response.data.coffeeImgUrl;
       }
