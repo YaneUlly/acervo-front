@@ -42,7 +42,10 @@ export const addCoffeeTaste = coffee => {
 };
 
 export const updateCoffeeTaste = updatedCoffee => {
-  return axios.put(`${baseURL}/coffeetaste/${updatedCoffee._id}`);
+  return axios.put(
+    `${baseURL}/coffeetaste/${updatedCoffee._id}`,
+    updatedCoffee
+  );
 };
 
 export const deleteCoffeeTaste = id => {
