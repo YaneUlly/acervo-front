@@ -14,6 +14,7 @@ import {
   FormControl,
   FormLabel,
   FormErrorMessage,
+  Flex,
   Button,
 } from '@chakra-ui/react';
 
@@ -56,7 +57,7 @@ function EditCoffeeTaste() {
       }
 
       const response = await getCoffeeTaste(coffeeId);
-      console.log('response getCoffee', response.data);
+      // console.log('response getCoffee', response.data);
 
       setCoffeeName(response.data.coffeeName);
       setRegion(response.data.region);
@@ -94,7 +95,7 @@ function EditCoffeeTaste() {
     try {
       e.preventDefault();
 
-      console.log('Form submitted');
+      // console.log('Form submitted');
 
       const requestBody = {
         _id: coffeeId,
@@ -114,11 +115,11 @@ function EditCoffeeTaste() {
         storeUrl,
       };
 
-      console.log('Request body:', requestBody);
+      // console.log('Request body:', requestBody);
 
       await updateCoffeeTaste(requestBody);
 
-      console.log('Coffee taste updated successfully');
+      // console.log('Coffee taste updated successfully');
 
       navigate(`/coffeetaste/${coffeeId}`);
     } catch (error) {
@@ -127,8 +128,10 @@ function EditCoffeeTaste() {
   };
 
   return (
-    <div>
-      <h1>Edit Coffee</h1>
+    <Flex flexDirection='column' alignItems='center' marginTop='30px'>
+      <Text fontFamily='Gluten' marginBottom='20px' fontSize='5xl'>
+        Edit Coffee
+      </Text>
 
       <form onSubmit={handleSubmit}>
         <Box paddingTop='10px' paddingBottom='70px'>
@@ -349,6 +352,7 @@ function EditCoffeeTaste() {
         <Button
           type='submit'
           width='100%'
+          marginBottom='10px'
           bgColor='#028AEB'
           color='#FFEFD6'
           _hover={{
@@ -360,17 +364,19 @@ function EditCoffeeTaste() {
 
         <Button
           width='100%'
-          bgColor='#028AEB'
-          color='#FFEFD6'
+          variant='outline'
+          colorScheme='#028AEB'
+          color='#0B0B03'
           _hover={{
             bgColor: '#0B0B03',
+            color: '#FFEFD6',
           }}
           onClick={handleDelete}
         >
           Delete
         </Button>
       </form>
-    </div>
+    </Flex>
   );
 }
 
