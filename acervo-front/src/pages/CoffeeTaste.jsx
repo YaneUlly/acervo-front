@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getAllCoffeesTaste } from '../api/coffees.api';
 import CoffeeCard from '../components/CoffeeCard';
+import { Text } from '@chakra-ui/react';
 
 function CoffeeTaste() {
   const [coffees, setCoffees] = useState([]);
@@ -21,7 +22,9 @@ function CoffeeTaste() {
 
   return (
     <div>
-      <h1>My Coffees Track</h1>
+      <Text fontSize='4xl' marginTop='30px' marginBottom='30px'>
+        My Coffees Track
+      </Text>
 
       {coffees.map(coffee => {
         {
