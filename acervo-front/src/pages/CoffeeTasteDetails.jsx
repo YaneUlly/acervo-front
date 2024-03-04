@@ -1,6 +1,7 @@
 import { getCoffeeTaste } from '../api/coffees.api.js';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import CoffeeDetails from '../components/CoffeeDetails';
 
 function CoffeeTasteDetails() {
   const [coffee, setCoffee] = useState(null);
@@ -24,23 +25,26 @@ function CoffeeTasteDetails() {
   return (
     <div>
       {coffee && (
-        <>
-          <h1>{coffee.coffeeName}</h1>
-          <p>{coffee.region}</p>
-          <p>{coffee.roast}</p>
-          <p>{coffee.method}</p>
-          <p>{coffee.varieties}</p>
-          <p>{coffee.altitude}</p>
-          <p>{coffee.process}</p>
-          <p>{coffee.aromas}</p>
-          <p>{coffee.flavor}</p>
-          <p>{coffee.body}</p>
-          <p>{coffee.recipe}</p>
-          <p>{coffee.description}</p>
-          <p>{coffee.share}</p>
-          <p>{coffee.storeUrl}</p>
-          <img src={coffee.coffeeImgUrl} />
-        </>
+        <div>
+          <CoffeeDetails
+            coffeeId={coffee._id}
+            coffeeName={coffee.coffeeName}
+            region={coffee.region}
+            roast={coffee.roast}
+            method={coffee.method}
+            varieties={coffee.varieties}
+            altitude={coffee.altitude}
+            process={coffee.process}
+            aromas={coffee.aromas}
+            flavor={coffee.flavor}
+            body={coffee.body}
+            recipe={coffee.recipe}
+            description={coffee.description}
+            share={coffee.share}
+            storeUrl={coffee.storeUrl}
+            image={coffee.coffeeImgUrl}
+          />
+        </div>
       )}
     </div>
   );

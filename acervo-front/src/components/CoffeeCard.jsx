@@ -27,7 +27,7 @@ function CoffeeCard({
   return (
     <div>
       <Card
-        direction={{ base: 'column', sm: 'row' }}
+        direction={{ base: 'column', sm: 'row', md: 'row' }}
         overflow='hidden'
         variant='outline'
         width='600px'
@@ -39,7 +39,7 @@ function CoffeeCard({
             height='400px'
             margin='10px'
             borderRadius='10px'
-            objectFit='cover'
+            objectFit='contain'
             src={coffeeImgUrl}
             alt='Coffee Bag'
           />
