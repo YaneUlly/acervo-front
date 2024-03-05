@@ -92,7 +92,7 @@ function Navbar() {
         {/* Desktop Navigation */}
         <Box
           display={{ base: 'none', lg: 'flex' }}
-          width={isLoggedIn ? '600px' : '380px'}
+          width={isLoggedIn ? '680px' : '500px'}
           justifyContent='space-between'
           alignItems='center'
         >
@@ -100,6 +100,7 @@ function Navbar() {
             <>
               <Link to='/howtotaste'>How to taste</Link>
               <Link to='/coffeequiz'>Coffee Quiz</Link>
+              <Link to='/coffeehistory'>Coffee History</Link>
               <Link to='/coffeehub'>Coffee Hub</Link>
               <Link to='/coffeetaste'>My Coffee Track</Link>
               <Button
@@ -119,6 +120,7 @@ function Navbar() {
             <>
               <Link to='/howtotaste'>How to taste</Link>
               <Link to='/coffeequiz'>Coffee Quiz</Link>
+              <Link to='/coffeehistory'>Coffee History</Link>
               <Button
                 variant='outline'
                 colorScheme='#028AEB'
