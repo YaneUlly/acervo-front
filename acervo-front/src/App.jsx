@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import LandingPage from './pages/LandingPage';
 import HowToTaste from './pages/HowToTaste';
 import CoffeeQuiz from './pages/CoffeeQuiz';
+import CoffeeHistory from './pages/CoffeeHistory';
 import CoffeeTaste from './pages/CoffeeTaste';
 import CoffeeHub from './pages/CoffeeHub';
 import CoffeeHubDetails from './pages/CoffeeHubDetails';
@@ -21,6 +22,7 @@ function App() {
         <Route path='/' element={<LandingPage />} />
         <Route path='/howtotaste' element={<HowToTaste />} />
         <Route path='/coffeequiz' element={<CoffeeQuiz />} />
+        <Route path='/coffeehistory' element={<CoffeeHistory />} />
         <Route path='/coffeetaste' element={<CoffeeTaste />} />
         <Route path='/coffeehub' element={<CoffeeHub />} />
         <Route path='/coffeehub/:coffeeId' element={<CoffeeHubDetails />} />

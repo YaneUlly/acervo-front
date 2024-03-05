@@ -59,6 +59,9 @@ function Navbar() {
                     <Link to='/coffeehub'>Coffee Hub</Link>
                   </MenuItem>
                   <MenuItem>
+                    <Link to='/coffeehistory'>Coffee History</Link>
+                  </MenuItem>
+                  <MenuItem>
                     <Link to='/coffeetaste'>My Coffee Track</Link>
                   </MenuItem>
                   <MenuItem onClick={logoutUser}>Logout</MenuItem>
@@ -70,6 +73,9 @@ function Navbar() {
                   </MenuItem>
                   <MenuItem>
                     <Link to='/coffeequiz'>Coffee Quiz</Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link to='/coffeehistory'>Coffee History</Link>
                   </MenuItem>
                   <MenuItem>
                     <Link to='/login'>Login</Link>
