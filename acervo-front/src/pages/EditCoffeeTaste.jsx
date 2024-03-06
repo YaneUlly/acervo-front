@@ -35,8 +35,8 @@ function EditCoffeeTaste() {
   const [description, setDescription] = useState('');
   const [share, setShare] = useState(false);
   const [storeUrl, setStoreUrl] = useState('');
-  const [image, setImage] = useState();
-  const [imageUrl, setImageUrl] = useState();
+  const [image, setImage] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
 
   const { coffeeId } = useParams();
   // console.log(coffeeId);
@@ -45,22 +45,12 @@ function EditCoffeeTaste() {
 
   const handleImage = ({ target }) => {
     setImage(target.files[0]);
-    console.log('Setting image', handleImage);
+    // console.log(target.files[0]);
+    // console.log('Setting image', handleImage);
   };
 
   const getSingleCoffee = async () => {
     try {
-      if (image) {
-        const uploadData = new FormData();
-        uploadData.append('file', image);
-
-        const response = await upload(uploadData);
-        console.log('Response Upload Data', response.data);
-
-        setImageUrl(response.data.coffeeImgUrl);
-        console.log('Image URL:', response.data.coffeeImgUrl);
-      }
-
       const response = await getCoffeeTaste(coffeeId);
       // console.log('response getCoffee', response.data);
 
@@ -80,6 +70,7 @@ function EditCoffeeTaste() {
       setDescription(response.data.description);
       setShare(response.data.share);
       setStoreUrl(response.data.storeUrl);
+      setImageUrl(response.data.coffeeImgUrl);
     } catch (error) {
       console.log(error);
     }
@@ -95,15 +86,13 @@ function EditCoffeeTaste() {
   };
 
   useEffect(() => {
-    console.log('useEffect triggered');
+    // console.log('useEffect triggered');
     getSingleCoffee();
   }, []);
 
   const handleSubmit = async e => {
     try {
       e.preventDefault();
-
-      // console.log('Form submitted');
 
       const requestBody = {
         _id: coffeeId,
@@ -123,10 +112,22 @@ function EditCoffeeTaste() {
         description,
         share,
         storeUrl,
-        coffeeImgUrl: imageUrl,
       };
 
-      console.log('Request body:', requestBody);
+      // console.log('Form submitted');
+
+      if (image) {
+        const uploadData = new FormData();
+        uploadData.append('file', image);
+
+        const response = await upload(uploadData);
+        // console.log('Response Upload Data', response.data);
+
+        // console.log('Image URL:', response.data.coffeeImgUrl);
+        requestBody.coffeeImgUrl = response.data.coffeeImgUrl;
+      }
+
+      // console.log('Request body:', requestBody);
 
       await updateCoffeeTaste(requestBody);
 
@@ -404,7 +405,7 @@ function EditCoffeeTaste() {
             <option value='true'>Yes</option>
             <option value='false'>No</option>
           </Select>
-
+          {imageUrl && <img src={imageUrl} />}
           <FormLabel>Coffee Image:</FormLabel>
           <input type='file' onChange={handleImage}></input>
         </Box>
