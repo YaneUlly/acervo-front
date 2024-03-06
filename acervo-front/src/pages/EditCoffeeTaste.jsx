@@ -45,6 +45,7 @@ function EditCoffeeTaste() {
 
   const handleImage = ({ target }) => {
     setImage(target.files[0]);
+    console.log('Setting image', handleImage);
   };
 
   const getSingleCoffee = async () => {
@@ -61,7 +62,7 @@ function EditCoffeeTaste() {
       }
 
       const response = await getCoffeeTaste(coffeeId);
-      console.log('response getCoffee', response.data);
+      // console.log('response getCoffee', response.data);
 
       setCoffeeName(response.data.coffeeName);
       setRegion(response.data.region);
@@ -94,6 +95,7 @@ function EditCoffeeTaste() {
   };
 
   useEffect(() => {
+    console.log('useEffect triggered');
     getSingleCoffee();
   }, []);
 
