@@ -20,13 +20,15 @@ import {
 
 function EditCoffeeTaste() {
   const [coffeeName, setCoffeeName] = useState('');
-  const [region, setRegion] = useState('');
-  const [roast, setRoast] = useState('');
+  const [region, setRegion] = useState('africa');
+  const [country, setCountry] = useState('');
+  const [roast, setRoast] = useState('light roast');
+  const [caffeine, setCaffeine] = useState('regular');
   const [varieties, setVarieties] = useState([]);
   const [altitude, setAltitude] = useState([]);
   const [process, setProcess] = useState([]);
   const [aromas, setAromas] = useState([]);
-  const [flavor, setFlavor] = useState([]);
+  const [flavor, setFlavor] = useState('sweet');
   const [body, setBody] = useState('aquoso');
   const [method, setMethod] = useState('');
   const [recipe, setRecipe] = useState('');
@@ -34,6 +36,7 @@ function EditCoffeeTaste() {
   const [share, setShare] = useState(false);
   const [storeUrl, setStoreUrl] = useState('');
   const [image, setImage] = useState();
+  const [imageUrl, setImageUrl] = useState();
 
   const { coffeeId } = useParams();
   // console.log(coffeeId);
@@ -51,17 +54,20 @@ function EditCoffeeTaste() {
         uploadData.append('file', image);
 
         const response = await upload(uploadData);
-        // console.log('Response Upload Data', response.data);
+        console.log('Response Upload Data', response.data);
 
-        setImage(response.data.coffeeImgUrl);
+        setImageUrl(response.data.coffeeImgUrl);
+        console.log('Image URL:', response.data.coffeeImgUrl);
       }
 
       const response = await getCoffeeTaste(coffeeId);
-      // console.log('response getCoffee', response.data);
+      console.log('response getCoffee', response.data);
 
       setCoffeeName(response.data.coffeeName);
       setRegion(response.data.region);
+      setCountry(response.data.country);
       setRoast(response.data.roast);
+      setCaffeine(response.data.caffeine);
       setMethod(response.data.method);
       setVarieties(response.data.varieties);
       setAltitude(response.data.altitude);
@@ -101,7 +107,9 @@ function EditCoffeeTaste() {
         _id: coffeeId,
         coffeeName,
         region,
+        country,
         roast,
+        caffeine,
         method,
         varieties,
         altitude,
@@ -113,9 +121,10 @@ function EditCoffeeTaste() {
         description,
         share,
         storeUrl,
+        coffeeImgUrl: imageUrl,
       };
 
-      // console.log('Request body:', requestBody);
+      console.log('Request body:', requestBody);
 
       await updateCoffeeTaste(requestBody);
 
@@ -161,28 +170,66 @@ function EditCoffeeTaste() {
 
           <FormControl isRequired>
             <FormLabel>Origin region:</FormLabel>
-            <Input
-              type='text'
+            <Select
               name='region'
               id='region'
               borderColor='#0B0B03'
               marginBottom='12px'
               value={region}
               onChange={e => setRegion(e.target.value)}
-            ></Input>
+            >
+              <option value='central america'>Central America</option>
+              <option value='south america'>South America</option>
+              <option value='asia'>Asia</option>
+              <option value='africa'>Africa</option>
+              <option value='arabia'>Arabia</option>
+            </Select>
             <FormErrorMessage>Coffee origin is required.</FormErrorMessage>
           </FormControl>
 
-          <FormLabel>Type of roast:</FormLabel>
+          <FormLabel>Country:</FormLabel>
           <Input
             type='text'
-            name='roast'
-            id='roast'
-            value={roast}
+            name='country'
+            id='country'
+            value={country}
             borderColor='#0B0B03'
             marginBottom='12px'
-            onChange={e => setRoast(e.target.value)}
+            onChange={e => setCountry(e.target.value)}
           ></Input>
+
+          <FormControl isRequired>
+            <FormLabel>Type of roast:</FormLabel>
+            <Select
+              name='roast'
+              id='roast'
+              value={roast}
+              borderColor='#0B0B03'
+              marginBottom='12px'
+              onChange={e => setRoast(e.target.value)}
+            >
+              <option value='light roast'>Light Roast</option>
+              <option value='medium roast'>Medium Roast</option>
+              <option value='dark roast'>Dark Roast</option>
+            </Select>
+            <FormErrorMessage>Coffee roast is required.</FormErrorMessage>
+          </FormControl>
+
+          <FormControl isRequired>
+            <FormLabel>Type:</FormLabel>
+            <Select
+              name='type'
+              id='type'
+              borderColor='#0B0B03'
+              marginBottom='12px'
+              value={caffeine}
+              onChange={e => setCaffeine(e.target.value)}
+            >
+              <option value='regular'>Regular</option>
+              <option value='decaf'>Decaf</option>
+            </Select>
+            <FormErrorMessage>Coffee type is required.</FormErrorMessage>
+          </FormControl>
 
           <FormLabel>Coffee varieties:</FormLabel>
           <Input
@@ -239,16 +286,27 @@ function EditCoffeeTaste() {
             onChange={e => setAromas(e.target.value)}
           ></Input>
 
-          <FormLabel>Flavors:</FormLabel>
-          <Input
-            type='text'
-            name='flavor'
-            id='flavor'
-            borderColor='#0B0B03'
-            marginBottom='12px'
-            value={flavor}
-            onChange={e => setFlavor(e.target.value)}
-          ></Input>
+          <FormControl isRequired>
+            <FormLabel>Flavors:</FormLabel>
+            <Select
+              name='flavor'
+              id='flavor'
+              borderColor='#0B0B03'
+              marginBottom='12px'
+              value={flavor}
+              onChange={e => setFlavor(e.target.value)}
+            >
+              <option value='sweet'>Sweet</option>
+              <option value='floral'>Floral</option>
+              <option value='fruity'>Fruity</option>
+              <option value='roasted'>Roasted</option>
+              <option value='spices'>Spices</option>
+              <option value='nutty/cocoa'>Nutty/Cocoa</option>
+              <option value='sour/fermented'>Sour/Fermented</option>
+              <option value='green/vegetative'>Green Vegetative</option>
+            </Select>
+            <FormErrorMessage>Coffee flavor is required.</FormErrorMessage>
+          </FormControl>
 
           <FormLabel>Body:</FormLabel>
           <Select
