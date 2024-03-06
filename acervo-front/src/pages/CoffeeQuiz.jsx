@@ -1,111 +1,55 @@
-import { useState } from 'react';
-import { addCoffeeQuiz } from '../api/coffees.api';
+import { useCoffeeQuiz } from '../context/coffeequiz.context';
+import CaffeineQuestion from '../components/CaffeineQuestion';
+import MethodQuestion from '../components/MethodQuestion';
+import RoastQuestion from '../components/RoastQuestion';
+import RegionQuestion from '../components/RegionQuestion';
+import FlavorQuestion from '../components/FlavorQuestion';
 
 function CoffeeQuiz() {
-  const [answers, setAnswers] = useState({
-    method: '',
-    region: '',
-    roast: '',
-    caffeine: '',
-    flavor: [],
-  });
-  const [recommendedCoffee, setRecommendedCoffee] = useState(null);
-
-  const handleAnswer = (question, answer) => {
-    setAnswers(prevAnswers => ({
-      ...prevAnswers,
-      [question]: answer,
-    }));
-  };
-
-  const handleSubmit = async () => {
-    try {
-      const response = await addCoffeeQuiz(answers);
-      setRecommendedCoffee(response.data.recommendedCoffee);
-    } catch (error) {
-      console.error('Failed to fetch coffee recommendation');
-    }
-  };
+  const { step, recommendedCoffee, handleSubmit, nextStep, prevStep } =
+    useCoffeeQuiz();
 
   return (
     <div>
-      <h1>Quiz</h1>
-      <div>
-        <h3>How do you take your coffee?</h3>
-        <button onClick={() => handleAnswer('caffeine', 'regular')}>
-          Regular
-        </button>
-        <button onClick={() => handleAnswer('caffeine', 'decaf')}>Decaf</button>
-        <button onClick={() => handleAnswer('caffeine', 'regular', 'decaf')}>
-          Varies
-        </button>
-      </div>
-      <div>
-        <h3>Which method you user to brew your coffee?</h3>
-        <button onClick={() => handleAnswer('method', 'espresso')}>
-          Espresso Machine
-        </button>
-        <button onClick={() => handleAnswer('method', 'aeropress')}>
-          Aeropress
-        </button>
-        <button onClick={() => handleAnswer('method', 'moka pot')}>
-          Moka Pot
-        </button>
-        <button onClick={() => handleAnswer('method', 'V60')}>V60</button>
-        <button onClick={() => handleAnswer('method', 'chemex')}>Chemex</button>
-        <button onClick={() => handleAnswer('method', 'mocchamaster')}>
-          Mocchamaster
-        </button>
-        <button
-          onClick={() =>
-            handleAnswer(
-              'method',
-              'espresso',
-              'aeropress',
-              'moka pot',
-              'V60',
-              'chemex',
-              'mocchamaster'
-            )
-          }
-        >
-          Others
-        </button>
-      </div>
-      <div>
-        <h3>Are you used to buy a specific coffee region?</h3>
-        <button onClick={() => handleAnswer('region', 'central america')}>
-          Central America
-        </button>
-        <button onClick={() => handleAnswer('region', 'south america')}>
-          South America
-        </button>
-        <button onClick={() => handleAnswer('region', 'asia')}>Asia</button>
-        <button onClick={() => handleAnswer('region', 'africa')}>Africa</button>
-        <button onClick={() => handleAnswer('region', 'arabia')}>Arabia</button>
-      </div>
-      <div>
-        <h3>What kind of flavor would you go for?</h3>
-        <button onClick={() => handleAnswer('flavor', 'fruity')}>Fruity</button>
-        <button onClick={() => handleAnswer('flavor', 'spicy', 'floral')}>
-          Spicy and Floral
-        </button>
-        <button onClick={() => handleAnswer('flavor', 'chocolate', 'sweet')}>
-          Chocolate and sweets
-        </button>
-      </div>
-      <div>
-        <h3>Waht roasts do you typically buy?</h3>
-        <button onClick={() => handleAnswer('roast', 'light roast')}>
-          Light Roast
-        </button>
-        <button onClick={() => handleAnswer('roast', 'medium roast')}>
-          Medium Roast
-        </button>
-        <button onClick={() => handleAnswer('roast', 'dark roast')}>
-          Dark Roast
-        </button>
-      </div>
+      {step === 1 && (
+        <div>
+          <h1>Quiz - Step 1</h1>
+          <CaffeineQuestion />
+          <button onClick={nextStep}>Next</button>
+        </div>
+      )}
+      {step === 2 && (
+        <div>
+          <h1>Quiz - Step 2</h1>
+          <MethodQuestion />
+          <button onClick={prevStep}>Previous</button>
+          <button onClick={nextStep}>Next</button>
+        </div>
+      )}
+      {step === 3 && (
+        <div>
+          <h1>Quiz - Step 3</h1>
+          <RoastQuestion />
+          <button onClick={prevStep}>Previous</button>
+          <button onClick={nextStep}>Next</button>
+        </div>
+      )}
+      {step === 4 && (
+        <div>
+          <h1>Quiz - Step 4</h1>
+          <RegionQuestion />
+          <button onClick={prevStep}>Previous</button>
+          <button onClick={nextStep}>Next</button>
+        </div>
+      )}
+      {step === 5 && (
+        <div>
+          <h1>Quiz - Step 4</h1>
+          <FlavorQuestion />
+          <button onClick={prevStep}>Previous</button>
+          <button onClick={nextStep}>Next</button>
+        </div>
+      )}
       <button onClick={handleSubmit}>Submit</button>
       {recommendedCoffee && (
         <div>
