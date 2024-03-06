@@ -30,7 +30,9 @@ function CoffeeTasteDetails() {
             coffeeId={coffee._id}
             coffeeName={coffee.coffeeName}
             region={coffee.region}
+            country={coffee.country}
             roast={coffee.roast}
+            caffeine={coffee.caffeine}
             method={coffee.method}
             varieties={coffee.varieties}
             altitude={coffee.altitude}

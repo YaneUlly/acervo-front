@@ -6,7 +6,9 @@ function CoffeeDetails(props) {
     coffeeId,
     coffeeName,
     region,
+    country,
     roast,
+    caffeine,
     method,
     varieties,
     altitude,
@@ -40,9 +42,11 @@ function CoffeeDetails(props) {
         <Box align='left' width='500px' marginLeft='20px'>
           <Text>Coffee Infos</Text>
           <Text>Region: {region}</Text>
+          <Text>Country: {country}</Text>
           <Text>Varieties: {varieties}</Text>
           <Text>Altitude: {altitude}</Text>
           <Text>Roast: {roast}</Text>
+          <Text>Type: {caffeine}</Text>
           <Text>Process: {process}</Text>
 
           <Text marginTop='15px'>Coffee Sensorials</Text>
