@@ -7,15 +7,8 @@ import RegionQuestion from '../components/RegionQuestion';
 import FlavorQuestion from '../components/FlavorQuestion';
 
 function CoffeeQuiz() {
-  const {
-    step,
-    recommendedCoffee,
-    handleSubmit,
-    nextStep,
-    prevStep,
-    resetQuiz,
-    showRecommendation,
-  } = useCoffeeQuiz();
+  const { step, recommendedCoffee, resetQuiz, showRecommendation } =
+    useCoffeeQuiz();
 
   return (
     <div>
@@ -31,47 +24,31 @@ function CoffeeQuiz() {
           {step === 1 && (
             <div>
               <QuizHome />
-              <button onClick={nextStep}>Start</button>
             </div>
           )}
           {step === 2 && (
             <div>
-              <h1>Quiz - Step 1</h1>
               <CaffeineQuestion />
-              <button onClick={prevStep}>Previous</button>
-              <button onClick={nextStep}>Next</button>
             </div>
           )}
           {step === 3 && (
             <div>
-              <h1>Quiz - Step 2</h1>
               <MethodQuestion />
-              <button onClick={prevStep}>Previous</button>
-              <button onClick={nextStep}>Next</button>
             </div>
           )}
           {step === 4 && (
             <div>
-              <h1>Quiz - Step 3</h1>
               <RoastQuestion />
-              <button onClick={prevStep}>Previous</button>
-              <button onClick={nextStep}>Next</button>
             </div>
           )}
           {step === 5 && (
             <div>
-              <h1>Quiz - Step 4</h1>
               <RegionQuestion />
-              <button onClick={prevStep}>Previous</button>
-              <button onClick={nextStep}>Next</button>
             </div>
           )}
           {step === 6 && (
             <div>
-              <h1>Quiz - Step 5</h1>
               <FlavorQuestion />
-              <button onClick={prevStep}>Previous</button>
-              <button onClick={handleSubmit}>Submit</button>
             </div>
           )}
         </div>
