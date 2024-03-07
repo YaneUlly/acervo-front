@@ -20,20 +20,22 @@ const CoffeeQuizProvider = props => {
     flavor: '',
   });
   const [recommendedCoffee, setRecommendedCoffee] = useState(null);
+  const [showRecommendation, setShowRecommendation] = useState(false);
 
   const handleAnswer = (question, answer) => {
     setAnswers(prevAnswers => ({
       ...prevAnswers,
       [question]: answer,
     }));
-    console.log('Answers', answer);
+    // console.log('Answers', answer);
   };
 
   const handleSubmit = async () => {
     try {
-      console.log('Submitting answers:', answers);
+      // console.log('Submitting answers:', answers);
       const response = await addCoffeeQuiz(answers);
       setRecommendedCoffee(response.data.recommendedCoffee);
+      setShowRecommendation(true);
     } catch (error) {
       console.error('Failed to fetch coffee recommendation');
     }
@@ -47,6 +49,19 @@ const CoffeeQuizProvider = props => {
     setStep(step - 1);
   };
 
+  const resetQuiz = () => {
+    setStep(1);
+    setAnswers({
+      method: '',
+      region: '',
+      roast: '',
+      caffeine: '',
+      flavor: '',
+    });
+    setRecommendedCoffee(null);
+    setShowRecommendation(false);
+  };
+
   return (
     <CoffeeQuizContext.Provider
       value={{
@@ -57,6 +72,8 @@ const CoffeeQuizProvider = props => {
         handleSubmit,
         nextStep,
         prevStep,
+        resetQuiz,
+        showRecommendation,
       }}
     >
       {props.children}
