@@ -26,6 +26,7 @@ export const getCoffeeHub = id => {
 };
 
 export const addCoffeeQuiz = answer => {
+  console.log('Sending quiz answers:', answer);
   return axios.post(`${baseURL}/coffeequiz`, answer);
 };
 

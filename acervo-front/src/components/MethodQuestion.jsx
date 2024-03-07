@@ -12,6 +12,9 @@ function MethodQuestion() {
       <button onClick={() => handleAnswer('method', 'moka pot')}>
         Moka Pot
       </button>
+      <button onClick={() => handleAnswer('method', 'french press')}>
+        French Press
+      </button>
       <button onClick={() => handleAnswer('method', 'aeropress')}>
         Aeropress
       </button>
@@ -20,21 +23,10 @@ function MethodQuestion() {
       </button>
       <button onClick={() => handleAnswer('method', 'V60')}>V60</button>
       <button onClick={() => handleAnswer('method', 'chemex')}>Chemex</button>
-      <button
-        onClick={() =>
-          handleAnswer(
-            'method',
-            'espresso',
-            'moka pot',
-            'aeropress',
-            'mocchamaster',
-            'V60',
-            'chemex'
-          )
-        }
-      >
-        Other
+      <button onClick={() => handleAnswer('method', 'cold brew')}>
+        Cold Brew
       </button>
+      <button onClick={() => handleAnswer('method', 'dripper')}>Other</button>
     </div>
   );
 }

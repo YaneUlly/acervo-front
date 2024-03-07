@@ -10,8 +10,11 @@ function FlavorQuestion() {
       <button onClick={() => handleAnswer('flavor', 'floral')}>Floral</button>
       <button onClick={() => handleAnswer('flavor', 'fruity')}>Fruity</button>
       <button onClick={() => handleAnswer('flavor', 'spices')}>Spices</button>
-      <button onClick={() => handleAnswer('flavor', 'nutty/cocoa')}>
+      <button onClick={() => handleAnswer('flavor', 'nutty-cocoa')}>
         Nutty/Cocoa
+      </button>
+      <button onClick={() => handleAnswer('flavor', 'nutty-cocoa')}>
+        I dont have a preference
       </button>
     </div>
   );

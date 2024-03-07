@@ -30,7 +30,7 @@ function EditCoffeeTaste() {
   const [aromas, setAromas] = useState([]);
   const [flavor, setFlavor] = useState('sweet');
   const [body, setBody] = useState('aquoso');
-  const [method, setMethod] = useState('');
+  const [method, setMethod] = useState('espresso-machine');
   const [recipe, setRecipe] = useState('');
   const [description, setDescription] = useState('');
   const [share, setShare] = useState(false);
@@ -304,9 +304,9 @@ function EditCoffeeTaste() {
               <option value='fruity'>Fruity</option>
               <option value='roasted'>Roasted</option>
               <option value='spices'>Spices</option>
-              <option value='nutty/cocoa'>Nutty/Cocoa</option>
-              <option value='sour/fermented'>Sour/Fermented</option>
-              <option value='green/vegetative'>Green Vegetative</option>
+              <option value='nutty-cocoa'>Nutty/Cocoa</option>
+              <option value='sour-fermented'>Sour/Fermented</option>
+              <option value='green-vegetative'>Green Vegetative</option>
             </Select>
             <FormErrorMessage>Coffee flavor is required.</FormErrorMessage>
           </FormControl>
@@ -336,16 +336,28 @@ function EditCoffeeTaste() {
           >
             Coffee recipe
           </Text>
-          <FormLabel>Method used:</FormLabel>
-          <Input
-            type='text'
-            name='method'
-            id='method'
-            borderColor='#0B0B03'
-            marginBottom='12px'
-            value={method}
-            onChange={e => setMethod(e.target.value)}
-          ></Input>
+
+          <FormControl isRequired>
+            <FormLabel>Method used:</FormLabel>
+            <Select
+              name='method'
+              id='method'
+              borderColor='#0B0B03'
+              marginBottom='12px'
+              value={method}
+              onChange={e => setMethod(e.target.value)}
+            >
+              <option value='espresso-machine'>Espresso Machine</option>
+              <option value='moka-pot'>Moka Pot</option>
+              <option value='french-press'>French Press</option>
+              <option value='aeropress'>Aeropress</option>
+              <option value='V60'>V60</option>
+              <option value='chemex'>Chemex</option>
+              <option value='cold-brew'>Cold Brew</option>
+              <option value='other'>Other</option>
+            </Select>
+            <FormErrorMessage>Brewing method is required.</FormErrorMessage>
+          </FormControl>
 
           <FormLabel>Recipe</FormLabel>
           <Input

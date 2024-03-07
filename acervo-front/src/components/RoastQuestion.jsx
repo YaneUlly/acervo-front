@@ -15,12 +15,8 @@ function RoastQuestion() {
       <button onClick={() => handleAnswer('roast', 'dark roast')}>
         Dark Roast
       </button>
-      <button
-        onClick={() =>
-          handleAnswer('roast', 'light roast', 'medium roast', 'dark roast')
-        }
-      >
-        I dont pay atention to this
+      <button onClick={() => handleAnswer('roast', 'dark roast')}>
+        Never look at it
       </button>
     </div>
   );
