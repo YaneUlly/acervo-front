@@ -9,7 +9,7 @@ function CaffeineQuestion() {
         Regular
       </button>
       <button onClick={() => handleAnswer('caffeine', 'decaf')}>Decaf</button>
-      <button onClick={() => handleAnswer('caffeine', 'regular', 'decaf')}>
+      <button onClick={() => handleAnswer('caffeine', 'regular')}>
         Varies
       </button>
     </div>

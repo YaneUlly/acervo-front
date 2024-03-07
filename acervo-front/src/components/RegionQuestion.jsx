@@ -15,17 +15,7 @@ function RegionQuestion() {
       <button onClick={() => handleAnswer('region', 'south america')}>
         South America
       </button>
-      <button
-        onClick={() =>
-          handleAnswer(
-            'region',
-            'south america',
-            'arabia',
-            'asia',
-            'central america'
-          )
-        }
-      >
+      <button onClick={() => handleAnswer('region', 'south america')}>
         It doesnt matter for me
       </button>
     </div>
