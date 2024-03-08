@@ -56,6 +56,7 @@ function CoffeeTaste() {
               storeUrl={coffee.storeUrl}
               createdBy={createdBy}
               share={coffee.share}
+              route='CoffeeTaste'
             />
           </div>
         );

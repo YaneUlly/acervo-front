@@ -38,6 +38,7 @@ function CoffeeHub() {
               storeUrl={coffee.storeUrl}
               createdBy={createdBy}
               share={coffee.share}
+              route='CoffeeHub'
             />
           </div>
         );
