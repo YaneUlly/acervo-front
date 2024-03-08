@@ -5,6 +5,7 @@ import MethodQuestion from '../components/MethodQuestion';
 import RoastQuestion from '../components/RoastQuestion';
 import RegionQuestion from '../components/RegionQuestion';
 import FlavorQuestion from '../components/FlavorQuestion';
+import RecommendedCoffee from '../components/RecommendedCoffee';
 
 function CoffeeQuiz() {
   const { step, recommendedCoffee, resetQuiz, showRecommendation } =
@@ -14,10 +15,10 @@ function CoffeeQuiz() {
     <div>
       {showRecommendation ? (
         <div>
-          <h2>Recommended Coffee</h2>
-          <p>{recommendedCoffee.coffeeName}</p>
-          <p>{recommendedCoffee.description}</p>
-          <button onClick={resetQuiz}>Restart Quiz</button>
+          <RecommendedCoffee
+            recommendedCoffee={recommendedCoffee}
+            resetQuiz={resetQuiz}
+          />
         </div>
       ) : (
         <div>
