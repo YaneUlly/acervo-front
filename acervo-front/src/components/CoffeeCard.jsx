@@ -23,7 +23,14 @@ function CoffeeCard({
   storeUrl,
   createdBy,
   share,
+  route,
 }) {
+  const infoLink =
+    route === 'CoffeeHub'
+      ? `/coffeehub/${coffeeId}`
+      : `/coffeetaste/${coffeeId}`;
+
+  console.log('ÍnfoLink', infoLink);
   return (
     <div>
       <Card
@@ -87,7 +94,11 @@ function CoffeeCard({
               <Link to={storeUrl}>Buy Coffee</Link>
             </Button>
             <Button variant='outline' borderColor='#0B0B03'>
-              <Link to={`/coffeetaste/${coffeeId}`}>More Info</Link>
+              {console.log('Route:', route)}
+              {route === 'CoffeeHub' &&
+                console.log('Rendering link for CoffeeHub')}
+              {console.log('Link to:', infoLink)}
+              <Link to={infoLink}>More Info</Link>
             </Button>
           </CardFooter>
         </Stack>

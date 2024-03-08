@@ -25,7 +25,7 @@ function RecommendedCoffee({ recommendedCoffee, resetQuiz }) {
         marginTop='60px'
       >
         <Text marginBottom='15px' fontSize='2xl'>
-          RecommendedCoffee
+          Recommended Coffee
         </Text>
         <Text
           marginTop='10px'

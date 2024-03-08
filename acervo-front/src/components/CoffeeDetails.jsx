@@ -1,7 +1,7 @@
 import { Flex, Box, Image, Text, Button } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
-function CoffeeDetails(props) {
+function CoffeeDetails({ route, ...props }) {
   const {
     coffeeId,
     coffeeName,
@@ -65,19 +65,21 @@ function CoffeeDetails(props) {
       </Flex>
 
       <Flex justifyContent='center' gap='10px' marginTop='30px'>
-        <Link to={`/coffeetaste/edit/${coffeeId}`}>
-          <Button
-            variant='outline'
-            colorScheme='#028AEB'
-            color='#0B0B03'
-            _hover={{
-              bgColor: '#0B0B03',
-              color: '#FFEFD6',
-            }}
-          >
-            Edit
-          </Button>
-        </Link>
+        {route === 'CoffeeTaste' && (
+          <Link to={`/coffeetaste/edit/${coffeeId}`}>
+            <Button
+              variant='outline'
+              colorScheme='#028AEB'
+              color='#0B0B03'
+              _hover={{
+                bgColor: '#0B0B03',
+                color: '#FFEFD6',
+              }}
+            >
+              Edit
+            </Button>
+          </Link>
+        )}
         <Link src={storeUrl}>
           <Button
             bgColor='#028AEB'

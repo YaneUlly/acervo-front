@@ -27,12 +27,12 @@ const CoffeeQuizProvider = props => {
       ...prevAnswers,
       [question]: answer,
     }));
-    // console.log('Answers', answer);
+    console.log('Answers', answer);
   };
 
   const handleSubmit = async () => {
     try {
-      // console.log('Submitting answers:', answers);
+      console.log('Submitting answers:', answers);
       const response = await addCoffeeQuiz(answers);
       setRecommendedCoffee(response.data.recommendedCoffee);
       setShowRecommendation(true);
