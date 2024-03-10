@@ -106,6 +106,7 @@ function Navbar() {
               <Button
                 onClick={logoutUser}
                 variant='outline'
+                marginLeft='10px'
                 colorScheme='#028AEB'
                 color='#0B0B03'
                 _hover={{
@@ -121,17 +122,6 @@ function Navbar() {
               <Link to='/howtotaste'>How to taste</Link>
               <Link to='/coffeequiz'>Coffee Quiz</Link>
               <Link to='/coffeehistory'>Coffee History</Link>
-              <Button
-                variant='outline'
-                colorScheme='#028AEB'
-                color='#0B0B03'
-                _hover={{
-                  bgColor: '#0B0B03',
-                  color: '#FFEFD6',
-                }}
-              >
-                <Link to='/login'>Login</Link>
-              </Button>
               <Link to='signup'>
                 <Button
                   bgColor='#028AEB'
@@ -144,6 +134,17 @@ function Navbar() {
                   Sign up
                 </Button>
               </Link>
+              <Button
+                variant='outline'
+                colorScheme='#028AEB'
+                color='#0B0B03'
+                _hover={{
+                  bgColor: '#0B0B03',
+                  color: '#FFEFD6',
+                }}
+              >
+                <Link to='/login'>Login</Link>
+              </Button>
             </>
           )}
         </Box>
