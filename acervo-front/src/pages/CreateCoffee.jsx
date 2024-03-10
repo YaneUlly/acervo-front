@@ -114,7 +114,7 @@ function CreateCoffee() {
         display='flex'
         flexDirection={{ base: 'column', md: 'column', lg: 'row' }}
         justifyContent='space-around'
-        marginBottom={{ base: '50px', md: '0px' }}
+        marginBottom={{ base: '50px', md: '50px', lg: '0px' }}
       >
         <Flex flexDirection='column' justifyContent='left' marginLeft='20px'>
           <Text
