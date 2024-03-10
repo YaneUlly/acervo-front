@@ -9,5 +9,34 @@
 }
 
 .form {
-  width: 50%;
+  width: 60%;
+}
+
+.custom-file-upload {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.custom-file-button {
+  background-color: #a1541e;
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.custom-file-button:hover {
+  background-color: #0b0b03;
+}
+
+.custom-file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
 }
