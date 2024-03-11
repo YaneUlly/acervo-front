@@ -3,12 +3,15 @@ import {
   Card,
   Image,
   Heading,
+  CardHeader,
   CardFooter,
   CardBody,
   Text,
   Stack,
   Flex,
+  Box,
   Avatar,
+  Divider,
   Button,
 } from '@chakra-ui/react';
 
@@ -30,71 +33,79 @@ function CoffeeCard({
       ? `/coffeehub/${coffeeId}`
       : `/coffeetaste/${coffeeId}`;
 
-  console.log('ÍnfoLink', infoLink);
+  // console.log('ÍnfoLink', infoLink);
+
   return (
     <div>
-      <Card
-        direction={{ base: 'column', sm: 'row', md: 'row' }}
-        overflow='hidden'
-        variant='outline'
-        width='600px'
-        borderColor='#0B0B03'
-      >
-        <Flex align='center'>
-          <Image
-            width='300px'
-            height='400px'
-            margin='10px'
-            borderRadius='10px'
-            objectFit='contain'
-            src={coffeeImgUrl}
-            alt='Coffee Bag'
-          />
-        </Flex>
-
-        <Stack
-          marginTop={{ base: '15px', sm: '0' }}
-          flex={1}
-          paddingLeft='5px'
-          paddingTop='10px'
-        >
-          <CardBody align='left' marginTop='10px' padding='0px'>
-            <Heading size='lg'>{coffeeName}</Heading>
-
-            <Text py='2'>{region}</Text>
-
-            <Text py='2'>Varieties: {varieties}</Text>
-            <Text py='2'>Process: {process}</Text>
-            <Text py='2'>Method used: {method}</Text>
-            <Text py='2'>Shared: {share ? 'Yes' : 'No'}</Text>
-            <Text>Created By:</Text>
+      <Card width='500px'>
+        <CardHeader>
+          <Flex spacing='4'>
             {createdBy && (
-              <Flex
-                direction='row'
-                alignItems='center'
-                justifyContent='space-between'
-                width='160px'
-              >
-                <Avatar src={createdBy.photoUrl} size='md' />
-                <Text fontSize='lg' marginLeft='10px'>
-                  {createdBy.name}
-                </Text>
-              </Flex>
+              <div>
+                <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
+                  <Avatar src={createdBy.photoUrl} size='md' />
+                  <Box>
+                    <Heading fontSize='lg' marginLeft='4px'>
+                      {createdBy.name}
+                    </Heading>
+                  </Box>
+                </Flex>
+              </div>
             )}
-          </CardBody>
+          </Flex>
+        </CardHeader>
 
-          <CardFooter
-            flexDirection='row'
-            alignItems='center'
-            justifyContent='space-between'
-            paddingLeft='0px'
-            width='250px'
-          >
-            <Button variant='solid' colorScheme='blue' marginLeft='5px'>
-              <Link to={storeUrl}>Buy Coffee</Link>
-            </Button>
-            <Button variant='outline' borderColor='#0B0B03'>
-              {console.log('Route:', route)}
+        <Stack marginTop={{ base: '15px', sm: '0' }} flex={1} paddingLeft='5px'>
+          <CardBody align='left' padding='0px'>
+            <Flex flexDirection='row'>
+              <Flex flexDirection='column' marginLeft='10px'>
+                <Heading size='md' marginBottom='15px' marginTop='10px'>
+                  {coffeeName}
+                </Heading>
+
+                <Text>Region: {region}</Text>
+                <Text>Varieties: {varieties}</Text>
+                <Text>Process: {process}</Text>
+                <Text>Method used: {method}</Text>
+                <Text>Shared: {share ? 'Yes' : 'No'}</Text>
+              </Flex>
+
+              <Image
+                width='300px'
+                height='200px'
+                margin='10px'
+                borderRadius='10px'
+                objectFit='contain'
+                src={coffeeImgUrl}
+                alt='Coffee Bag'
+              />
+            </Flex>
+          </CardBody>
+          <Divider />
+          <CardFooter gap='5' flexWrap='wrap' justifyContent='center'>
+            {route === 'CoffeeTaste' && (
+              <Button
+                variant='outline'
+                width='40%'
+                colorScheme='#028AEB'
+                color='#0B0B03'
+                _hover={{
+                  bgColor: '#0B0B03',
+                  color: '#FFEFD6',
+                }}
+              >
+                <Link to={`/coffeetaste/edit/${coffeeId}`}>Edit</Link>
+              </Button>
+            )}
+            <Button
+              bgColor='#028AEB'
+              color='#FFEFD6'
+              _hover={{
+                bgColor: '#0B0B03',
+              }}
+              borderColor='#028AEB'
+              width='40%'
+            >
               {route === 'CoffeeHub' &&
                 console.log('Rendering link for CoffeeHub')}
               {console.log('Link to:', infoLink)}
