@@ -37,7 +37,17 @@ function CoffeeCard({
 
   return (
     <div>
-      <Card width='500px'>
+      <Card
+        width='500px'
+        variant='outline'
+        borderColor='#0B0B03'
+        borderRadius='2px'
+        bgColor='#ffefd6'
+        _hover={{
+          bgColor: '#FFB82E',
+          cursor: 'pointer',
+        }}
+      >
         <CardHeader>
           <Flex spacing='4'>
             {createdBy && (
@@ -58,7 +68,16 @@ function CoffeeCard({
         <Stack marginTop={{ base: '15px', sm: '0' }} flex={1} paddingLeft='5px'>
           <CardBody align='left' padding='0px'>
             <Flex flexDirection='row'>
-              <Flex flexDirection='column' marginLeft='10px'>
+              <Image
+                width='240px'
+                height='210px'
+                marginLeft='5px'
+                borderRadius='5px'
+                objectFit='contain'
+                src={coffeeImgUrl}
+                alt='Coffee Bag'
+              />
+              <Flex flexDirection='column' marginRight='20px'>
                 <Heading size='md' marginBottom='15px' marginTop='10px'>
                   {coffeeName}
                 </Heading>
@@ -69,20 +88,12 @@ function CoffeeCard({
                 <Text>Method used: {method}</Text>
                 <Text>Shared: {share ? 'Yes' : 'No'}</Text>
               </Flex>
-
-              <Image
-                width='300px'
-                height='200px'
-                margin='10px'
-                borderRadius='10px'
-                objectFit='contain'
-                src={coffeeImgUrl}
-                alt='Coffee Bag'
-              />
             </Flex>
           </CardBody>
-          <Divider />
-          <CardFooter gap='5' flexWrap='wrap' justifyContent='center'>
+
+          <Divider paddingTop='10px' borderColor='#0B0B03' />
+
+          <CardFooter gap='10' flexWrap='wrap' justifyContent='center'>
             {route === 'CoffeeTaste' && (
               <Button
                 variant='outline'
