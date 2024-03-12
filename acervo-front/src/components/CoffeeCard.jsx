@@ -38,14 +38,15 @@ function CoffeeCard({
   return (
     <div>
       <Card
-        width='500px'
+        width={{ base: '300px', md: '300px', lg: '500px' }}
         variant='outline'
         borderColor='#0B0B03'
         borderRadius='2px'
         bgColor='#ffefd6'
         _hover={{
-          bgColor: '#FFB82E',
+          bgColor: 'rgba(255, 184, 46, 0.7)',
           cursor: 'pointer',
+          boxShadow: '0px 0px 3px 0px rgba(0,0,0,0.75)',
         }}
       >
         <CardHeader>
@@ -65,10 +66,11 @@ function CoffeeCard({
           </Flex>
         </CardHeader>
 
-        <Stack marginTop={{ base: '15px', sm: '0' }} flex={1} paddingLeft='5px'>
+        <Stack marginTop={{ base: '5px', sm: '0' }} flex={1} paddingLeft='5px'>
           <CardBody align='left' padding='0px'>
             <Flex flexDirection='row'>
               <Image
+                display={{ base: 'none', md: 'none', lg: 'flex' }}
                 width='240px'
                 height='210px'
                 marginLeft='5px'
@@ -77,8 +79,16 @@ function CoffeeCard({
                 src={coffeeImgUrl}
                 alt='Coffee Bag'
               />
-              <Flex flexDirection='column' marginRight='20px'>
-                <Heading size='md' marginBottom='15px' marginTop='10px'>
+              <Flex
+                flexDirection='column'
+                marginRight='20px'
+                marginLeft={{ base: '10px', md: '10px', lg: '0px' }}
+              >
+                <Heading
+                  size='md'
+                  marginBottom='15px'
+                  marginTop={{ base: '0px', md: '0px', lg: '10px' }}
+                >
                   {coffeeName}
                 </Heading>
 
@@ -93,11 +103,16 @@ function CoffeeCard({
 
           <Divider paddingTop='10px' borderColor='#0B0B03' />
 
-          <CardFooter gap='10' flexWrap='wrap' justifyContent='center'>
+          <CardFooter
+            gap={{ base: '2', md: '10', lg: '10' }}
+            flexWrap='wrap'
+            flexDirection={{ base: 'column', md: 'row' }}
+            justifyContent='center'
+          >
             {route === 'CoffeeTaste' && (
               <Button
                 variant='outline'
-                width='40%'
+                width={{ base: '100%', md: '40%' }}
                 colorScheme='#028AEB'
                 color='#0B0B03'
                 _hover={{
@@ -115,7 +130,7 @@ function CoffeeCard({
                 bgColor: '#0B0B03',
               }}
               borderColor='#028AEB'
-              width='40%'
+              width={{ base: '100%', md: '40%' }}
             >
               {route === 'CoffeeHub' &&
                 console.log('Rendering link for CoffeeHub')}

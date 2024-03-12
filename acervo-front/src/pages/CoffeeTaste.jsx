@@ -43,17 +43,17 @@ function CoffeeTaste() {
           fontSize={{ base: '3xl', md: '3xl', lg: '5xl' }}
           marginTop={{ base: '20px', md: '20px', lg: '150px' }}
           marginBottom={{ lg: '10px' }}
-          align='center'
-          // marginLeft='10px'
+          marginLeft={{ base: '5px' }}
+          align={{ base: 'left', md: 'left', lg: 'center' }}
           fontFamily='Gluten'
         >
           My Coffees Track
         </Text>
         <Text
-          marginBottom='120px'
-          align='center'
-          marginLeft='420px'
-          marginRight='420px'
+          marginBottom={{ base: '30px', md: '40px', lg: '60px', xl: '120px' }}
+          align={{ base: 'left', md: 'left', lg: 'center' }}
+          marginLeft={{ base: '5px', md: '5px', lg: '240px', xl: '420px' }}
+          marginRight={{ base: '40px', md: '80px', lg: '240px', xl: '420px' }}
         >
           Welcome to your personal recipe center! Here, you can begin creating
           your own recipes and keep track of all the delightful coffees you
@@ -64,7 +64,7 @@ function CoffeeTaste() {
         src={sparkle}
         width='100px'
         height='100px'
-        display={{ base: 'none', md: 'none', lg: 'flex' }}
+        display={{ base: 'none', md: 'none', lg: 'none', xl: 'flex' }}
         position='absolute'
         top='160px'
         left='360px'
@@ -73,13 +73,15 @@ function CoffeeTaste() {
         src={sparkle}
         width='100px'
         height='100px'
-        display={{ base: 'none', md: 'none', lg: 'flex' }}
+        display={{ base: 'none', md: 'none', lg: 'none', xl: 'flex' }}
         position='absolute'
         top='400px'
         left='1000px'
       ></Image>
 
-      <InputGroup marginLeft='320px'>
+      <InputGroup
+        marginLeft={{ base: '5px', md: '5px', lg: '260px', xl: '320px' }}
+      >
         <InputLeftAddon backgroundColor='#0B0B03'>
           <Icon as={SearchIcon} color='#FFEFD6' backgroundColor='#0B0B03' />
         </InputLeftAddon>
@@ -89,7 +91,7 @@ function CoffeeTaste() {
           variant='outline'
           borderColor='#0B0B03'
           width='50%'
-          marginBottom='120px'
+          marginBottom={{ base: '40px', md: '80px', lg: '120px' }}
           value={search}
           onChange={handleSearch}
         ></Input>
@@ -99,12 +101,13 @@ function CoffeeTaste() {
         flexDirection='row'
         flexWrap='wrap'
         gap='10'
-        justifyContent='center'
+        justifyContent={{ base: 'left', md: 'left', lg: 'center' }}
+        marginLeft={{ base: '5px', md: '15px', lg: '0px' }}
         marginBottom='50px'
       >
         <Button
-          width='500px'
-          height='400px'
+          width={{ base: '300px', md: '300px', lg: '500px' }}
+          height={{ base: '100px', md: '356px', lg: '400px' }}
           opacity='0.5'
           borderRadius='5px'
           fontSize='2xl'
