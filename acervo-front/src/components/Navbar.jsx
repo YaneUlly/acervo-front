@@ -23,11 +23,10 @@ function Navbar() {
         as='header'
         justifyContent='space-between'
         alignItems='center'
-        position='sticky'
         top='0'
         zIndex='sticky'
         bg='#FFEFD6'
-        p={4}
+        margin={{ base: '0px', md: '5px' }}
       >
         <Box>
           <Link to='/'>
@@ -38,7 +37,10 @@ function Navbar() {
         </Box>
 
         {/* Hamburger Icon */}
-        <Box display={{ base: 'block', md: 'block', lg: 'none' }}>
+        <Box
+          display={{ base: 'block', md: 'block', lg: 'none' }}
+          position='relative'
+        >
           <Menu>
             <MenuButton
               as={IconButton}

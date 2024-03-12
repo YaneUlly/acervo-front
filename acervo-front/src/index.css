@@ -5,6 +5,7 @@
 
 body {
   background-color: #ffefd6 !important;
+  overflow-x: hidden;
 }
 
 .root {
