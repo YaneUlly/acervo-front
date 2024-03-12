@@ -13,6 +13,7 @@ import {
 } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import sparkle from '../assets/sparkle.png';
+import { Link } from 'react-router-dom';
 
 function CoffeeTaste() {
   const [coffees, setCoffees] = useState([]);
@@ -28,8 +29,8 @@ function CoffeeTaste() {
     }
   };
 
-  const handleSearch = () => {
-    setSearch();
+  const handleSearch = event => {
+    setSearch(event.target.value);
   };
 
   useEffect(() => {
@@ -105,50 +106,67 @@ function CoffeeTaste() {
         marginLeft={{ base: '5px', md: '15px', lg: '0px' }}
         marginBottom='50px'
       >
-        <Button
-          width={{ base: '300px', md: '300px', lg: '500px' }}
-          height={{ base: '100px', md: '356px', lg: '400px' }}
-          opacity='0.5'
-          borderRadius='5px'
-          fontSize='2xl'
-        >
-          Add
-        </Button>
-        {coffees.map(coffee => {
-          {
-            /* console.log('CreatedBy:', coffee.createdBy);
-        console.log(
-          'Name:',
-          coffee.createdBy && coffee.createdBy[0] && coffee.createdBy[0].name
-        );
-        console.log(
-          'Photo:',
-          coffee.createdBy &&
-            coffee.createdBy[0] &&
-            coffee.createdBy[0].photoUrl
-        ); */
-          }
+        <Link to='/coffeetaste/create'>
+          <Button
+            width={{ base: '300px', md: '300px', lg: '500px' }}
+            height={{ base: '100px', md: '356px', lg: '400px' }}
+            opacity='0.5'
+            borderRadius='5px'
+            fontSize='2xl'
+          >
+            Add
+          </Button>
+        </Link>
+        {coffees
+          .filter(
+            coffee =>
+              coffee.coffeeName.toLowerCase().includes(search.toLowerCase()) ||
+              coffee.region.toLowerCase().includes(search.toLowerCase()) ||
+              coffee.method.toLowerCase().includes(search.toLowerCase()) ||
+              coffee.country.toLowerCase().includes(search.toLowerCase()) ||
+              coffee.roast.toLowerCase().includes(search.toLowerCase()) ||
+              coffee.caffeine.toLowerCase().includes(search.toLowerCase()) ||
+              coffee.flavor.toLowerCase().includes(search.toLowerCase()) ||
+              coffee.body.toLowerCase().includes(search.toLowerCase()) ||
+              (coffee.varieties &&
+                coffee.varieties.some(variety =>
+                  variety.toLowerCase().includes(search.toLowerCase())
+                )) ||
+              (coffee.altitude &&
+                coffee.altitude.some(altitude =>
+                  altitude.toLowerCase().includes(search.toLowerCase())
+                )) ||
+              (coffee.process &&
+                coffee.process.some(process =>
+                  process.toLowerCase().includes(search.toLowerCase())
+                )) ||
+              (coffee.aromas &&
+                coffee.aromas.some(aroma =>
+                  aroma.toLowerCase().includes(search.toLowerCase())
+                ))
+          )
 
-          const createdBy = coffee.createdBy && coffee.createdBy[0];
+          .map(coffee => {
+            const createdBy = coffee.createdBy && coffee.createdBy[0];
 
-          return (
-            <div key={coffee._id}>
-              <CoffeeCard
-                coffeeId={coffee._id}
-                coffeeName={coffee.coffeeName}
-                coffeeImgUrl={coffee.coffeeImgUrl}
-                region={coffee.region}
-                varieties={coffee.varieties}
-                process={coffee.process}
-                method={coffee.method}
-                storeUrl={coffee.storeUrl}
-                createdBy={createdBy}
-                share={coffee.share}
-                route='CoffeeTaste'
-              />
-            </div>
-          );
-        })}
+            return (
+              <div key={coffee._id}>
+                <CoffeeCard
+                  coffeeId={coffee._id}
+                  coffeeName={coffee.coffeeName}
+                  coffeeImgUrl={coffee.coffeeImgUrl}
+                  region={coffee.region}
+                  varieties={coffee.varieties}
+                  process={coffee.process}
+                  method={coffee.method}
+                  storeUrl={coffee.storeUrl}
+                  createdBy={createdBy}
+                  share={coffee.share}
+                  route='CoffeeTaste'
+                />
+              </div>
+            );
+          })}
       </Flex>
     </div>
   );
