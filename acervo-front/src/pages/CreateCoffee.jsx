@@ -120,10 +120,10 @@ function CreateCoffee() {
           <Text
             fontFamily='Gluten'
             marginTop={{ base: '20px', md: '20px', lg: '45px' }}
+            marginBottom={{ lg: '20px' }}
             width={{ lg: '80%' }}
             lineHeight={{ base: '1em', md: '1m', lg: '1em' }}
-            marginBottom={{ lg: '20px' }}
-            fontSize={{ base: '3xl', md: '3xl', lg: '6xl' }}
+            fontSize={{ base: '3xl', md: '3xl', lg: '5xl' }}
             textAlign='left'
           >
             Create your coffee recipe!

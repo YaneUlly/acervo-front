@@ -1,11 +1,22 @@
 import { useState, useEffect } from 'react';
 import { getAllCoffeesTaste } from '../api/coffees.api';
 import CoffeeCard from '../components/CoffeeCard';
-import { Text, Flex, Button, Image } from '@chakra-ui/react';
-import coffeetastepage from '../assets/coffeetastepage.png';
+import {
+  Text,
+  Flex,
+  Button,
+  Image,
+  Input,
+  InputGroup,
+  InputLeftAddon,
+  Icon,
+} from '@chakra-ui/react';
+import { SearchIcon } from '@chakra-ui/icons';
+import sparkle from '../assets/sparkle.png';
 
 function CoffeeTaste() {
   const [coffees, setCoffees] = useState([]);
+  const [search, setSearch] = useState('');
 
   const getCoffeesTaste = async () => {
     try {
@@ -17,45 +28,87 @@ function CoffeeTaste() {
     }
   };
 
+  const handleSearch = () => {
+    setSearch();
+  };
+
   useEffect(() => {
     getCoffeesTaste();
   }, []);
 
   return (
     <div>
-      <Flex flexDirection='row'>
-        <Flex
-          flexDirection='column'
-          width='800px'
-          justifyContent='space-between'
-        >
-          <Text
-            fontSize='5xl'
-            marginTop='80px'
-            marginBottom='10px'
-            align='left'
-            marginLeft='10px'
-            fontFamily='Gluten'
-          >
-            My Coffees Track
-          </Text>
-          <Text marginBottom='100px' align='left' marginLeft='10px' width='50%'>
-            Welcome to your personal recipe center! Here, you can begin creating
-            your own recipes and keep track of all the delightful coffees you
-            taste and register!
-          </Text>
-        </Flex>
-        <Image
-          src={coffeetastepage}
-          width='300px'
-          height='200px'
+      <Flex flexDirection='column'>
+        <Text
+          fontSize={{ base: '3xl', md: '3xl', lg: '5xl' }}
+          marginTop={{ base: '20px', md: '20px', lg: '150px' }}
+          marginBottom={{ lg: '10px' }}
           align='center'
-        ></Image>
+          // marginLeft='10px'
+          fontFamily='Gluten'
+        >
+          My Coffees Track
+        </Text>
+        <Text
+          marginBottom='120px'
+          align='center'
+          marginLeft='420px'
+          marginRight='420px'
+        >
+          Welcome to your personal recipe center! Here, you can begin creating
+          your own recipes and keep track of all the delightful coffees you
+          taste and register!
+        </Text>
       </Flex>
-      <Text marginBottom='40px'>Search Bar</Text>
+      <Image
+        src={sparkle}
+        width='100px'
+        height='100px'
+        display={{ base: 'none', md: 'none', lg: 'flex' }}
+        position='absolute'
+        top='160px'
+        left='360px'
+      ></Image>
+      <Image
+        src={sparkle}
+        width='100px'
+        height='100px'
+        display={{ base: 'none', md: 'none', lg: 'flex' }}
+        position='absolute'
+        top='400px'
+        left='1000px'
+      ></Image>
 
-      <Flex flexDirection='row' flexWrap='wrap' gap='4' justifyContent='center'>
-        <Button width='500px' height='400px' opacity='0.5'>
+      <InputGroup marginLeft='320px'>
+        <InputLeftAddon backgroundColor='#0B0B03'>
+          <Icon as={SearchIcon} color='#FFEFD6' backgroundColor='#0B0B03' />
+        </InputLeftAddon>
+        <Input
+          type='text'
+          placeholder='Search'
+          variant='outline'
+          borderColor='#0B0B03'
+          width='50%'
+          marginBottom='120px'
+          value={search}
+          onChange={handleSearch}
+        ></Input>
+      </InputGroup>
+
+      <Flex
+        flexDirection='row'
+        flexWrap='wrap'
+        gap='10'
+        justifyContent='center'
+        marginBottom='50px'
+      >
+        <Button
+          width='500px'
+          height='400px'
+          opacity='0.5'
+          borderRadius='5px'
+          fontSize='2xl'
+        >
           Add
         </Button>
         {coffees.map(coffee => {
