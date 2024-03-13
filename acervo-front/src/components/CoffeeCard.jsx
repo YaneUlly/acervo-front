@@ -63,7 +63,7 @@ function CoffeeCard({
           </Flex>
         </CardHeader>
 
-        <Stack marginTop={{ base: '5px', sm: '0' }} flex={1} gap={0}>
+        <Stack marginTop={{ base: '0', sm: '0' }} flex={1} gap={0}>
           <CardBody
             align='left'
             padding='0px'

@@ -35,8 +35,8 @@ function CoffeeHub() {
       <Flex flexDirection='column'>
         <Image
           src={coffeehub}
-          width='350px'
-          height='250px'
+          width={{ base: '250px', lg: '350px' }}
+          height={{ base: '180px', lg: '250px' }}
           marginTop={{ base: '20px', md: '20px', lg: '50px' }}
           alignSelf={{ lg: 'center' }}
         />
