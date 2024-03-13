@@ -11,7 +11,6 @@ import {
   Flex,
   Box,
   Avatar,
-  Divider,
   Button,
 } from '@chakra-ui/react';
 
@@ -42,21 +41,19 @@ function CoffeeCard({
         variant='outline'
         borderColor='#0B0B03'
         borderRadius='2px'
-        bgColor='#ffefd6'
         _hover={{
-          bgColor: 'rgba(255, 184, 46, 0.7)',
           cursor: 'pointer',
-          boxShadow: '0px 0px 3px 0px rgba(0,0,0,0.75)',
+          boxShadow: '0px 4px 4px 0px rgba(0,0,0,0.25)',
         }}
       >
-        <CardHeader>
-          <Flex spacing='4'>
+        <CardHeader bgColor='#FADCAF'>
+          <Flex>
             {createdBy && (
               <div>
-                <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
+                <Flex flex='1' alignItems='center' flexWrap='wrap'>
                   <Avatar src={createdBy.photoUrl} size='md' />
                   <Box>
-                    <Heading fontSize='lg' marginLeft='4px'>
+                    <Heading fontSize='lg' marginLeft='5px' fontWeight='600'>
                       {createdBy.name}
                     </Heading>
                   </Box>
@@ -66,14 +63,19 @@ function CoffeeCard({
           </Flex>
         </CardHeader>
 
-        <Stack marginTop={{ base: '5px', sm: '0' }} flex={1} paddingLeft='5px'>
-          <CardBody align='left' padding='0px'>
+        <Stack marginTop={{ base: '5px', sm: '0' }} flex={1} gap={0}>
+          <CardBody
+            align='left'
+            padding='0px'
+            bgColor='#FADCAF'
+            paddingBottom='25px'
+          >
             <Flex flexDirection='row'>
               <Image
                 display={{ base: 'none', md: 'none', lg: 'flex' }}
                 width='240px'
                 height='210px'
-                marginLeft='5px'
+                paddingLeft='5px'
                 borderRadius='5px'
                 objectFit='contain'
                 src={coffeeImgUrl}
@@ -87,34 +89,47 @@ function CoffeeCard({
                 <Heading
                   size='md'
                   marginBottom='15px'
+                  fontWeight='600'
                   marginTop={{ base: '0px', md: '0px', lg: '10px' }}
                 >
                   {coffeeName}
                 </Heading>
 
-                <Text>Region: {region}</Text>
-                <Text>Varieties: {varieties}</Text>
-                <Text>Process: {process}</Text>
-                <Text>Method used: {method}</Text>
-                <Text>Shared: {share ? 'Yes' : 'No'}</Text>
+                <Text>
+                  <strong>Region:</strong> {region}
+                </Text>
+                <Text>
+                  <strong>Varieties:</strong> {varieties}
+                </Text>
+                <Text>
+                  <strong>Process:</strong> {process}
+                </Text>
+                <Text>
+                  <strong>Method:</strong> {method}
+                </Text>
+
+                {route === 'CoffeeTaste' && (
+                  <Text>
+                    <strong>Shared:</strong> {share ? 'Yes' : 'No'}
+                  </Text>
+                )}
               </Flex>
             </Flex>
           </CardBody>
-
-          <Divider paddingTop='10px' borderColor='#0B0B03' />
 
           <CardFooter
             gap={{ base: '2', md: '10', lg: '10' }}
             flexWrap='wrap'
             flexDirection={{ base: 'column', md: 'row' }}
             justifyContent='center'
+            bgColor='#ffefd6'
           >
             {route === 'CoffeeTaste' && (
               <Button
                 variant='outline'
                 width={{ base: '100%', md: '40%' }}
-                colorScheme='#028AEB'
                 color='#0B0B03'
+                borderColor='#0B0B03'
                 _hover={{
                   bgColor: '#0B0B03',
                   color: '#FFEFD6',
@@ -125,12 +140,14 @@ function CoffeeCard({
             )}
 
             <Button
-              bgColor='#028AEB'
-              color='#FFEFD6'
+              bgColor='#FFB82E'
+              color='#0B0B03'
               _hover={{
                 bgColor: '#0B0B03',
+                color: '#FFEFD6',
               }}
-              borderColor='#028AEB'
+              borderColor='#0B0B03'
+              border='1px'
               width={{ base: '100%', md: '40%' }}
             >
               <Link to={infoLink}>More Info</Link>
