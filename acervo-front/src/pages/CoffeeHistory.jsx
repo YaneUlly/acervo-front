@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { Text, Flex, Box } from '@chakra-ui/react';
+import { Text, Flex, Box, Image } from '@chakra-ui/react';
+import roast from '../assets/roast.png';
 
 let API_URL = `https://coffee-type-api.web.app/coffee`;
 
@@ -46,9 +47,58 @@ function CoffeeHistory() {
 
   return (
     <div>
-      <Text fontSize='4xl' marginTop='60px' marginBottom='60px'>
-        Coffee History
-      </Text>
+      <Box
+        display='flex'
+        flexDirection={{ base: 'column', md: 'column', lg: 'row' }}
+        justifyContent='center'
+        marginBottom={{ base: '20px', md: '50px', lg: '50px' }}
+        marginTop={{ base: '25px', lg: '60px' }}
+      >
+        <Image
+          src={roast}
+          width='150px'
+          height='150px'
+          alignSelf='center'
+          marginBottom='10px'
+          display={{ base: 'flex', md: 'none', lg: 'none' }}
+        />
+
+        <Flex
+          flexDirection='column'
+          justifyContent='left'
+          marginLeft={{ base: '0', lg: '10px' }}
+          width={{ base: '100%', lg: '50%' }}
+        >
+          <Text
+            fontFamily='Gluten'
+            marginTop={{ base: '20px', md: '20px', lg: '45px' }}
+            marginBottom={{ lg: '20px' }}
+            width={{ lg: '90%' }}
+            lineHeight={{ base: '1em', md: '1m', lg: '1em' }}
+            fontSize={{ base: '3xl', md: '3xl', lg: '5xl' }}
+            textAlign='left'
+          >
+            Coffee History
+          </Text>
+          <Text
+            textAlign='left'
+            fontSize='16px'
+            width={{ base: '100%', md: '100%', lg: '90%' }}
+            marginBottom='18px'
+          >
+            Discover the intriguing world of coffee species with us. From the
+            delicate flavors of Arabica to the robustness of Robusta, explore
+            the diversity and richness of coffee cultivation.
+          </Text>
+        </Flex>
+
+        <Image
+          src={roast}
+          width='390px'
+          height='320px'
+          display={{ base: 'none', md: 'none', lg: 'flex' }}
+        />
+      </Box>
       <div>
         {showCoffeeHistory.length === 0 ? (
           <p>No coffee data available</p>
@@ -59,13 +109,15 @@ function CoffeeHistory() {
                 <Flex
                   justifyContent='space-around'
                   flexDirection={{ base: 'column', md: 'row' }}
+                  marginTop={{ base: '20px', lg: '60px' }}
                 >
                   <Text
                     fontSize='3xl'
                     width='400px'
+                    fontWeight='700'
                     align={{ base: 'left', md: 'center' }}
-                    marginLeft={{ base: '20px', md: '100px' }}
-                    marginBottom={{ base: '10px', md: '0px' }}
+                    marginLeft={{ base: '0', md: '100px' }}
+                    marginBottom={{ base: '5px', md: '0px' }}
                   >
                     {coffee.type}
                   </Text>
@@ -73,9 +125,9 @@ function CoffeeHistory() {
                   <Box
                     flexDirection='column'
                     align='left'
-                    marginLeft={{ base: '20px', md: '100px' }}
-                    marginRight={{ base: '100px', md: '50px' }}
-                    width='100%'
+                    marginLeft={{ base: '0px', md: '100px' }}
+                    marginRight={{ base: '100px', md: '100px' }}
+                    width='90%'
                     maxW={{ base: '100%', md: '800px' }}
                     overflow='auto'
                   >
