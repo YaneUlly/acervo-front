@@ -138,7 +138,7 @@ function CreateCoffee() {
             personalized coffee crafting by designing your own unique recipe and
             sharing additional coffee-related insights with us through our form.
             If you need help filling the form, you can take a look at our
-            Tasting Page for futher instructions.
+            Tasting Page for further instructions.
           </Text>
           <Button
             width={{ base: '30%', md: '30%', lg: '20%' }}
