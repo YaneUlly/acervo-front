@@ -123,6 +123,7 @@ function CoffeeCard({
                 <Link to={`/coffeetaste/edit/${coffeeId}`}>Edit</Link>
               </Button>
             )}
+
             <Button
               bgColor='#028AEB'
               color='#FFEFD6'
@@ -132,9 +133,6 @@ function CoffeeCard({
               borderColor='#028AEB'
               width={{ base: '100%', md: '40%' }}
             >
-              {route === 'CoffeeHub' &&
-                console.log('Rendering link for CoffeeHub')}
-              {console.log('Link to:', infoLink)}
               <Link to={infoLink}>More Info</Link>
             </Button>
           </CardFooter>
