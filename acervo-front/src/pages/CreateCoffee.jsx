@@ -98,25 +98,30 @@ function CreateCoffee() {
 
   return (
     <div>
-      <Breadcrumb marginLeft='20px' fontSize='14px' marginTop='25px'>
-        <BreadcrumbItem>
-          <BreadcrumbLink href='/'>Home</BreadcrumbLink>
-        </BreadcrumbItem>
-
-        <BreadcrumbItem>
-          <BreadcrumbLink href='/coffeetaste'>
-            Coffee Taste Track
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-      </Breadcrumb>
-
       <Box
         display='flex'
         flexDirection={{ base: 'column', md: 'column', lg: 'row' }}
-        justifyContent='space-around'
-        marginBottom={{ base: '50px', md: '50px', lg: '0px' }}
+        justifyContent='center'
+        marginBottom={{ base: '50px', md: '50px', lg: '50px' }}
+        marginTop='60px'
       >
-        <Flex flexDirection='column' justifyContent='left' marginLeft='20px'>
+        <Flex
+          flexDirection='column'
+          justifyContent='left'
+          marginLeft='20px'
+          width='40%'
+        >
+          <Breadcrumb fontSize='14px' marginTop='25px'>
+            <BreadcrumbItem>
+              <BreadcrumbLink href='/'>Home</BreadcrumbLink>
+            </BreadcrumbItem>
+
+            <BreadcrumbItem>
+              <BreadcrumbLink href='/coffeetaste'>
+                Coffee Taste Track
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
           <Text
             fontFamily='Gluten'
             marginTop={{ base: '20px', md: '20px', lg: '45px' }}
@@ -142,12 +147,14 @@ function CreateCoffee() {
           </Text>
           <Button
             width={{ base: '30%', md: '30%', lg: '20%' }}
-            bgColor='#028AEB'
-            color='#FFEFD6'
+            variant='outline'
+            bgColor='#FFB82E'
+            borderColor='#0B0B03'
+            color='#0B0B03'
             _hover={{
               bgColor: '#0B0B03',
+              color: '#FFEFD6',
             }}
-            borderColor='#028AEB'
           >
             <Link to='/howtotaste'>Learn more</Link>
           </Button>
@@ -156,20 +163,26 @@ function CreateCoffee() {
         <Image
           src={createcoffee}
           display={{ base: 'none', md: 'none', lg: 'flex' }}
+          width='400px'
+          height='420px'
         ></Image>
       </Box>
 
       {/* STARTING THE FORM */}
       <Flex flexDirection='column' alignItems='center' width='100%'>
         <ProgressBar progress={progress} totalSteps={totalSteps} />
-        <form onSubmit={handleSubmit} className='form'>
+        <form
+          onSubmit={handleSubmit}
+          className='form'
+          style={{ backgroundColor: '#FADCAF', borderRadius: '5px' }}
+        >
           {progress === 0 && (
             <Box
               display='flex'
               flexDirection='column'
               alignItems='left'
-              marginTop='50px'
-              paddingBottom='70px'
+              marginTop='20px'
+              padding='20px'
             >
               {/* FIRST STEP */}
               <Text align='left' marginBottom='10px'>
@@ -302,10 +315,13 @@ function CreateCoffee() {
                   onClick={handleNextStep}
                   marginTop='40px'
                   width={{ base: '100%', md: '20%', lg: '20%' }}
-                  bgColor='#028AEB'
-                  color='#FFEFD6'
+                  variant='outline'
+                  bgColor='#FFB82E'
+                  borderColor='#0B0B03'
+                  color='#0B0B03'
                   _hover={{
                     bgColor: '#0B0B03',
+                    color: '#FFEFD6',
                   }}
                 >
                   Next
@@ -316,7 +332,7 @@ function CreateCoffee() {
 
           {/* SECOND STEP */}
           {progress === 1 && (
-            <Box paddingBottom='70px' marginTop='50px'>
+            <Box paddingBottom='70px' marginTop='20px' padding='20px'>
               <Text align='left' marginBottom='10px'>
                 Step 2/5
               </Text>
@@ -387,10 +403,13 @@ function CreateCoffee() {
                   onClick={handleNextStep}
                   marginTop={{ base: '10px', md: '40px' }}
                   width={{ base: '100%', md: '20%' }}
-                  bgColor='#028AEB'
-                  color='#FFEFD6'
+                  variant='outline'
+                  bgColor='#FFB82E'
+                  borderColor='#0B0B03'
+                  color='#0B0B03'
                   _hover={{
                     bgColor: '#0B0B03',
+                    color: '#FFEFD6',
                   }}
                 >
                   Next
@@ -402,7 +421,7 @@ function CreateCoffee() {
           {/* THIRD STEP */}
 
           {progress === 2 && (
-            <Box paddingBottom='70px' marginTop='50px'>
+            <Box paddingBottom='70px' marginTop='20px' padding='20px'>
               <Text align='left' marginBottom='10px'>
                 Step 3/5
               </Text>
@@ -497,10 +516,13 @@ function CreateCoffee() {
                   onClick={handleNextStep}
                   width={{ base: '100%', md: '20%' }}
                   marginTop={{ base: '10px' }}
-                  bgColor='#028AEB'
-                  color='#FFEFD6'
+                  variant='outline'
+                  bgColor='#FFB82E'
+                  borderColor='#0B0B03'
+                  color='#0B0B03'
                   _hover={{
                     bgColor: '#0B0B03',
+                    color: '#FFEFD6',
                   }}
                 >
                   Next
@@ -511,7 +533,7 @@ function CreateCoffee() {
 
           {/* FOURTH STEP */}
           {progress === 3 && (
-            <Box paddingBottom='70px' marginTop='50px'>
+            <Box paddingBottom='70px' marginTop='20px' padding='20px'>
               <Text align='left' marginBottom='10px'>
                 Step 4/5
               </Text>
@@ -584,10 +606,13 @@ function CreateCoffee() {
                   onClick={handleNextStep}
                   width={{ base: '100%', md: '20%' }}
                   marginTop={{ base: '10px' }}
-                  bgColor='#028AEB'
-                  color='#FFEFD6'
+                  variant='outline'
+                  bgColor='#FFB82E'
+                  borderColor='#0B0B03'
+                  color='#0B0B03'
                   _hover={{
                     bgColor: '#0B0B03',
+                    color: '#FFEFD6',
                   }}
                 >
                   Next
@@ -597,7 +622,12 @@ function CreateCoffee() {
           )}
 
           {progress === totalSteps && (
-            <Box paddingBottom='70px' marginTop='40px' align='center'>
+            <Box
+              paddingBottom='70px'
+              marginTop='20px'
+              padding='20px'
+              align='center'
+            >
               <Text
                 fontSize='3xl'
                 paddingBottom='20px'
@@ -639,10 +669,13 @@ function CreateCoffee() {
                 <Button
                   width={{ base: '100%', md: '25%', lg: '20%' }}
                   marginTop={{ base: '10px' }}
-                  bgColor='#028AEB'
-                  color='#FFEFD6'
+                  variant='outline'
+                  bgColor='#FFB82E'
+                  borderColor='#0B0B03'
+                  color='#0B0B03'
                   _hover={{
                     bgColor: '#0B0B03',
+                    color: '#FFEFD6',
                   }}
                   type='submit'
                 >

@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 function ProgressBar({ progress, totalSteps }) {
   const percentage = (progress / totalSteps) * 100;
 
