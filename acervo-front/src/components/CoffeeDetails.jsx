@@ -30,7 +30,7 @@ function CoffeeDetails({ ...props }) {
       <Breadcrumb
         marginLeft='5px'
         fontSize='14px'
-        marginTop={{ base: '3vh', md: '6vh', lg: '6vh' }}
+        marginTop={{ base: '3vh', md: '6vh', lg: '10vh' }}
       >
         <BreadcrumbItem>
           <BreadcrumbLink href='/'>Home</BreadcrumbLink>
@@ -64,7 +64,7 @@ function CoffeeDetails({ ...props }) {
 
       <Flex
         flexDirection={{ base: 'column', lg: 'row' }}
-        marginTop={{ base: '4vh', md: '4vh', lg: '4vh', xl: '18vh' }}
+        marginTop={{ base: '4vh', md: '4vh', lg: '4vh', xl: '15vh' }}
         width={{ base: '90%', lg: '100%' }}
         alignItems='flex-start'
       >
