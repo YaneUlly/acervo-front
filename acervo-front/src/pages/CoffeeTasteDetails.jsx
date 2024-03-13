@@ -45,6 +45,7 @@ function CoffeeTasteDetails() {
             share={coffee.share}
             storeUrl={coffee.storeUrl}
             image={coffee.coffeeImgUrl}
+            route='CoffeeTaste'
           />
         </div>
       )}

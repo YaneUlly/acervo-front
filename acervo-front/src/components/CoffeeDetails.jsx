@@ -2,7 +2,7 @@ import { Flex, Box, Image, Text, Button } from '@chakra-ui/react';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
-function CoffeeDetails({ route, ...props }) {
+function CoffeeDetails({ ...props }) {
   const {
     coffeeId,
     coffeeName,
@@ -22,6 +22,7 @@ function CoffeeDetails({ route, ...props }) {
     share,
     storeUrl,
     image,
+    route,
   } = props;
 
   return (
