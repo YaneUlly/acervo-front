@@ -19,15 +19,17 @@ function HowToTaste() {
           src={drinking}
           width='150px'
           height='150px'
-          alignSelf='center'
+          alignSelf={{ base: 'center', md: 'center', lg: 'center' }}
+          marginLeft={{ base: '0' }}
+          marginRight={{ xl: '50px' }}
           marginBottom='10px'
-          display={{ base: 'flex', md: 'none', lg: 'none' }}
+          display={{ base: 'flex', md: 'flex', lg: 'none' }}
         />
 
         <Flex
           flexDirection='column'
           justifyContent='left'
-          marginLeft={{ base: '0', lg: '10px' }}
+          marginLeft={{ base: '0', lg: '0px' }}
           width={{ base: '100%', lg: '50%' }}
         >
           <Text
@@ -45,6 +47,7 @@ function HowToTaste() {
             textAlign='left'
             fontSize='16px'
             width={{ base: '100%', md: '100%', lg: '90%' }}
+            lineHeight={{ base: '1.2em', md: '1m', lg: '1em' }}
             marginBottom='18px'
           >
             Welcome to our coffee tasting guide, where we uncover the secrets to
@@ -70,20 +73,20 @@ function HowToTaste() {
       >
         <Image
           src={beans}
-          width='320px'
-          height='200px'
-          marginLeft='150px'
+          width={{ base: '250px', lg: '320px' }}
+          height={{ base: '190px', lg: '200px' }}
+          marginLeft={{ base: '0', lg: '80px', xl: '150px' }}
           alignSelf='center'
         />
         <Flex
           flexDirection='column'
           justifyContent='flex-end'
-          marginLeft={{ base: '0', lg: '10px' }}
-          width={{ base: '100%', lg: '50%' }}
+          marginLeft={{ base: '0', xl: '10px' }}
+          width={{ base: '100%', lg: '50%', xl: '50%' }}
         >
           <Text
-            marginTop={{ base: '20px', md: '20px', lg: '45px' }}
-            marginBottom={{ lg: '15px' }}
+            marginTop={{ base: '10px', md: '10px', lg: '45px' }}
+            marginBottom={{ base: '10px', lg: '15px' }}
             width={{ lg: '90%' }}
             lineHeight={{ base: '1em', md: '1m', lg: '1em' }}
             fontSize={{ base: 'lg', md: 'lg', lg: 'lg' }}
@@ -93,9 +96,9 @@ function HowToTaste() {
             Difference between an arabica and robusta coffee
           </Text>
           <Text
-            marginBottom={{ lg: '20px' }}
+            marginBottom={{ base: '25px', lg: '20px' }}
             width={{ lg: '70%' }}
-            lineHeight={{ base: '1em', md: '1.4em', lg: '1.4em' }}
+            lineHeight={{ base: '1.2em', md: '1.4em', lg: '1.4em' }}
             textAlign='left'
           >
             As we saw in our Coffee History page, Arabica and Robusta coffee
@@ -116,29 +119,40 @@ function HowToTaste() {
         display='flex'
         justifyContent='space-between'
         flexDirection={{ base: 'column', md: 'column', lg: 'row' }}
-        marginLeft={{ base: '0', lg: '150px' }}
+        marginLeft={{ base: '0', lg: '85px', xl: '100px' }}
+        marginBottom={{ base: '30px', md: '0' }}
       >
+        <Image
+          src={flavorwheel}
+          width='350px'
+          height='300px'
+          marginRight={{ lg: '215px' }}
+          marginTop={{ base: '20px' }}
+          alignSelf='center'
+          display={{ base: 'flex', md: 'none', lg: 'none' }}
+        />
+
         <Flex
           flexDirection='column'
           justifyContent='flex-end'
-          marginLeft={{ base: '0', lg: '10px' }}
-          width={{ base: '100%', lg: '50%' }}
+          marginLeft={{ base: '0', xl: '10px' }}
+          width={{ base: '100%', lg: '40%', xl: '50%' }}
         >
           <Text
-            marginTop={{ base: '20px', md: '20px', lg: '120px' }}
-            marginBottom={{ lg: '15px' }}
+            marginTop={{ base: '40px', md: '20px', lg: '120px' }}
+            marginBottom={{ base: '10px', lg: '15px' }}
             width={{ lg: '90%' }}
             lineHeight={{ base: '1em', md: '1m', lg: '1em' }}
-            fontSize={{ base: 'lg', md: 'lg', lg: 'lg' }}
+            fontSize='lg'
             textAlign='left'
             fontWeight='700'
           >
             Flavor Wheel
           </Text>
           <Text
-            marginBottom={{ lg: '20px' }}
-            width={{ lg: '70%' }}
-            lineHeight={{ base: '1em', md: '1.4em', lg: '1.4em' }}
+            marginBottom={{ base: '15px', lg: '20px' }}
+            width={{ xl: '70%' }}
+            lineHeight={{ base: '1.2em', md: '1.4em', lg: '1.4em' }}
             textAlign='left'
           >
             The Coffee Tasters Flavor Wheel, created by the Specialty Coffee
@@ -152,7 +166,7 @@ function HowToTaste() {
             reading the article by the Specialty Coffee Association of America.
           </Text>
 
-          <Box align='left'>
+          <Box align='left' marginBottom={{ base: '25px' }}>
             <a
               href={`https://sca.coffee/sca-news/how-to-use-the-flavor-wheel-in-eight-steps#:~:text='Flavor' is defined as a,that only can be smelled`}
             >
@@ -175,8 +189,9 @@ function HowToTaste() {
           src={flavorwheel}
           width='350px'
           height='300px'
-          marginRight='215px'
+          marginRight={{ lg: '190px', xl: '215px' }}
           alignSelf='center'
+          display={{ base: 'none', md: 'none', lg: 'flex' }}
         />
       </Box>
 
@@ -190,8 +205,8 @@ function HowToTaste() {
           src={cupping2}
           width='190px'
           height='230px'
-          marginLeft='260px'
-          margintop='80px'
+          marginLeft={{ lg: '160px', xl: '260px' }}
+          margintop={{ lg: '80px' }}
           alignSelf='center'
         />
         <Flex
@@ -201,8 +216,8 @@ function HowToTaste() {
           width={{ base: '100%', lg: '50%' }}
         >
           <Text
-            marginTop={{ base: '20px', md: '20px', lg: '120px' }}
-            marginBottom={{ lg: '15px' }}
+            marginTop={{ base: '25px', md: '20px', lg: '120px' }}
+            marginBottom={{ base: '10px', lg: '15px' }}
             width={{ lg: '90%' }}
             lineHeight={{ base: '1em', md: '1m', lg: '1em' }}
             fontSize={{ base: 'lg', md: 'lg', lg: 'lg' }}
@@ -212,9 +227,9 @@ function HowToTaste() {
             Coffee Cupping
           </Text>
           <Text
-            marginBottom={{ lg: '20px' }}
+            marginBottom={{ base: '10px', lg: '20px' }}
             width={{ lg: '70%' }}
-            lineHeight={{ base: '1em', md: '1.4em', lg: '1.4em' }}
+            lineHeight={{ base: '1.2em', md: '1.4em', lg: '1.4em' }}
             textAlign='left'
           >
             Coffee cupping, also known as coffee tasting, is a globally
@@ -225,7 +240,7 @@ function HowToTaste() {
             out the article provided.
           </Text>
 
-          <Box align='left'>
+          <Box align='left' marginBottom={{ base: '25px' }}>
             <a
               href={`https://methodicalcoffee.com/blogs/coffee-culture/coffee-cupping-a-step-by-step-guide`}
             >
@@ -250,12 +265,12 @@ function HowToTaste() {
         display='flex'
         justifyContent='space-between'
         flexDirection={{ base: 'column', md: 'column', lg: 'column' }}
-        marginLeft={{ base: '0', lg: '150px' }}
-        width='80%'
+        marginLeft={{ base: '0', lg: '90px', xl: '150px' }}
+        width={{ base: '100%', lg: '80%' }}
       >
         <Text
-          marginTop={{ base: '20px', md: '20px', lg: '120px' }}
-          marginBottom={{ lg: '20px' }}
+          marginTop={{ base: '40px', md: '20px', lg: '80px', xl: '120px' }}
+          marginBottom={{ base: '20px', lg: '20px' }}
           width={{ lg: '90%' }}
           lineHeight={{ base: '1em', md: '1m', lg: '1em' }}
           fontSize={{ base: 'lg', md: 'lg', lg: 'lg' }}
