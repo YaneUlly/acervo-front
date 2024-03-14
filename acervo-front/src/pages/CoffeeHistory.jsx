@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { Text, Flex, Box, Image } from '@chakra-ui/react';
+import { Text, Flex, Box, Image, Spinner } from '@chakra-ui/react';
 import roast from '../assets/roast.png';
 
 let API_URL = `https://coffee-type-api.web.app/coffee`;
@@ -101,7 +101,13 @@ function CoffeeHistory() {
       </Box>
       <div>
         {showCoffeeHistory.length === 0 ? (
-          <p>No coffee data available</p>
+          <Spinner
+            thickness='4px'
+            speed='0.65s'
+            emptyColor='gray.200'
+            color='#F08229'
+            size='xl'
+          />
         ) : (
           <div>
             {showCoffeeHistory.map((coffee, index) => (
@@ -116,7 +122,7 @@ function CoffeeHistory() {
                     width='400px'
                     fontWeight='700'
                     align={{ base: 'left', md: 'center' }}
-                    marginLeft={{ base: '0', md: '100px' }}
+                    marginLeft={{ base: '0', md: '70px' }}
                     marginBottom={{ base: '5px', md: '0px' }}
                   >
                     {coffee.type}
@@ -150,7 +156,15 @@ function CoffeeHistory() {
                         ([key, value]) => (
                           <p key={key}>
                             <strong>{characteristicsNames[key]}:</strong>{' '}
-                            {value}
+                            {Array.isArray(value)
+                              ? value
+                                  .map(
+                                    word =>
+                                      word.charAt(0).toUpperCase() +
+                                      word.slice(1)
+                                  )
+                                  .join(', ')
+                              : value.charAt(0).toUpperCase() + value.slice(1)}
                           </p>
                         )
                       )}
