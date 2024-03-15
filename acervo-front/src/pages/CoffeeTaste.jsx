@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getAllCoffeesTaste } from '../api/coffees.api';
 import CoffeeCard from '../components/CoffeeCard';
+import { Link } from 'react-router-dom';
 import {
   Text,
   Flex,
@@ -148,6 +149,17 @@ function CoffeeTaste() {
 
           .map(coffee => {
             const createdBy = coffee.createdBy && coffee.createdBy[0];
+            <Link to={'/coffeetaste/create'}>
+              <Button
+                width={{ base: '300px', md: '300px', lg: '500px' }}
+                height={{ base: '100px', md: '356px', lg: '400px' }}
+                opacity='0.5'
+                borderRadius='5px'
+                fontSize='2xl'
+              >
+                Add
+              </Button>
+            </Link>;
 
             return (
               <div key={coffee._id}>
