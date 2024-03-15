@@ -15,6 +15,7 @@ import coffeehub from '../assets/coffeehub.png';
 
 function CoffeeHub() {
   const [userCoffees, setUserCoffees] = useState([]);
+  const [search, setSearch] = useState('');
 
   const getUserCoffees = async () => {
     try {
@@ -24,6 +25,10 @@ function CoffeeHub() {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleSearch = event => {
+    setSearch(event.target.value);
   };
 
   useEffect(() => {
@@ -74,8 +79,8 @@ function CoffeeHub() {
           borderColor='#0B0B03'
           width='50%'
           marginBottom={{ base: '40px', md: '80px', lg: '120px' }}
-          // value={search}
-          // onChange={handleSearch}
+          value={search}
+          onChange={handleSearch}
         ></Input>
       </InputGroup>
 
@@ -87,26 +92,55 @@ function CoffeeHub() {
         marginLeft={{ base: '5px', md: '15px', lg: '0px' }}
         marginBottom='50px'
       >
-        {userCoffees.map(coffee => {
-          const createdBy = coffee.createdBy && coffee.createdBy[0];
-          return (
-            <div key={coffee._id}>
-              <CoffeeCard
-                coffeeId={coffee._id}
-                coffeeName={coffee.coffeeName}
-                coffeeImgUrl={coffee.coffeeImgUrl}
-                region={coffee.region}
-                varieties={coffee.varieties}
-                process={coffee.process}
-                method={coffee.method}
-                storeUrl={coffee.storeUrl}
-                createdBy={createdBy}
-                share={coffee.share}
-                route='CoffeeHub'
-              />
-            </div>
-          );
-        })}
+        {userCoffees
+          .filter(
+            coffee =>
+              coffee.coffeeName.toLowerCase().includes(search.toLowerCase()) ||
+              coffee.region.toLowerCase().includes(search.toLowerCase()) ||
+              coffee.method.toLowerCase().includes(search.toLowerCase()) ||
+              coffee.country.toLowerCase().includes(search.toLowerCase()) ||
+              coffee.roast.toLowerCase().includes(search.toLowerCase()) ||
+              coffee.caffeine.toLowerCase().includes(search.toLowerCase()) ||
+              coffee.flavor.toLowerCase().includes(search.toLowerCase()) ||
+              coffee.body.toLowerCase().includes(search.toLowerCase()) ||
+              (coffee.varieties &&
+                coffee.varieties.some(variety =>
+                  variety.toLowerCase().includes(search.toLowerCase())
+                )) ||
+              (coffee.altitude &&
+                coffee.altitude.some(altitude =>
+                  altitude.toLowerCase().includes(search.toLowerCase())
+                )) ||
+              (coffee.process &&
+                coffee.process.some(process =>
+                  process.toLowerCase().includes(search.toLowerCase())
+                )) ||
+              (coffee.aromas &&
+                coffee.aromas.some(aroma =>
+                  aroma.toLowerCase().includes(search.toLowerCase())
+                ))
+          )
+
+          .map(coffee => {
+            const createdBy = coffee.createdBy && coffee.createdBy[0];
+            return (
+              <div key={coffee._id}>
+                <CoffeeCard
+                  coffeeId={coffee._id}
+                  coffeeName={coffee.coffeeName}
+                  coffeeImgUrl={coffee.coffeeImgUrl}
+                  region={coffee.region}
+                  varieties={coffee.varieties}
+                  process={coffee.process}
+                  method={coffee.method}
+                  storeUrl={coffee.storeUrl}
+                  createdBy={createdBy}
+                  share={coffee.share}
+                  route='CoffeeHub'
+                />
+              </div>
+            );
+          })}
       </Flex>
     </div>
   );
