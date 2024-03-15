@@ -53,6 +53,22 @@ export const deleteCoffeeTaste = id => {
   return axios.delete(`${baseURL}/coffeetaste/${id}`);
 };
 
+export const getAllComments = id => {
+  return axios.get(`${baseURL}/coffeehub/${id}/comments`);
+};
+
+export const addComment = (id, comment) => {
+  return axios.post(`${baseURL}/coffeehub/${id}/comments`, comment);
+};
+
+export const updateComment = (id, updatedComment) => {
+  return axios.put(`${baseURL}/coffeehub/comments/${id}`, updatedComment);
+};
+
+export const deleteComment = id => {
+  return axios.delete(`${baseURL}/coffeehub/comments/${id}`);
+};
+
 export const upload = image => {
   return axios.post(`${baseURL}/upload`, image);
 };

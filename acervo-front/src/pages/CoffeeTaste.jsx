@@ -14,7 +14,6 @@ import {
 } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import sparkle from '../assets/sparkle.png';
-import { Link } from 'react-router-dom';
 
 function CoffeeTaste() {
   const [coffees, setCoffees] = useState([]);
