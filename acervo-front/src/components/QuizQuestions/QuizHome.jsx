@@ -1,6 +1,6 @@
 import { Text, Box, Image, Button } from '@chakra-ui/react';
-import CoffeeBags2 from '../assets/CoffeeBags2.png';
-import { useCoffeeQuiz } from '../context/coffeequiz.context';
+import CoffeeBags2 from '../../assets/CoffeeBags2.png';
+import { useCoffeeQuiz } from '../../context/coffeequiz.context';
 
 function QuizHome() {
   const { nextStep } = useCoffeeQuiz();

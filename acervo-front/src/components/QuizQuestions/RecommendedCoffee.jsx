@@ -1,4 +1,4 @@
-import CoffeeCard from './CoffeeCard';
+import CoffeeCard from '../CoffeeCard';
 import { Box, Text, Button } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 

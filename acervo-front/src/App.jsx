@@ -11,6 +11,8 @@ import CoffeeHubDetails from './pages/CoffeeHubDetails';
 import CreateCoffee from './pages/CreateCoffee';
 import CoffeeTasteDetails from './pages/CoffeeTasteDetails';
 import EditCoffeeTaste from './pages/EditCoffeeTaste';
+import IsAnon from './components/IsAnon';
+import IsPrivate from './components/IsPrivate';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
 
@@ -23,17 +25,70 @@ function App() {
         <Route path='/howtotaste' element={<HowToTaste />} />
         <Route path='/coffeequiz' element={<CoffeeQuiz />} />
         <Route path='/coffeehistory' element={<CoffeeHistory />} />
-        <Route path='/coffeetaste' element={<CoffeeTaste />} />
-        <Route path='/coffeehub' element={<CoffeeHub />} />
-        <Route path='/coffeehub/:coffeeId' element={<CoffeeHubDetails />} />
-        <Route path='/coffeetaste/create' element={<CreateCoffee />} />
-        <Route path='/coffeetaste/:coffeeId' element={<CoffeeTasteDetails />} />
+        <Route
+          path='/coffeetaste'
+          element={
+            <IsPrivate>
+              <CoffeeTaste />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path='/coffeehub'
+          element={
+            <IsPrivate>
+              <CoffeeHub />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path='/coffeehub/:coffeeId'
+          element={
+            <IsPrivate>
+              <CoffeeHubDetails />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path='/coffeetaste/create'
+          element={
+            <IsPrivate>
+              <CreateCoffee />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path='/coffeetaste/:coffeeId'
+          element={
+            <IsPrivate>
+              <CoffeeTasteDetails />
+            </IsPrivate>
+          }
+        />
         <Route
           path='/coffeetaste/edit/:coffeeId'
-          element={<EditCoffeeTaste />}
+          element={
+            <IsPrivate>
+              <EditCoffeeTaste />
+            </IsPrivate>
+          }
         />
-        <Route path='/signup' element={<SignUp />} />
-        <Route path='/login' element={<Login />} />
+        <Route
+          path='/signup'
+          element={
+            <IsAnon>
+              <SignUp />
+            </IsAnon>
+          }
+        />
+        <Route
+          path='/login'
+          element={
+            <IsAnon>
+              <Login />
+            </IsAnon>
+          }
+        />
       </Routes>
     </div>
   );

@@ -1,9 +1,8 @@
-import { useCoffeeQuiz } from '../context/coffeequiz.context';
+import { useCoffeeQuiz } from '../../context/coffeequiz.context';
 import { Button, Text, Box } from '@chakra-ui/react';
 
-function RegionQuestion() {
+function CaffeineQuestion() {
   const { handleAnswer, prevStep, nextStep } = useCoffeeQuiz();
-
   return (
     <div>
       <Box
@@ -14,76 +13,44 @@ function RegionQuestion() {
         marginTop='80px'
       >
         <Text marginBottom='60px' fontSize='2xl'>
-          Is there a particular coffee-growing region you prefer when purchasing
-          coffee?
+          What is your usual coffee choice when it comes to caffeine levels?
         </Text>
 
         <Box
           display='flex'
           flexDirection='row'
           justifyContent='space-between'
-          flexWrap='wrap'
           width='80%'
         >
           <Button
-            onClick={() => handleAnswer('region', 'africa')}
+            onClick={() => handleAnswer('caffeine', 'regular')}
             variant='outline'
             width='30%'
             height='100px'
             textAlign='center'
             colorScheme='blue'
           >
-            Africa
+            Regular
           </Button>
           <Button
-            onClick={() => handleAnswer('region', 'arabia')}
+            onClick={() => handleAnswer('caffeine', 'decaf')}
             variant='outline'
             width='30%'
             height='100px'
             textAlign='center'
             colorScheme='blue'
           >
-            Arabia
+            Decaf
           </Button>
           <Button
-            onClick={() => handleAnswer('region', 'asia')}
+            onClick={() => handleAnswer('caffeine', 'regular')}
             variant='outline'
             width='30%'
             height='100px'
             textAlign='center'
             colorScheme='blue'
           >
-            Asia
-          </Button>
-          <Button
-            onClick={() => handleAnswer('region', 'central america')}
-            variant='outline'
-            width='30%'
-            height='100px'
-            textAlign='center'
-            colorScheme='blue'
-          >
-            Central America
-          </Button>
-          <Button
-            onClick={() => handleAnswer('region', 'south america')}
-            variant='outline'
-            width='30%'
-            height='100px'
-            textAlign='center'
-            colorScheme='blue'
-          >
-            South America
-          </Button>
-          <Button
-            onClick={() => handleAnswer('region', 'south america')}
-            variant='outline'
-            width='30%'
-            height='100px'
-            textAlign='center'
-            colorScheme='blue'
-          >
-            It doesnt matter for me
+            It varies, depending on the day.
           </Button>
         </Box>
 
@@ -94,12 +61,9 @@ function RegionQuestion() {
           fontSize='sm'
           textAlign='left'
         >
-          *Every coffee-growing region around the globe offers distinct taste
-          profiles. Factors like altitude, climate, soil composition, and
-          processing techniques contribute to the unique flavors found in each
-          cup. Some regions yield coffee with fuller body, others with
-          heightened acidity, some are sweeter, while others are characterized
-          by fruity notes.
+          *The amount of caffeine in your coffee can vary due to several
+          factors. One key factor is the type of coffee bean used. With various
+          species of coffee plants, the caffeine content differs between beans.
         </Text>
 
         <Box
@@ -137,4 +101,4 @@ function RegionQuestion() {
   );
 }
 
-export default RegionQuestion;
+export default CaffeineQuestion;

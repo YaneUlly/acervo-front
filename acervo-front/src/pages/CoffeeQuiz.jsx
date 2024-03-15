@@ -1,11 +1,11 @@
 import { useCoffeeQuiz } from '../context/coffeequiz.context';
-import QuizHome from '../components/QuizHome';
-import CaffeineQuestion from '../components/CaffeineQuestion';
-import MethodQuestion from '../components/MethodQuestion';
-import RoastQuestion from '../components/RoastQuestion';
-import RegionQuestion from '../components/RegionQuestion';
-import FlavorQuestion from '../components/FlavorQuestion';
-import RecommendedCoffee from '../components/RecommendedCoffee';
+import QuizHome from '../components/QuizQuestions/QuizHome';
+import CaffeineQuestion from '../components/QuizQuestions/CaffeineQuestion';
+import MethodQuestion from '../components/QuizQuestions/MethodQuestion';
+import RoastQuestion from '../components/QuizQuestions/RoastQuestion';
+import RegionQuestion from '../components/QuizQuestions/RegionQuestion';
+import FlavorQuestion from '../components/QuizQuestions/FlavorQuestion';
+import RecommendedCoffee from '../components/QuizQuestions/RecommendedCoffee';
 
 function CoffeeQuiz() {
   const { step, recommendedCoffee, resetQuiz, showRecommendation } =

@@ -1,8 +1,9 @@
-import { useCoffeeQuiz } from '../context/coffeequiz.context';
+import { useCoffeeQuiz } from '../../context/coffeequiz.context';
 import { Button, Text, Box } from '@chakra-ui/react';
 
-function CaffeineQuestion() {
+function RoastQuestion() {
   const { handleAnswer, prevStep, nextStep } = useCoffeeQuiz();
+
   return (
     <div>
       <Box
@@ -13,7 +14,7 @@ function CaffeineQuestion() {
         marginTop='80px'
       >
         <Text marginBottom='60px' fontSize='2xl'>
-          What is your usual coffee choice when it comes to caffeine levels?
+          What is your go-to roast preference when buying coffee?
         </Text>
 
         <Box
@@ -21,36 +22,50 @@ function CaffeineQuestion() {
           flexDirection='row'
           justifyContent='space-between'
           width='80%'
+          flexWrap='wrap'
         >
           <Button
-            onClick={() => handleAnswer('caffeine', 'regular')}
+            onClick={() => handleAnswer('roast', 'light roast')}
             variant='outline'
             width='30%'
             height='100px'
             textAlign='center'
             colorScheme='blue'
           >
-            Regular
+            Light Roast
           </Button>
+
           <Button
-            onClick={() => handleAnswer('caffeine', 'decaf')}
+            onClick={() => handleAnswer('roast', 'medium roast')}
             variant='outline'
             width='30%'
             height='100px'
             textAlign='center'
             colorScheme='blue'
           >
-            Decaf
+            Medium Roast
           </Button>
+
           <Button
-            onClick={() => handleAnswer('caffeine', 'regular')}
+            onClick={() => handleAnswer('roast', 'dark roast')}
             variant='outline'
             width='30%'
             height='100px'
             textAlign='center'
             colorScheme='blue'
           >
-            It varies, depending on the day.
+            Dark Roast
+          </Button>
+
+          <Button
+            onClick={() => handleAnswer('roast', 'dark roast')}
+            variant='outline'
+            width='30%'
+            height='100px'
+            textAlign='center'
+            colorScheme='blue'
+          >
+            Never look at it
           </Button>
         </Box>
 
@@ -61,9 +76,12 @@ function CaffeineQuestion() {
           fontSize='sm'
           textAlign='left'
         >
-          *The amount of caffeine in your coffee can vary due to several
-          factors. One key factor is the type of coffee bean used. With various
-          species of coffee plants, the caffeine content differs between beans.
+          *Coffee roasting is a transformative process, breaking down bean
+          structures, removing moisture, and triggering intricate chemical
+          reactions that result in the diverse flavors we cherish in coffee.
+          Light roasts offer lively acidity and fruity notes, while dark roasts
+          boast richness with bitter and roasty undertones. Your roast choice
+          significantly impacts your coffees flavor profile.
         </Text>
 
         <Box
@@ -101,4 +119,4 @@ function CaffeineQuestion() {
   );
 }
 
-export default CaffeineQuestion;
+export default RoastQuestion;

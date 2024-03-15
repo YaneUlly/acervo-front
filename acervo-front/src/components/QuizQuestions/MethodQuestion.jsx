@@ -1,4 +1,4 @@
-import { useCoffeeQuiz } from '../context/coffeequiz.context';
+import { useCoffeeQuiz } from '../../context/coffeequiz.context';
 import { Button, Text, Box } from '@chakra-ui/react';
 
 function MethodQuestion() {

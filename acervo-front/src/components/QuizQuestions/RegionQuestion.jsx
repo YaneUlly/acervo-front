@@ -1,7 +1,7 @@
-import { useCoffeeQuiz } from '../context/coffeequiz.context';
+import { useCoffeeQuiz } from '../../context/coffeequiz.context';
 import { Button, Text, Box } from '@chakra-ui/react';
 
-function RoastQuestion() {
+function RegionQuestion() {
   const { handleAnswer, prevStep, nextStep } = useCoffeeQuiz();
 
   return (
@@ -14,58 +14,76 @@ function RoastQuestion() {
         marginTop='80px'
       >
         <Text marginBottom='60px' fontSize='2xl'>
-          What is your go-to roast preference when buying coffee?
+          Is there a particular coffee-growing region you prefer when purchasing
+          coffee?
         </Text>
 
         <Box
           display='flex'
           flexDirection='row'
           justifyContent='space-between'
-          width='80%'
           flexWrap='wrap'
+          width='80%'
         >
           <Button
-            onClick={() => handleAnswer('roast', 'light roast')}
+            onClick={() => handleAnswer('region', 'africa')}
             variant='outline'
             width='30%'
             height='100px'
             textAlign='center'
             colorScheme='blue'
           >
-            Light Roast
+            Africa
           </Button>
-
           <Button
-            onClick={() => handleAnswer('roast', 'medium roast')}
+            onClick={() => handleAnswer('region', 'arabia')}
             variant='outline'
             width='30%'
             height='100px'
             textAlign='center'
             colorScheme='blue'
           >
-            Medium Roast
+            Arabia
           </Button>
-
           <Button
-            onClick={() => handleAnswer('roast', 'dark roast')}
+            onClick={() => handleAnswer('region', 'asia')}
             variant='outline'
             width='30%'
             height='100px'
             textAlign='center'
             colorScheme='blue'
           >
-            Dark Roast
+            Asia
           </Button>
-
           <Button
-            onClick={() => handleAnswer('roast', 'dark roast')}
+            onClick={() => handleAnswer('region', 'central america')}
             variant='outline'
             width='30%'
             height='100px'
             textAlign='center'
             colorScheme='blue'
           >
-            Never look at it
+            Central America
+          </Button>
+          <Button
+            onClick={() => handleAnswer('region', 'south america')}
+            variant='outline'
+            width='30%'
+            height='100px'
+            textAlign='center'
+            colorScheme='blue'
+          >
+            South America
+          </Button>
+          <Button
+            onClick={() => handleAnswer('region', 'south america')}
+            variant='outline'
+            width='30%'
+            height='100px'
+            textAlign='center'
+            colorScheme='blue'
+          >
+            It doesnt matter for me
           </Button>
         </Box>
 
@@ -76,12 +94,12 @@ function RoastQuestion() {
           fontSize='sm'
           textAlign='left'
         >
-          *Coffee roasting is a transformative process, breaking down bean
-          structures, removing moisture, and triggering intricate chemical
-          reactions that result in the diverse flavors we cherish in coffee.
-          Light roasts offer lively acidity and fruity notes, while dark roasts
-          boast richness with bitter and roasty undertones. Your roast choice
-          significantly impacts your coffees flavor profile.
+          *Every coffee-growing region around the globe offers distinct taste
+          profiles. Factors like altitude, climate, soil composition, and
+          processing techniques contribute to the unique flavors found in each
+          cup. Some regions yield coffee with fuller body, others with
+          heightened acidity, some are sweeter, while others are characterized
+          by fruity notes.
         </Text>
 
         <Box
@@ -119,4 +137,4 @@ function RoastQuestion() {
   );
 }
 
-export default RoastQuestion;
+export default RegionQuestion;
