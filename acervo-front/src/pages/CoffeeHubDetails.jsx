@@ -3,6 +3,17 @@ import { addComment, updateComment, deleteComment } from '../api/coffees.api';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import CoffeeDetails from '../components/CoffeeDetails';
+import {
+  Input,
+  Text,
+  Button,
+  Flex,
+  Divider,
+  Avatar,
+  Box,
+} from '@chakra-ui/react';
+import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
+import { IconButton } from '@chakra-ui/react';
 
 function CoffeeHubDetails() {
   const [coffee, setCoffee] = useState(null);
@@ -96,47 +107,135 @@ function CoffeeHubDetails() {
       )}
       {comments.length > 0 && (
         <div>
-          <h2>Comments</h2>
-          <form onSubmit={handleAddComment}>
-            <input
-              type='text'
-              value={newComment}
-              onChange={e => setNewComment(e.target.value)}
-            />
-            <button type='submit'>Add comment</button>
-          </form>
-          {comments.map(comment => (
-            <div key={comment._id}>
-              <h3>{comment.user.name}</h3>
-              <img src={comment.user.photoUrl} />
-              {editingCommentId === comment._id ? (
-                <div>
-                  <input
-                    type='text'
-                    defaultValue={comment.content}
-                    onChange={e => setNewComment(e.target.value)}
-                  />
-                  <button
-                    onClick={() =>
-                      handleUpdatedComment(comment._id, newComment)
-                    }
-                  >
-                    Save
-                  </button>
-                </div>
-              ) : (
-                <div>
-                  <p>{comment.content}</p>
-                  <button onClick={() => setEditingCommentId(comment._id)}>
-                    Edit
-                  </button>
-                  <button onClick={() => handleDeleteComment(comment._id)}>
-                    Delete
-                  </button>
-                </div>
-              )}
-            </div>
-          ))}
+          <Text
+            fontSize='2xl'
+            fontWeight='700'
+            align='left'
+            marginLeft='205px'
+            marginTop='120px'
+            marginBottom='30px'
+          >
+            Comments
+          </Text>
+          <Flex
+            justifyContent='center'
+            flexDirection='column'
+            marginBottom='20px'
+          >
+            <form onSubmit={handleAddComment}>
+              <Input
+                type='text'
+                placeholder='Add a comment...'
+                backgroundColor='#FADCAF'
+                borderColor='#0B0B03'
+                width='800px'
+                value={newComment}
+                onChange={e => setNewComment(e.target.value)}
+              />
+              <Button
+                type='submit'
+                marginLeft='15px'
+                width={{ md: '10%' }}
+                variant='outline'
+                colorScheme='#028AEB'
+                color='#0B0B03'
+                _hover={{
+                  bgColor: '#0B0B03',
+                  color: '#FFEFD6',
+                }}
+              >
+                Post
+              </Button>
+            </form>
+          </Flex>
+          <Box
+            display='flex'
+            marginLeft='200px'
+            flexDirection='column'
+            width='70%'
+          >
+            {comments.map(comment => (
+              <div key={comment._id}>
+                <Divider
+                  borderColor='#0B0B03'
+                  alignSelf='center'
+                  marginTop='70px'
+                  marginBottom='30px'
+                />
+                <Flex alignItems='center' margin='15px'>
+                  <Avatar src={comment.user.photoUrl} />
+                  <Flex gap={490}>
+                    <Text fontWeight='700' marginLeft='15px'>
+                      {comment.user.name}
+                    </Text>
+                    <Text>{comment.createdAt}</Text>
+                  </Flex>
+                </Flex>
+                {editingCommentId === comment._id ? (
+                  <div>
+                    <Input
+                      type='text'
+                      defaultValue={comment.content}
+                      backgroundColor='#FADCAF'
+                      borderColor='#0B0B03'
+                      width='700px'
+                      onChange={e => setNewComment(e.target.value)}
+                    />
+                    <Button
+                      onClick={() =>
+                        handleUpdatedComment(comment._id, newComment)
+                      }
+                      marginLeft='10px'
+                      variant='outline'
+                      colorScheme='#028AEB'
+                      color='#0B0B03'
+                      _hover={{
+                        bgColor: '#0B0B03',
+                        color: '#FFEFD6',
+                      }}
+                    >
+                      Save
+                    </Button>
+                  </div>
+                ) : (
+                  <div>
+                    <Text align='left' marginLeft='75px' marginBottom='20px'>
+                      {comment.content}
+                    </Text>
+                    <Box
+                      display='flex'
+                      flexDirection='row'
+                      gap='6'
+                      marginTop='30px'
+                    >
+                      <IconButton
+                        onClick={() => handleDeleteComment(comment._id)}
+                        opacity='0.6'
+                        marginLeft='70px'
+                        aria-label='delete'
+                        variant='outline'
+                        colorScheme='#028AEB'
+                        color='#0B0B03'
+                        _hover={{
+                          bgColor: '#0B0B03',
+                          color: '#FFEFD6',
+                          opacity: '100%',
+                        }}
+                        icon={<DeleteIcon />}
+                      />
+                      <IconButton
+                        onClick={() => setEditingCommentId(comment._id)}
+                        aria-label='edit'
+                        backgroundColor='#1E1E1E'
+                        color='#FFEFD6'
+                        icon={<EditIcon />}
+                      />
+                    </Box>
+                  </div>
+                )}
+              </div>
+            ))}
+          </Box>
         </div>
       )}
     </div>
