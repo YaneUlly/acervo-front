@@ -8,8 +8,10 @@ body {
   overflow-x: hidden !important;
 }
 
-.root {
-  padding: none !important;
+.git-hub-link:link {
+  color: #f08229;
+  text-decoration: underline;
+  font-weight: 600;
 }
 
 .form {

@@ -15,6 +15,7 @@ import IsAnon from './components/IsAnon';
 import IsPrivate from './components/IsPrivate';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -90,6 +91,7 @@ function App() {
           }
         />
       </Routes>
+      <Footer />
     </div>
   );
 }

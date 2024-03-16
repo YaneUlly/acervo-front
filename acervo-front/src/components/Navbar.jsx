@@ -23,14 +23,17 @@ function Navbar() {
         as='header'
         justifyContent='space-between'
         alignItems='center'
+        paddingTop='40px'
+        paddingBottom='20px'
+        paddingLeft='50px'
+        paddingRight='50px'
         top='0'
         zIndex='sticky'
-        bg='#FFEFD6'
-        margin={{ base: '0px', md: '5px' }}
+        bg='#0B0B03'
       >
         <Box>
           <Link to='/'>
-            <Text fontFamily='Gluten' fontSize='28px'>
+            <Text fontFamily='Gluten' fontSize='28px' color='#FADCAF'>
               acervo
             </Text>
           </Link>
@@ -47,12 +50,15 @@ function Navbar() {
               aria-label='Options'
               icon={<HamburgerIcon />}
               variant='outline'
+              color='#FADCAF'
             />
             <MenuList>
               {isLoggedIn ? (
                 <>
                   <MenuItem>
-                    <Link to='/howtotaste'>How to taste</Link>
+                    <Link to='/howtotaste' color='#FADCAF'>
+                      How to taste
+                    </Link>
                   </MenuItem>
                   <MenuItem>
                     <Link to='/coffeequiz'>Coffee Quiz</Link>
@@ -110,10 +116,10 @@ function Navbar() {
                 variant='outline'
                 marginLeft='10px'
                 colorScheme='#028AEB'
-                color='#0B0B03'
+                color='#FFEFD6'
                 _hover={{
-                  bgColor: '#0B0B03',
-                  color: '#FFEFD6',
+                  bgColor: '#FFB82E',
+                  color: '#0B0B03',
                 }}
               >
                 Logout
@@ -126,12 +132,13 @@ function Navbar() {
               <Link to='/coffeehistory'>Coffee History</Link>
               <Link to='signup'>
                 <Button
-                  bgColor='#028AEB'
-                  color='#FFEFD6'
+                  bgColor='#FFB82E'
+                  color='#0B0B03'
                   _hover={{
-                    bgColor: '#0B0B03',
+                    bgColor: '#FFEFD6',
+                    color: '#0B0B03',
                   }}
-                  borderColor='#028AEB'
+                  borderColor='#0B0B03'
                 >
                   Sign up
                 </Button>
@@ -139,7 +146,7 @@ function Navbar() {
               <Button
                 variant='outline'
                 colorScheme='#028AEB'
-                color='#0B0B03'
+                color='#FFEFD6'
                 _hover={{
                   bgColor: '#0B0B03',
                   color: '#FFEFD6',
