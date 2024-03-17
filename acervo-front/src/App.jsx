@@ -11,6 +11,7 @@ import CoffeeHubDetails from './pages/CoffeeHubDetails';
 import CreateCoffee from './pages/CreateCoffee';
 import CoffeeTasteDetails from './pages/CoffeeTasteDetails';
 import EditCoffeeTaste from './pages/EditCoffeeTaste';
+import ErrorPage from './components/ErrorPage';
 import IsAnon from './components/IsAnon';
 import IsPrivate from './components/IsPrivate';
 import SignUp from './pages/SignUp';
@@ -92,6 +93,7 @@ function App() {
             }
           />
         </Routes>
+        <Route path='*' element={<ErrorPage />} />
       </div>
       <Footer />
     </div>
