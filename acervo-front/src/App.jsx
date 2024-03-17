@@ -92,8 +92,8 @@ function App() {
               </IsAnon>
             }
           />
+          <Route path='*' element={<ErrorPage />} />
         </Routes>
-        <Route path='*' element={<ErrorPage />} />
       </div>
       <Footer />
     </div>
