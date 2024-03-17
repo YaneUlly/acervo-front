@@ -2,6 +2,8 @@ import { getCoffeeHub, getAllComments } from '../api/coffees.api';
 import { addComment, updateComment, deleteComment } from '../api/coffees.api';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../context/auth.context';
 import CoffeeDetails from '../components/CoffeeDetails';
 import {
   Input,
@@ -14,14 +16,18 @@ import {
 } from '@chakra-ui/react';
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
 import { IconButton } from '@chakra-ui/react';
+import { format } from 'date-fns';
 
 function CoffeeHubDetails() {
   const [coffee, setCoffee] = useState(null);
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
   const [editingCommentId, setEditingCommentId] = useState(null);
+  const [editingCommentContent, setEditingCommentContent] = useState('');
 
   const { coffeeId } = useParams();
+
+  const { user } = useContext(AuthContext);
 
   const getSingleCoffee = async () => {
     try {
@@ -54,10 +60,11 @@ function CoffeeHubDetails() {
     }
   };
 
-  const handleUpdatedComment = async (commentId, updatedComment) => {
+  const handleUpdatedComment = async commentId => {
     try {
-      await updateComment(commentId, { content: updatedComment });
+      await updateComment(commentId, { content: editingCommentContent });
       setEditingCommentId(null);
+      setEditingCommentContent('');
       getComments();
     } catch (error) {
       console.log(error);
@@ -66,6 +73,7 @@ function CoffeeHubDetails() {
 
   const handleDeleteComment = async commentId => {
     try {
+      console.log('Deleting comment with ID:', commentId);
       await deleteComment(commentId);
       getComments();
     } catch (error) {
@@ -111,8 +119,8 @@ function CoffeeHubDetails() {
             fontSize='2xl'
             fontWeight='700'
             align='left'
-            marginLeft='205px'
-            marginTop='120px'
+            marginLeft={{ base: '10px', lg: '205px', xl: '205px' }}
+            marginTop={{ base: '90px', lg: '120px' }}
             marginBottom='30px'
           >
             Comments
@@ -121,6 +129,7 @@ function CoffeeHubDetails() {
             justifyContent='center'
             flexDirection='column'
             marginBottom='20px'
+            marginLeft={{ base: '10px', lg: '205px' }}
           >
             <form onSubmit={handleAddComment}>
               <Input
@@ -128,7 +137,7 @@ function CoffeeHubDetails() {
                 placeholder='Add a comment...'
                 backgroundColor='#FADCAF'
                 borderColor='#0B0B03'
-                width='800px'
+                width={{ base: '220px', lg: '600px', xl: '800px' }}
                 value={newComment}
                 onChange={e => setNewComment(e.target.value)}
               />
@@ -150,9 +159,11 @@ function CoffeeHubDetails() {
           </Flex>
           <Box
             display='flex'
-            marginLeft='200px'
+            marginLeft={{ base: '0px', lg: '200px' }}
             flexDirection='column'
-            width='70%'
+            justifyContent='center'
+            marginBottom={{ base: '90px', lg: '190px' }}
+            width={{ base: '100%', lg: '70%' }}
           >
             {comments.map(comment => (
               <div key={comment._id}>
@@ -164,27 +175,28 @@ function CoffeeHubDetails() {
                 />
                 <Flex alignItems='center' margin='15px'>
                   <Avatar src={comment.user.photoUrl} />
-                  <Flex gap={490}>
+                  <Flex gap={{ base: '10', xl: '490' }}>
                     <Text fontWeight='700' marginLeft='15px'>
                       {comment.user.name}
                     </Text>
-                    <Text>{comment.createdAt}</Text>
+                    <Text>
+                      {format(new Date(comment.createdAt), 'dd/MM/yyyy HH:mm')}
+                    </Text>
                   </Flex>
                 </Flex>
                 {editingCommentId === comment._id ? (
                   <div>
                     <Input
                       type='text'
-                      defaultValue={comment.content}
+                      defaultValue={editingCommentContent || comment.content}
                       backgroundColor='#FADCAF'
+                      marginLeft='80px'
                       borderColor='#0B0B03'
-                      width='700px'
-                      onChange={e => setNewComment(e.target.value)}
+                      width={{ base: '200px', xl: '700px' }}
+                      onChange={e => setEditingCommentContent(e.target.value)}
                     />
                     <Button
-                      onClick={() =>
-                        handleUpdatedComment(comment._id, newComment)
-                      }
+                      onClick={() => handleUpdatedComment(comment._id)}
                       marginLeft='10px'
                       variant='outline'
                       colorScheme='#028AEB'
@@ -199,38 +211,41 @@ function CoffeeHubDetails() {
                   </div>
                 ) : (
                   <div>
-                    <Text align='left' marginLeft='75px' marginBottom='20px'>
+                    <Text align='left' marginLeft='80px' marginBottom='20px'>
                       {comment.content}
                     </Text>
-                    <Box
-                      display='flex'
-                      flexDirection='row'
-                      gap='6'
-                      marginTop='30px'
-                    >
-                      <IconButton
-                        onClick={() => handleDeleteComment(comment._id)}
-                        opacity='0.6'
-                        marginLeft='70px'
-                        aria-label='delete'
-                        variant='outline'
-                        colorScheme='#028AEB'
-                        color='#0B0B03'
-                        _hover={{
-                          bgColor: '#0B0B03',
-                          color: '#FFEFD6',
-                          opacity: '100%',
-                        }}
-                        icon={<DeleteIcon />}
-                      />
-                      <IconButton
-                        onClick={() => setEditingCommentId(comment._id)}
-                        aria-label='edit'
-                        backgroundColor='#1E1E1E'
-                        color='#FFEFD6'
-                        icon={<EditIcon />}
-                      />
-                    </Box>
+                    {comment.user && user && user._id === comment.user._id ? (
+                      <Flex
+                        flexDirection='row'
+                        gap={{ base: '3', xl: '6' }}
+                        marginTop='30px'
+                      >
+                        <IconButton
+                          onClick={() => handleDeleteComment(comment._id)}
+                          opacity='0.6'
+                          marginLeft='80px'
+                          aria-label='delete'
+                          variant='outline'
+                          colorScheme='#028AEB'
+                          color='#0B0B03'
+                          _hover={{
+                            bgColor: '#0B0B03',
+                            color: '#FFEFD6',
+                            opacity: '100%',
+                          }}
+                          icon={<DeleteIcon />}
+                        />
+                        <IconButton
+                          onClick={() => setEditingCommentId(comment._id)}
+                          aria-label='edit'
+                          backgroundColor='#1E1E1E'
+                          color='#FFEFD6'
+                          icon={<EditIcon />}
+                        />
+                      </Flex>
+                    ) : (
+                      <div style={{ display: 'none' }}></div>
+                    )}
                   </div>
                 )}
               </div>
