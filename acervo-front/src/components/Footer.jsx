@@ -5,11 +5,10 @@ function Footer() {
   return (
     <div>
       <Flex
-        flexDirection={{ base: 'column' }}
+        flexDirection={{ base: 'column', md: 'row' }}
         backgroundColor='#FADCAF'
-        zIndex='sticky'
+        height='auto'
         bottom='0'
-        height={{ md: '80px', xl: '120px' }}
         justifyContent='space-between'
         paddingTop='10px'
         paddingBottom='10px'
@@ -17,11 +16,9 @@ function Footer() {
         paddingRight='50px'
         alignItems='center'
       >
-        <Text fontSize='sm' display={{ base: 'none' }}>
-          Developed by{' '}
-          <a href={'https://github.com/YaneUlly'} className='git-hub-link'>
-            Yane Ully
-          </a>
+        <Text fontSize='sm' display={{ base: 'none', md: 'flex' }}>
+          Developed by{'\u00A0'}
+          <a href={'https://github.com/YaneUlly'}>Yane Ully</a>
         </Text>
         <Text
           fontFamily='Gluten'

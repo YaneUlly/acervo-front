@@ -4,6 +4,10 @@
   overflow-x: hidden !important;
 }
 
-a {
-  color: '#FFB82E' !important;
+.main-content {
+  min-height: calc(100vh - (82px + 76px));
+  /* Por exemplo: */
+  min-height: calc(
+    100vh - 100px - 80px
+  ); /* Ajuste as alturas conforme necessário */
 }
