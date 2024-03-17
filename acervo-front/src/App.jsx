@@ -21,76 +21,78 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Routes>
-        <Route path='/' element={<LandingPage />} />
-        <Route path='/howtotaste' element={<HowToTaste />} />
-        <Route path='/coffeequiz' element={<CoffeeQuiz />} />
-        <Route path='/coffeehistory' element={<CoffeeHistory />} />
-        <Route
-          path='/coffeetaste'
-          element={
-            <IsPrivate>
-              <CoffeeTaste />
-            </IsPrivate>
-          }
-        />
-        <Route
-          path='/coffeehub'
-          element={
-            <IsPrivate>
-              <CoffeeHub />
-            </IsPrivate>
-          }
-        />
-        <Route
-          path='/coffeehub/:coffeeId'
-          element={
-            <IsPrivate>
-              <CoffeeHubDetails />
-            </IsPrivate>
-          }
-        />
-        <Route
-          path='/coffeetaste/create'
-          element={
-            <IsPrivate>
-              <CreateCoffee />
-            </IsPrivate>
-          }
-        />
-        <Route
-          path='/coffeetaste/:coffeeId'
-          element={
-            <IsPrivate>
-              <CoffeeTasteDetails />
-            </IsPrivate>
-          }
-        />
-        <Route
-          path='/coffeetaste/edit/:coffeeId'
-          element={
-            <IsPrivate>
-              <EditCoffeeTaste />
-            </IsPrivate>
-          }
-        />
-        <Route
-          path='/signup'
-          element={
-            <IsAnon>
-              <SignUp />
-            </IsAnon>
-          }
-        />
-        <Route
-          path='/login'
-          element={
-            <IsAnon>
-              <Login />
-            </IsAnon>
-          }
-        />
-      </Routes>
+      <div className='main-content'>
+        <Routes>
+          <Route path='/' element={<LandingPage />} />
+          <Route path='/howtotaste' element={<HowToTaste />} />
+          <Route path='/coffeequiz' element={<CoffeeQuiz />} />
+          <Route path='/coffeehistory' element={<CoffeeHistory />} />
+          <Route
+            path='/coffeetaste'
+            element={
+              <IsPrivate>
+                <CoffeeTaste />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path='/coffeehub'
+            element={
+              <IsPrivate>
+                <CoffeeHub />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path='/coffeehub/:coffeeId'
+            element={
+              <IsPrivate>
+                <CoffeeHubDetails />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path='/coffeetaste/create'
+            element={
+              <IsPrivate>
+                <CreateCoffee />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path='/coffeetaste/:coffeeId'
+            element={
+              <IsPrivate>
+                <CoffeeTasteDetails />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path='/coffeetaste/edit/:coffeeId'
+            element={
+              <IsPrivate>
+                <EditCoffeeTaste />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path='/signup'
+            element={
+              <IsAnon>
+                <SignUp />
+              </IsAnon>
+            }
+          />
+          <Route
+            path='/login'
+            element={
+              <IsAnon>
+                <Login />
+              </IsAnon>
+            }
+          />
+        </Routes>
+      </div>
       <Footer />
     </div>
   );

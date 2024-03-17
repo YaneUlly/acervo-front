@@ -5,12 +5,11 @@
 
 body {
   background-color: #ffefd6 !important;
-  overflow-x: hidden !important;
 }
 
-.git-hub-link:link {
-  color: #f08229;
-  text-decoration: underline;
+a[href="https://github.com/YaneUlly"]
+{
+  color: #f08229 !important;
   font-weight: 600;
 }
 

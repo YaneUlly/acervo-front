@@ -23,7 +23,7 @@ function Navbar() {
         as='header'
         justifyContent='space-between'
         alignItems='center'
-        paddingTop='40px'
+        paddingTop='20px'
         paddingBottom='20px'
         paddingLeft='50px'
         paddingRight='50px'
