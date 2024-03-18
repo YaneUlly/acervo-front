@@ -7,28 +7,33 @@ function QuizHome() {
 
   return (
     <div>
-      <Text
-        fontSize='5xl'
-        marginTop='80px'
-        marginBottom='10px'
-        fontFamily='Gluten'
-      >
-        Coffee Quiz
-      </Text>
       <Box display='flex' alignItems='center' flexDirection='column'>
+        <Text
+          fontSize='5xl'
+          marginTop='80px'
+          marginBottom='5px'
+          fontFamily='Gluten'
+        >
+          Coffee Quiz
+        </Text>
         <Image src={CoffeeBags2} width='280px' />
-        <Text width='450px' marginBottom='20px'>
-          Ready to start your coffee adventure? Take our Coffee Quiz and get a
-          personalized recommendation from our Coffee Community!
+        <Text width='450px' marginBottom='50px' textAlign='center'>
+          Great coffee makes you excited to brew it every day. By learning more
+          about your taste, we can match you to coffees that do that and then
+          some.
         </Text>
         <Button
           onClick={nextStep}
-          bgColor='#028AEB'
-          color='#FFEFD6'
+          marginBottom='90px'
+          variant='outline'
+          width='10%'
+          borderColor='#0B0B03'
+          bgColor='#FFB82E'
+          color='#0B0B03'
           _hover={{
             bgColor: '#0B0B03',
+            color: '#FFEFD6',
           }}
-          borderColor='#028AEB'
         >
           Start Quiz
         </Button>

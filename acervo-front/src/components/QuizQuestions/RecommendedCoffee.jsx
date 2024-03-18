@@ -22,23 +22,19 @@ function RecommendedCoffee({ recommendedCoffee, resetQuiz }) {
         flexDirection='column'
         alignItems='center'
         width='100%'
-        marginTop='60px'
+        marginTop={{ base: '20%', md: '100px' }}
       >
-        <Text marginBottom='15px' fontSize='2xl'>
+        <Text marginBottom='30px' fontSize='2xl' fontWeight='600'>
           Recommended Coffee
         </Text>
         <Text
-          marginTop='10px'
           marginBottom='30px'
-          width='50%'
-          fontSize='sm'
+          width={{ base: '80%', md: '60%', lg: '40%' }}
           textAlign='center'
         >
+          {' '}
           Based on your answers, here is your personalized coffee recommendation
-          crafted by our vibrant community. If you are eager for more delightful
-          recommendations and want to explore a rich world of coffees and
-          recipes, join our community today. Immerse yourself in a journey of
-          flavors and embark on your coffee tasting adventure with us!
+          crafted by our vibrant community!
         </Text>
         <CoffeeCard
           coffeeName={coffeeName}
@@ -51,15 +47,29 @@ function RecommendedCoffee({ recommendedCoffee, resetQuiz }) {
           share={share}
           coffeeId={coffeeId}
         />
+        <Text
+          marginTop='40px'
+          marginBottom='30px'
+          width={{ base: '90%', md: '60%', lg: '50%' }}
+          fontSize='md'
+          textAlign='center'
+        >
+          If you are eager for more delightful recommendations and want to
+          explore a rich world of coffees and recipes, join our community today.
+          Immerse yourself in a journey of flavors and embark on your coffee
+          tasting adventure with us!
+        </Text>
         <Box
           display='flex'
           justifyContent='space-between'
-          width='20%'
+          width={{ base: '80%', md: '60%', lg: '40%' }}
           marginTop='30px'
+          marginBottom='100px'
         >
           <Button
             onClick={resetQuiz}
             variant='outline'
+            width={{ base: '40%', md: '30%' }}
             colorScheme='#028AEB'
             color='#0B0B03'
             _hover={{
@@ -70,14 +80,17 @@ function RecommendedCoffee({ recommendedCoffee, resetQuiz }) {
             Restart Quiz
           </Button>
 
-          <Link to={`/signup`}>
+          <Link to={`/signup`} width='30%'>
             <Button
-              bgColor='#028AEB'
-              color='#FFEFD6'
+              variant='outline'
+              width='100%'
+              borderColor='#0B0B03'
+              bgColor='#FFB82E'
+              color='#0B0B03'
               _hover={{
                 bgColor: '#0B0B03',
+                color: '#FFEFD6',
               }}
-              borderColor='#028AEB'
             >
               Sign up
             </Button>

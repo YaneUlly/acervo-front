@@ -1,8 +1,21 @@
 import { useCoffeeQuiz } from '../../context/coffeequiz.context';
 import { Button, Text, Box } from '@chakra-ui/react';
+import { useState } from 'react';
 
 function CaffeineQuestion() {
   const { handleAnswer, prevStep, nextStep } = useCoffeeQuiz();
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const handleOptionClick = option => {
+    if (option === 'varies') {
+      setSelectedOption('varies');
+      handleAnswer('caffeine', 'regular');
+    } else {
+      setSelectedOption(option);
+      handleAnswer('caffeine', option);
+    }
+  };
+
   return (
     <div>
       <Box
@@ -10,53 +23,63 @@ function CaffeineQuestion() {
         flexDirection='column'
         alignItems='center'
         width='100%'
-        marginTop='80px'
+        marginTop='150px'
       >
-        <Text marginBottom='60px' fontSize='2xl'>
+        <Text marginBottom='60px' fontSize='2xl' fontWeight='600'>
           What is your usual coffee choice when it comes to caffeine levels?
         </Text>
 
         <Box
           display='flex'
-          flexDirection='row'
-          justifyContent='space-between'
-          width='80%'
+          flexDirection={{ base: 'column', lg: 'row' }}
+          gap={8}
+          width={{ base: '100%', lg: '80%' }}
+          justifyContent='center'
+          alignItems={{ base: 'center' }}
         >
           <Button
-            onClick={() => handleAnswer('caffeine', 'regular')}
-            variant='outline'
-            width='30%'
+            onClick={() => handleOptionClick('regular')}
+            variant={selectedOption === 'regular' ? 'solid' : 'outline'}
+            bg={selectedOption === 'regular' ? '#F08229' : 'transparent'}
+            _hover={{ bg: '#F08229' }}
+            width={{ base: '40%', lg: '20%' }}
             height='100px'
             textAlign='center'
-            colorScheme='blue'
+            colorScheme='#028AEB'
+            color='#0B0B03'
           >
             Regular
           </Button>
           <Button
-            onClick={() => handleAnswer('caffeine', 'decaf')}
-            variant='outline'
-            width='30%'
+            onClick={() => handleOptionClick('decaf')}
+            variant={selectedOption === 'decaf' ? 'solid' : 'outline'}
+            bg={selectedOption === 'decaf' ? '#F08229' : 'transparent'}
+            _hover={{ bg: '#F08229' }}
+            width={{ base: '40%', lg: '20%' }}
             height='100px'
             textAlign='center'
-            colorScheme='blue'
+            colorScheme='#028AEB'
+            color='#0B0B03'
           >
             Decaf
           </Button>
           <Button
-            onClick={() => handleAnswer('caffeine', 'regular')}
-            variant='outline'
-            width='30%'
+            onClick={() => handleOptionClick('varies')}
+            variant={selectedOption === 'varies' ? 'solid' : 'outline'}
+            bg={selectedOption === 'varies' ? '#F08229' : 'transparent'}
+            _hover={{ bg: '#F08229' }}
+            width={{ base: '40%', lg: '20%' }}
             height='100px'
-            textAlign='center'
-            colorScheme='blue'
+            colorScheme='#028AEB'
+            color='#0B0B03'
           >
-            It varies, depending on the day.
+            It varies
           </Button>
         </Box>
 
         <Text
           marginTop='70px'
-          marginBottom='15px'
+          marginBottom='50px'
           width='60%'
           fontSize='sm'
           textAlign='left'
@@ -71,10 +94,12 @@ function CaffeineQuestion() {
           justifyContent='space-between'
           width='80%'
           marginTop='20px'
+          marginBottom='100px'
         >
           <Button
             onClick={prevStep}
             variant='outline'
+            width='10%'
             colorScheme='#028AEB'
             color='#0B0B03'
             _hover={{
@@ -86,12 +111,15 @@ function CaffeineQuestion() {
           </Button>
           <Button
             onClick={nextStep}
-            bgColor='#028AEB'
-            color='#FFEFD6'
+            variant='outline'
+            width='10%'
+            borderColor='#0B0B03'
+            bgColor='#FFB82E'
+            color='#0B0B03'
             _hover={{
               bgColor: '#0B0B03',
+              color: '#FFEFD6',
             }}
-            borderColor='#028AEB'
           >
             Next
           </Button>
