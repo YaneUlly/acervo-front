@@ -1,8 +1,20 @@
 import { useCoffeeQuiz } from '../../context/coffeequiz.context';
 import { Button, Text, Box } from '@chakra-ui/react';
+import { useState } from 'react';
 
 function RoastQuestion() {
   const { handleAnswer, prevStep, nextStep } = useCoffeeQuiz();
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const handleOptionClick = option => {
+    if (option === 'noroast') {
+      setSelectedOption('noroast');
+      handleAnswer('roast', 'dark roast');
+    } else {
+      setSelectedOption(option);
+      handleAnswer('roast', option);
+    }
+  };
 
   return (
     <div>
@@ -11,59 +23,72 @@ function RoastQuestion() {
         flexDirection='column'
         alignItems='center'
         width='100%'
-        marginTop='80px'
+        marginTop='150px'
       >
-        <Text marginBottom='60px' fontSize='2xl'>
+        <Text marginBottom='60px' fontSize='2xl' fontWeight='600'>
           What is your go-to roast preference when buying coffee?
         </Text>
 
         <Box
           display='flex'
-          flexDirection='row'
-          justifyContent='space-between'
-          width='80%'
-          flexWrap='wrap'
+          flexDirection={{ base: 'column', lg: 'row' }}
+          gap={8}
+          justifyContent='center'
+          width={{ base: '100%', lg: '80%' }}
+          alignItems={{ base: 'center' }}
         >
           <Button
-            onClick={() => handleAnswer('roast', 'light roast')}
-            variant='outline'
-            width='30%'
+            onClick={() => handleOptionClick('light roast')}
+            variant={selectedOption === 'light roast' ? 'solid' : 'outline'}
+            bg={selectedOption === 'light roast' ? '#F08229' : 'transparent'}
+            _hover={{ bg: '#F08229' }}
+            width={{ base: '40%', lg: '20%' }}
             height='100px'
             textAlign='center'
-            colorScheme='blue'
+            colorScheme='#028AEB'
+            color='#0B0B03'
           >
             Light Roast
           </Button>
 
           <Button
-            onClick={() => handleAnswer('roast', 'medium roast')}
-            variant='outline'
-            width='30%'
+            onClick={() => handleOptionClick('medium roast')}
+            variant={selectedOption === 'medium roast' ? 'solid' : 'outline'}
+            bg={selectedOption === 'medium roast' ? '#F08229' : 'transparent'}
+            _hover={{ bg: '#F08229' }}
+            width={{ base: '40%', lg: '20%' }}
             height='100px'
             textAlign='center'
-            colorScheme='blue'
+            colorScheme='#028AEB'
+            color='#0B0B03'
           >
             Medium Roast
           </Button>
 
           <Button
-            onClick={() => handleAnswer('roast', 'dark roast')}
-            variant='outline'
-            width='30%'
+            onClick={() => handleOptionClick('dark roast')}
+            variant={selectedOption === 'dark roast' ? 'solid' : 'outline'}
+            bg={selectedOption === 'dark roast' ? '#F08229' : 'transparent'}
+            _hover={{ bg: '#F08229' }}
+            width={{ base: '40%', lg: '20%' }}
             height='100px'
             textAlign='center'
-            colorScheme='blue'
+            colorScheme='#028AEB'
+            color='#0B0B03'
           >
             Dark Roast
           </Button>
 
           <Button
-            onClick={() => handleAnswer('roast', 'dark roast')}
-            variant='outline'
-            width='30%'
+            onClick={() => handleOptionClick('noroast')}
+            variant={selectedOption === 'noroast' ? 'solid' : 'outline'}
+            bg={selectedOption === 'noroast' ? '#F08229' : 'transparent'}
+            _hover={{ bg: '#F08229' }}
+            width={{ base: '40%', lg: '20%' }}
             height='100px'
             textAlign='center'
-            colorScheme='blue'
+            colorScheme='#028AEB'
+            color='#0B0B03'
           >
             Never look at it
           </Button>
@@ -71,7 +96,7 @@ function RoastQuestion() {
 
         <Text
           marginTop='70px'
-          marginBottom='15px'
+          marginBottom='50px'
           width='60%'
           fontSize='sm'
           textAlign='left'
@@ -93,6 +118,7 @@ function RoastQuestion() {
           <Button
             onClick={prevStep}
             variant='outline'
+            width='10%'
             colorScheme='#028AEB'
             color='#0B0B03'
             _hover={{
@@ -104,12 +130,15 @@ function RoastQuestion() {
           </Button>
           <Button
             onClick={nextStep}
-            bgColor='#028AEB'
-            color='#FFEFD6'
+            variant='outline'
+            width='10%'
+            borderColor='#0B0B03'
+            bgColor='#FFB82E'
+            color='#0B0B03'
             _hover={{
               bgColor: '#0B0B03',
+              color: '#FFEFD6',
             }}
-            borderColor='#028AEB'
           >
             Next
           </Button>

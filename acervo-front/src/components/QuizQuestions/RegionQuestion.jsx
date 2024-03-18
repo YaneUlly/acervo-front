@@ -1,8 +1,20 @@
 import { useCoffeeQuiz } from '../../context/coffeequiz.context';
 import { Button, Text, Box } from '@chakra-ui/react';
+import { useState } from 'react';
 
 function RegionQuestion() {
   const { handleAnswer, prevStep, nextStep } = useCoffeeQuiz();
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const handleOptionClick = option => {
+    if (option === 'randomregion') {
+      setSelectedOption('randomregion');
+      handleAnswer('region', 'south america');
+    } else {
+      setSelectedOption(option);
+      handleAnswer('region', option);
+    }
+  };
 
   return (
     <div>
@@ -11,85 +23,106 @@ function RegionQuestion() {
         flexDirection='column'
         alignItems='center'
         width='100%'
-        marginTop='80px'
+        marginTop='150px'
       >
-        <Text marginBottom='60px' fontSize='2xl'>
+        <Text marginBottom='60px' fontSize='2xl' fontWeight='600'>
           Is there a particular coffee-growing region you prefer when purchasing
           coffee?
         </Text>
 
         <Box
           display='flex'
-          flexDirection='row'
-          justifyContent='space-between'
-          flexWrap='wrap'
-          width='80%'
+          flexDirection={{ base: 'column', lg: 'row' }}
+          gap={8}
+          width={{ base: '100%', lg: '80%' }}
+          justifyContent='center'
+          alignItems={{ base: 'center' }}
         >
           <Button
-            onClick={() => handleAnswer('region', 'africa')}
-            variant='outline'
-            width='30%'
+            onClick={() => handleOptionClick('africa')}
+            variant={selectedOption === 'africa' ? 'solid' : 'outline'}
+            bg={selectedOption === 'africa' ? '#F08229' : 'transparent'}
+            _hover={{ bg: '#F08229' }}
+            width={{ base: '40%', lg: '20%' }}
             height='100px'
             textAlign='center'
-            colorScheme='blue'
+            colorScheme='#028AEB'
+            color='#0B0B03'
           >
             Africa
           </Button>
           <Button
-            onClick={() => handleAnswer('region', 'arabia')}
-            variant='outline'
-            width='30%'
+            onClick={() => handleOptionClick('arabia')}
+            variant={selectedOption === 'arabia' ? 'solid' : 'outline'}
+            bg={selectedOption === 'arabia' ? '#F08229' : 'transparent'}
+            _hover={{ bg: '#F08229' }}
+            width={{ base: '40%', lg: '20%' }}
             height='100px'
             textAlign='center'
-            colorScheme='blue'
+            colorScheme='#028AEB'
+            color='#0B0B03'
           >
             Arabia
           </Button>
           <Button
-            onClick={() => handleAnswer('region', 'asia')}
-            variant='outline'
-            width='30%'
+            onClick={() => handleOptionClick('asia')}
+            variant={selectedOption === 'asia' ? 'solid' : 'outline'}
+            bg={selectedOption === 'asia' ? '#F08229' : 'transparent'}
+            _hover={{ bg: '#F08229' }}
+            width={{ base: '40%', lg: '20%' }}
             height='100px'
             textAlign='center'
-            colorScheme='blue'
+            colorScheme='#028AEB'
+            color='#0B0B03'
           >
             Asia
           </Button>
           <Button
-            onClick={() => handleAnswer('region', 'central america')}
-            variant='outline'
-            width='30%'
+            onClick={() => handleOptionClick('central america')}
+            variant={selectedOption === 'central america' ? 'solid' : 'outline'}
+            bg={
+              selectedOption === 'central america' ? '#F08229' : 'transparent'
+            }
+            _hover={{ bg: '#F08229' }}
+            width={{ base: '40%', lg: '20%' }}
             height='100px'
             textAlign='center'
-            colorScheme='blue'
+            colorScheme='#028AEB'
+            color='#0B0B03'
           >
             Central America
           </Button>
           <Button
-            onClick={() => handleAnswer('region', 'south america')}
-            variant='outline'
-            width='30%'
+            onClick={() => handleOptionClick('south america')}
+            variant={selectedOption === 'south america' ? 'solid' : 'outline'}
+            bg={selectedOption === 'south america' ? '#F08229' : 'transparent'}
+            _hover={{ bg: '#F08229' }}
+            width={{ base: '40%', lg: '20%' }}
             height='100px'
             textAlign='center'
-            colorScheme='blue'
+            colorScheme='#028AEB'
+            color='#0B0B03'
           >
             South America
           </Button>
           <Button
-            onClick={() => handleAnswer('region', 'south america')}
-            variant='outline'
-            width='30%'
+            onClick={() => handleOptionClick('randomregion')}
+            variant={selectedOption === 'randomregion' ? 'solid' : 'outline'}
+            bg={selectedOption === 'randomregion' ? '#F08229' : 'transparent'}
+            _hover={{ bg: '#F08229' }}
+            width={{ base: '40%', lg: '20%' }}
             height='100px'
             textAlign='center'
-            colorScheme='blue'
+            colorScheme='#028AEB'
+            color='#0B0B03'
           >
-            It doesnt matter for me
+            Any region
           </Button>
         </Box>
 
         <Text
           marginTop='70px'
-          marginBottom='15px'
+          marginBottom='50px'
           width='60%'
           fontSize='sm'
           textAlign='left'
@@ -111,6 +144,7 @@ function RegionQuestion() {
           <Button
             onClick={prevStep}
             variant='outline'
+            width='10%'
             colorScheme='#028AEB'
             color='#0B0B03'
             _hover={{
@@ -122,12 +156,15 @@ function RegionQuestion() {
           </Button>
           <Button
             onClick={nextStep}
-            bgColor='#028AEB'
-            color='#FFEFD6'
+            variant='outline'
+            width='10%'
+            borderColor='#0B0B03'
+            bgColor='#FFB82E'
+            color='#0B0B03'
             _hover={{
               bgColor: '#0B0B03',
+              color: '#FFEFD6',
             }}
-            borderColor='#028AEB'
           >
             Next
           </Button>
