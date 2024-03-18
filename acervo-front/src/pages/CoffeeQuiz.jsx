@@ -6,9 +6,10 @@ import RoastQuestion from '../components/QuizQuestions/RoastQuestion';
 import RegionQuestion from '../components/QuizQuestions/RegionQuestion';
 import FlavorQuestion from '../components/QuizQuestions/FlavorQuestion';
 import RecommendedCoffee from '../components/QuizQuestions/RecommendedCoffee';
+import NoCoffeeMatch from '../components/QuizQuestions/NoCoffeeMatch';
 
 function CoffeeQuiz() {
-  const { step, recommendedCoffee, resetQuiz, showRecommendation } =
+  const { step, recommendedCoffee, resetQuiz, showRecommendation, noMatch } =
     useCoffeeQuiz();
 
   return (

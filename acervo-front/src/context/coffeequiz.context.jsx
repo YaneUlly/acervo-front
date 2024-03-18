@@ -34,10 +34,24 @@ const CoffeeQuizProvider = props => {
     try {
       console.log('Submitting answers:', answers);
       const response = await addCoffeeQuiz(answers);
-      setRecommendedCoffee(response.data.recommendedCoffee);
-      setShowRecommendation(true);
+      console.log('Response from server:', response);
+
+      if (response.data && response.data.recommendedCoffee) {
+        console.log(
+          'Recommended coffee found',
+          response.data.recommendedCoffee
+        );
+        setRecommendedCoffee(response.data.recommendedCoffee);
+        setShowRecommendation(true);
+      } else {
+        console.log('No recommendation coffee found:');
+        setRecommendedCoffee(null);
+        setShowRecommendation(true);
+      }
     } catch (error) {
-      console.error('Failed to fetch coffee recommendation');
+      console.error('Failed to fetch coffee recommendation', error);
+      setRecommendedCoffee(null);
+      setShowRecommendation(true);
     }
   };
 
