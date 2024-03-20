@@ -13,6 +13,40 @@ a[href="https://github.com/YaneUlly"]
   font-weight: 600;
 }
 
+a[href='/howtotaste'] {
+  font-weight: 600;
+}
+
+a[href='/coffeequiz'] {
+  font-weight: 600;
+}
+
+a[href='/coffeehub'] {
+  font-weight: 600;
+}
+
+a[href='/coffeehistory'] {
+  font-weight: 600;
+}
+
+a[href='/coffeetaste'] {
+  font-weight: 600;
+}
+
+.css-onkibi {
+  color: #0b0b03;
+}
+
+.css-14jo675:active,
+.css-14jo675[data-active] {
+  background: #0b0b03 !important;
+}
+
+.css-14jo675:hover,
+.css-14jo675[data-hover] {
+  background: #0b0b03 !important;
+}
+
 .form {
   width: 60%;
 }
