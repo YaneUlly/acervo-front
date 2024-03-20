@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { addCoffeeTaste, upload } from '../api/coffees.api';
-import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   Input,
   Select,
@@ -13,6 +13,12 @@ import {
   Flex,
   Button,
   Image,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
 } from '@chakra-ui/react';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react';
 import createcoffee from '../assets/createcoffee.png';
@@ -39,8 +45,7 @@ function CreateCoffee() {
   const [storeUrl, setStoreUrl] = useState('');
   const [image, setImage] = useState();
   const [progress, setProgress] = useState(0);
-
-  const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
 
   const handleImage = ({ target }) => {
     setImage(target.files[0]);
@@ -79,11 +84,20 @@ function CreateCoffee() {
         requestBody.coffeeImgUrl = response.data.coffeeImgUrl;
       }
       await addCoffeeTaste(requestBody);
-
-      navigate('/coffeetaste');
+      setShowModal(true);
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const navigate = useNavigate();
+
+  function handleClick() {
+    navigate('/coffeetaste/create');
+  }
+
+  const handleModalClose = () => {
+    setShowModal(false); // Fechar modal
   };
 
   const totalSteps = 4;
@@ -686,6 +700,25 @@ function CreateCoffee() {
           )}
         </form>
       </Flex>
+
+      {/* Modal */}
+      <Modal isOpen={showModal} onClose={handleModalClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Coffee Created Succesfully!</ModalHeader>
+          <ModalBody>
+            Your coffee has been successfully created! You now have the ability
+            to edit and delete it at any time. Feel free to explore your new
+            coffee creation, or continue to craft additional coffee recipes.
+          </ModalBody>
+          <ModalFooter>
+            <button onClick={handleClick}>New coffee</button>
+            <Button variant='ghost'>
+              <Link to='/coffeetaste'>My track</Link>
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </div>
   );
 }
