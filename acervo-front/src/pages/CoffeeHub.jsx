@@ -16,7 +16,6 @@ import coffeehub from '../assets/coffeehub.png';
 function CoffeeHub() {
   const [userCoffees, setUserCoffees] = useState([]);
   const [search, setSearch] = useState('');
-
   const getUserCoffees = async () => {
     try {
       const response = await getAllCoffeesHub();

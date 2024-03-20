@@ -11,6 +11,7 @@ import CoffeeHubDetails from './pages/CoffeeHubDetails';
 import CreateCoffee from './pages/CreateCoffee';
 import CoffeeTasteDetails from './pages/CoffeeTasteDetails';
 import EditCoffeeTaste from './pages/EditCoffeeTaste';
+import CoffeeWishlist from './pages/CoffeeWishlist';
 import ErrorPage from './components/ErrorPage';
 import IsAnon from './components/IsAnon';
 import IsPrivate from './components/IsPrivate';
@@ -73,6 +74,14 @@ function App() {
             element={
               <IsPrivate>
                 <EditCoffeeTaste />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path='/wishlist'
+            element={
+              <IsPrivate>
+                <CoffeeWishlist />
               </IsPrivate>
             }
           />
