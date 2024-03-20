@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../context/auth.context';
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
+
 import {
   Box,
   Flex,
@@ -16,6 +17,12 @@ import { HamburgerIcon } from '@chakra-ui/icons';
 
 function Navbar() {
   const { isLoggedIn, logoutUser } = useContext(AuthContext);
+  const location = useLocation();
+  const [activeLink, setActiveLink] = useState('');
+
+  useEffect(() => {
+    setActiveLink(location.pathname);
+  }, [location]);
 
   return (
     <nav>
@@ -56,9 +63,7 @@ function Navbar() {
               {isLoggedIn ? (
                 <>
                   <MenuItem>
-                    <Link to='/howtotaste' color='#FADCAF'>
-                      How to taste
-                    </Link>
+                    <Link to='/howtotaste'>How to taste</Link>
                   </MenuItem>
                   <MenuItem>
                     <Link to='/coffeequiz'>Coffee Quiz</Link>
@@ -100,17 +105,53 @@ function Navbar() {
         {/* Desktop Navigation */}
         <Box
           display={{ base: 'none', lg: 'flex' }}
-          width={isLoggedIn ? '680px' : '500px'}
+          width={isLoggedIn ? '680px' : '550px'}
           justifyContent='space-between'
           alignItems='center'
         >
           {isLoggedIn ? (
             <>
-              <Link to='/howtotaste'>How to taste</Link>
-              <Link to='/coffeequiz'>Coffee Quiz</Link>
-              <Link to='/coffeehistory'>Coffee History</Link>
-              <Link to='/coffeehub'>Coffee Hub</Link>
-              <Link to='/coffeetaste'>My Coffee Track</Link>
+              <Link
+                to='/howtotaste'
+                style={{
+                  color: activeLink === '/howtotaste' ? '#f08229' : '#FADCAF',
+                }}
+              >
+                How to taste
+              </Link>
+              <Link
+                to='/coffeequiz'
+                style={{
+                  color: activeLink === '/coffeequiz' ? '#f08229' : '#FADCAF',
+                }}
+              >
+                Coffee Quiz
+              </Link>
+              <Link
+                to='/coffeehistory'
+                style={{
+                  color:
+                    activeLink === '/coffeehistory' ? '#f08229' : '#FADCAF',
+                }}
+              >
+                Coffee History
+              </Link>
+              <Link
+                to='/coffeehub'
+                style={{
+                  color: activeLink === '/coffeehub' ? '#f08229' : '#FADCAF',
+                }}
+              >
+                Coffee Hub
+              </Link>
+              <Link
+                to='/coffeetaste'
+                style={{
+                  color: activeLink === '/coffeetaste' ? '#f08229' : '#FADCAF',
+                }}
+              >
+                My Coffee Track
+              </Link>
               <Button
                 onClick={logoutUser}
                 variant='outline'
@@ -127,9 +168,31 @@ function Navbar() {
             </>
           ) : (
             <>
-              <Link to='/howtotaste'>How to taste</Link>
-              <Link to='/coffeequiz'>Coffee Quiz</Link>
-              <Link to='/coffeehistory'>Coffee History</Link>
+              <Link
+                to='/howtotaste'
+                style={{
+                  color: activeLink === '/howtotaste' ? '#f08229' : '#FADCAF',
+                }}
+              >
+                How to taste
+              </Link>
+              <Link
+                to='/coffeequiz'
+                style={{
+                  color: activeLink === '/coffeequiz' ? '#f08229' : '#FADCAF',
+                }}
+              >
+                Coffee Quiz
+              </Link>
+              <Link
+                to='/coffeehistory'
+                style={{
+                  color:
+                    activeLink === '/coffeehistory' ? '#f08229' : '#FADCAF',
+                }}
+              >
+                Coffee History
+              </Link>
               <Link to='signup'>
                 <Button
                   bgColor='#FFB82E'
