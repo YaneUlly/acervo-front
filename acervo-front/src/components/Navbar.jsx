@@ -63,32 +63,32 @@ function Navbar() {
               {isLoggedIn ? (
                 <>
                   <MenuItem>
-                    <Link to='/howtotaste'>How to taste</Link>
-                  </MenuItem>
-                  <MenuItem>
                     <Link to='/coffeequiz'>Coffee Quiz</Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link to='/coffeehub'>Coffee Hub</Link>
                   </MenuItem>
                   <MenuItem>
                     <Link to='/coffeehistory'>Coffee History</Link>
                   </MenuItem>
                   <MenuItem>
-                    <Link to='/coffeetaste'>My Coffee Track</Link>
+                    <Link to='/howtotaste'>Tasting</Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link to='/coffeehub'>Coffee Hub</Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link to='/coffeetaste'>My Track</Link>
                   </MenuItem>
                   <MenuItem onClick={logoutUser}>Logout</MenuItem>
                 </>
               ) : (
                 <>
                   <MenuItem>
-                    <Link to='/howtotaste'>How to taste</Link>
-                  </MenuItem>
-                  <MenuItem>
                     <Link to='/coffeequiz'>Coffee Quiz</Link>
                   </MenuItem>
                   <MenuItem>
                     <Link to='/coffeehistory'>Coffee History</Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link to='/howtotaste'>Tasting</Link>
                   </MenuItem>
                   <MenuItem>
                     <Link to='/login'>Login</Link>
@@ -112,14 +112,6 @@ function Navbar() {
           {isLoggedIn ? (
             <>
               <Link
-                to='/howtotaste'
-                style={{
-                  color: activeLink === '/howtotaste' ? '#f08229' : '#FADCAF',
-                }}
-              >
-                How to taste
-              </Link>
-              <Link
                 to='/coffeequiz'
                 style={{
                   color: activeLink === '/coffeequiz' ? '#f08229' : '#FADCAF',
@@ -137,6 +129,14 @@ function Navbar() {
                 Coffee History
               </Link>
               <Link
+                to='/howtotaste'
+                style={{
+                  color: activeLink === '/howtotaste' ? '#f08229' : '#FADCAF',
+                }}
+              >
+                Tasting
+              </Link>
+              <Link
                 to='/coffeehub'
                 style={{
                   color: activeLink === '/coffeehub' ? '#f08229' : '#FADCAF',
@@ -150,7 +150,7 @@ function Navbar() {
                   color: activeLink === '/coffeetaste' ? '#f08229' : '#FADCAF',
                 }}
               >
-                My Coffee Track
+                My Track
               </Link>
               <Button
                 onClick={logoutUser}
@@ -169,14 +169,6 @@ function Navbar() {
           ) : (
             <>
               <Link
-                to='/howtotaste'
-                style={{
-                  color: activeLink === '/howtotaste' ? '#f08229' : '#FADCAF',
-                }}
-              >
-                How to taste
-              </Link>
-              <Link
                 to='/coffeequiz'
                 style={{
                   color: activeLink === '/coffeequiz' ? '#f08229' : '#FADCAF',
@@ -192,6 +184,14 @@ function Navbar() {
                 }}
               >
                 Coffee History
+              </Link>
+              <Link
+                to='/howtotaste'
+                style={{
+                  color: activeLink === '/howtotaste' ? '#f08229' : '#FADCAF',
+                }}
+              >
+                Tasting
               </Link>
               <Link to='signup'>
                 <Button
