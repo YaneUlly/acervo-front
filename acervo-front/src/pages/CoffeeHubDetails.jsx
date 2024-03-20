@@ -113,50 +113,52 @@ function CoffeeHubDetails() {
           />
         </div>
       )}
+      <div>
+        <Text
+          fontSize='2xl'
+          fontWeight='700'
+          align='left'
+          marginLeft={{ base: '10px', lg: '205px', xl: '205px' }}
+          marginTop={{ base: '90px', lg: '120px' }}
+          marginBottom='30px'
+        >
+          Comments
+        </Text>
+        <Flex
+          justifyContent='center'
+          flexDirection='column'
+          marginBottom='20px'
+          marginLeft={{ base: '10px', lg: '205px' }}
+        >
+          <form onSubmit={handleAddComment}>
+            <Input
+              type='text'
+              placeholder='Add a comment...'
+              backgroundColor='#FADCAF'
+              borderColor='#0B0B03'
+              width={{ base: '220px', lg: '600px', xl: '800px' }}
+              value={newComment}
+              onChange={e => setNewComment(e.target.value)}
+            />
+            <Button
+              type='submit'
+              marginLeft='15px'
+              width={{ md: '10%' }}
+              variant='outline'
+              colorScheme='#028AEB'
+              color='#0B0B03'
+              _hover={{
+                bgColor: '#0B0B03',
+                color: '#FFEFD6',
+              }}
+            >
+              Post
+            </Button>
+          </form>
+        </Flex>
+      </div>
       {comments.length > 0 && (
         <div>
-          <Text
-            fontSize='2xl'
-            fontWeight='700'
-            align='left'
-            marginLeft={{ base: '10px', lg: '205px', xl: '205px' }}
-            marginTop={{ base: '90px', lg: '120px' }}
-            marginBottom='30px'
-          >
-            Comments
-          </Text>
-          <Flex
-            justifyContent='center'
-            flexDirection='column'
-            marginBottom='20px'
-            marginLeft={{ base: '10px', lg: '205px' }}
-          >
-            <form onSubmit={handleAddComment}>
-              <Input
-                type='text'
-                placeholder='Add a comment...'
-                backgroundColor='#FADCAF'
-                borderColor='#0B0B03'
-                width={{ base: '220px', lg: '600px', xl: '800px' }}
-                value={newComment}
-                onChange={e => setNewComment(e.target.value)}
-              />
-              <Button
-                type='submit'
-                marginLeft='15px'
-                width={{ md: '10%' }}
-                variant='outline'
-                colorScheme='#028AEB'
-                color='#0B0B03'
-                _hover={{
-                  bgColor: '#0B0B03',
-                  color: '#FFEFD6',
-                }}
-              >
-                Post
-              </Button>
-            </form>
-          </Flex>
           <Box
             display='flex'
             marginLeft={{ base: '0px', lg: '200px' }}

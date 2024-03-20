@@ -6,7 +6,7 @@ function IsPrivate(props) {
   const { isLoggedIn, isLoading } = useContext(AuthContext);
 
   if (isLoading) {
-    <p>Loading</p>;
+    return <p>Loading</p>;
   }
 
   if (!isLoggedIn) {

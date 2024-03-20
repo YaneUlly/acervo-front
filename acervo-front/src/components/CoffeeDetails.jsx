@@ -1,8 +1,14 @@
+import { useState, useEffect } from 'react';
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import { addWishlist, removeCoffeeWishlist } from '../api/coffees.api.js';
 import { Flex, Box, Image, Text, Button } from '@chakra-ui/react';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import { useWishlist } from '../context/wishlist.context';
 
 function CoffeeDetails({ ...props }) {
+  const wishlist = useWishlist();
+  const [isInWishlist, setIsInWishlist] = useState(false);
   const {
     coffeeId,
     coffeeName,
@@ -24,6 +30,36 @@ function CoffeeDetails({ ...props }) {
     image,
     route,
   } = props;
+
+  useEffect(() => {
+    const coffeeInWishlist = wishlist.some(
+      item => item.coffeeTaste._id === coffeeId
+    );
+    setIsInWishlist(coffeeInWishlist);
+  }, [wishlist, coffeeId]);
+
+  const toggleWishlist = () => {
+    const newState = !isInWishlist;
+    setIsInWishlist(newState);
+
+    if (newState) {
+      addWishlist(coffeeId)
+        .then(() => {
+          console.log('Coffee added to wishlist');
+        })
+        .catch(error => {
+          console.log('Error adding coffee to wishlist:', error);
+        });
+    } else {
+      removeCoffeeWishlist(coffeeId)
+        .then(() => {
+          console.log('Coffee removed from wishlist');
+        })
+        .catch(error => {
+          console.error('Error removing coffee from wishlist:', error);
+        });
+    }
+  };
 
   return (
     <div>
@@ -156,6 +192,17 @@ function CoffeeDetails({ ...props }) {
           <Text marginTop='15px'>Share with the community?</Text>
           <Text>{share ? 'Yes' : 'No'}</Text>
           <Flex justifyContent='left' gap='10px' marginTop='30px'>
+            {route === 'CoffeeHub' && (
+              <Button
+                onClick={toggleWishlist}
+                bgColor='transparent'
+                border='none'
+                _hover={{ cursor: 'pointer' }}
+              >
+                {isInWishlist ? <AiFillHeart /> : <AiOutlineHeart />}
+              </Button>
+            )}
+
             {route === 'CoffeeTaste' && (
               <Link to={`/coffeetaste/edit/${coffeeId}`}>
                 <Button
