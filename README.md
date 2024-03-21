@@ -25,7 +25,7 @@ Acervo is an app for coffee enthusiasts. If you're keen on diving into the world
 <ul>
   <li><strong>Front-End</strong>: <a href='https://github.com/YaneUlly/acervo-front'>Acervo</a></li>
   <li><strong>Back-End</strong>: <a href='https://github.com/YaneUlly/acervo-back'>Acervo</a></li>
-  <li><strong>Deploy Link</strong>: <a href='https://acervohub.netlify.app/'>Live Acervo</a></li>
+  <li><strong>Deploy Link</strong>: <a>Live Acervo</a></li>
 </ul>
 
 ### Author
