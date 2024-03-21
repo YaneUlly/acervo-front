@@ -624,14 +624,22 @@ function EditCoffeeTaste() {
               </Select>
 
               <FormLabel>Coffee Image:</FormLabel>
-              <label htmlFor='coffeeImage' className='custom-file-button'>
-                Uptade Image
-              </label>
               <input
                 type='file'
                 onChange={handleImage}
                 className='custom-file-input'
-              ></input>
+                style={{ display: 'none' }}
+                id='coffeeImage'
+              />
+
+              <label htmlFor='coffeeImage' className='custom-file-button'>
+                Upload Image
+              </label>
+              {image && (
+                <Text fontSize='sm' color='green.500' marginTop='5'>
+                  Photo uploaded successfully!
+                </Text>
+              )}
 
               <Box
                 display='flex'

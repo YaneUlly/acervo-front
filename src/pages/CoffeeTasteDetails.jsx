@@ -1,6 +1,7 @@
 import { getCoffeeTaste } from '../api/coffees.api.js';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react';
 import CoffeeDetails from '../components/CoffeeDetails';
 
 function CoffeeTasteDetails() {
@@ -24,6 +25,21 @@ function CoffeeTasteDetails() {
 
   return (
     <div>
+      <Breadcrumb
+        marginLeft='5px'
+        fontSize='14px'
+        marginTop={{ base: '3vh', md: '6vh', lg: '10vh' }}
+      >
+        <BreadcrumbItem>
+          <BreadcrumbLink href='/'>Home</BreadcrumbLink>
+        </BreadcrumbItem>
+
+        <BreadcrumbItem>
+          <BreadcrumbLink href='/coffeetaste'>
+            Coffee Taste Track
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+      </Breadcrumb>
       {coffee && (
         <div>
           <CoffeeDetails

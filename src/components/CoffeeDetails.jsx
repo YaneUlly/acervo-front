@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { addWishlist, removeCoffeeWishlist } from '../api/coffees.api.js';
 import { Flex, Box, Image, Text, Button } from '@chakra-ui/react';
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useWishlist } from '../context/wishlist.context';
+import { deleteCoffeeTaste } from '../api/coffees.api.js';
 
 function CoffeeDetails({ ...props }) {
   const wishlist = useWishlist();
@@ -61,30 +61,18 @@ function CoffeeDetails({ ...props }) {
     }
   };
 
+  const navigate = useNavigate();
+  const handleDelete = async () => {
+    try {
+      await deleteCoffeeTaste(coffeeId);
+      navigate('/coffeetaste');
+    } catch (error) {
+      console.error('Error deleting the coffee:', error);
+    }
+  };
+
   return (
     <div>
-      <Breadcrumb
-        marginLeft='5px'
-        fontSize='14px'
-        marginTop={{ base: '3vh', md: '6vh', lg: '10vh' }}
-      >
-        <BreadcrumbItem>
-          <BreadcrumbLink href='/'>Home</BreadcrumbLink>
-        </BreadcrumbItem>
-
-        <BreadcrumbItem>
-          <BreadcrumbLink href='/coffeetaste'>
-            Coffee Taste Track
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-
-        <BreadcrumbItem>
-          <BreadcrumbLink href='/coffeetaste/:coffeeId'>
-            Coffee Details
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-      </Breadcrumb>
-
       <Text
         fontFamily='Gluten'
         marginTop={{ base: '2vh', md: '2vh', lg: '3vh' }}
@@ -193,45 +181,63 @@ function CoffeeDetails({ ...props }) {
           <Text>{share ? 'Yes' : 'No'}</Text>
           <Flex justifyContent='left' gap='10px' marginTop='30px'>
             {route === 'CoffeeHub' && (
-              <Button
-                onClick={toggleWishlist}
-                bgColor='transparent'
-                border='none'
-                _hover={{ cursor: 'pointer' }}
-              >
-                {isInWishlist ? <AiFillHeart /> : <AiOutlineHeart />}
-              </Button>
+              <div>
+                <Button
+                  onClick={toggleWishlist}
+                  bgColor='transparent'
+                  border='none'
+                  _hover={{ cursor: 'pointer' }}
+                >
+                  {isInWishlist ? <AiFillHeart /> : <AiOutlineHeart />}
+                </Button>
+
+                <a href={storeUrl}>
+                  <Button
+                    bgColor='#FFB82E'
+                    color='#0B0B03'
+                    _hover={{
+                      bgColor: '#0B0B03',
+                      color: '#FFEFD6',
+                    }}
+                    borderColor='#0B0B03'
+                    border='1px'
+                  >
+                    Delete
+                  </Button>
+                </a>
+              </div>
             )}
 
             {route === 'CoffeeTaste' && (
-              <Link to={`/coffeetaste/edit/${coffeeId}`}>
+              <div>
+                <Link to={`/coffeetaste/edit/${coffeeId}`}>
+                  <Button
+                    variant='outline'
+                    colorScheme='#028AEB'
+                    color='#0B0B03'
+                    _hover={{
+                      bgColor: '#0B0B03',
+                      color: '#FFEFD6',
+                    }}
+                  >
+                    Edit
+                  </Button>
+                </Link>
                 <Button
+                  onClick={handleDelete}
+                  width='20%'
                   variant='outline'
-                  colorScheme='#028AEB'
                   color='#0B0B03'
+                  borderColor='#0B0B03'
                   _hover={{
                     bgColor: '#0B0B03',
                     color: '#FFEFD6',
                   }}
                 >
-                  Edit
+                  Delete
                 </Button>
-              </Link>
+              </div>
             )}
-            <a href={storeUrl}>
-              <Button
-                bgColor='#FFB82E'
-                color='#0B0B03'
-                _hover={{
-                  bgColor: '#0B0B03',
-                  color: '#FFEFD6',
-                }}
-                borderColor='#0B0B03'
-                border='1px'
-              >
-                Buy Coffee
-              </Button>
-            </a>
           </Flex>
         </Box>
       </Flex>
