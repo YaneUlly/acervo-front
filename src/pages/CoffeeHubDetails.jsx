@@ -14,6 +14,7 @@ import {
   Avatar,
   Box,
 } from '@chakra-ui/react';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react';
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
 import { IconButton } from '@chakra-ui/react';
 import { format } from 'date-fns';
@@ -88,6 +89,19 @@ function CoffeeHubDetails() {
 
   return (
     <div>
+      <Breadcrumb
+        marginLeft='5px'
+        fontSize='14px'
+        marginTop={{ base: '3vh', md: '6vh', lg: '10vh' }}
+      >
+        <BreadcrumbItem>
+          <BreadcrumbLink href='/'>Home</BreadcrumbLink>
+        </BreadcrumbItem>
+
+        <BreadcrumbItem>
+          <BreadcrumbLink href='/coffeehub'>Coffee Hub</BreadcrumbLink>
+        </BreadcrumbItem>
+      </Breadcrumb>
       {coffee && (
         <div>
           <CoffeeDetails

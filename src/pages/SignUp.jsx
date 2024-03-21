@@ -129,8 +129,38 @@ function SignUp() {
           </FormControl>
 
           <FormLabel>Profile Photo:</FormLabel>
-          <input type='file' onChange={handleImage}></input>
-          <button type='submit'>Add</button>
+          <label
+            htmlFor='upload-photo'
+            style={{
+              cursor: 'pointer',
+              display: 'block',
+              width: '100%',
+              marginBottom: '10px',
+            }}
+          >
+            <Input
+              id='upload-photo'
+              type='file'
+              display='none'
+              onChange={handleImage}
+            />
+            <Button
+              as='span'
+              width='100%'
+              bgColor='#028AEB'
+              color='#FFEFD6'
+              _hover={{
+                bgColor: '#0B0B03',
+              }}
+            >
+              Upload Photo
+            </Button>
+          </label>
+          {image && (
+            <Text fontSize='sm' color='green.500' marginTop='5'>
+              Photo uploaded successfully!
+            </Text>
+          )}
 
           <Button
             type='submit'
