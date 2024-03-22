@@ -1,53 +1,73 @@
-import { Text, Flex, Box, Image, Button } from '@chakra-ui/react';
+import { Text, Flex, Box, Image, Grid, Button } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 import drinking from '../assets/drinking.png';
-import beans from '../assets/beans.png';
-import flavorwheel from '../assets/flavorwheel.png';
 import cupping2 from '../assets/cupping2.png';
+import wheels2 from '../assets/wheels2.png';
+import cheersblack from '../assets/cheersblack.png';
 
 function HowToTaste() {
+  const Square = ({ title, text }) => {
+    return (
+      <Box
+        bg='rgba(240, 130, 41, 0.64)'
+        p={4}
+        color='#0B0B03'
+        borderRadius='5px'
+      >
+        <Text fontSize='lg' fontWeight='bold'>
+          {title}
+        </Text>
+        <Text mt={2}>{text}</Text>
+      </Box>
+    );
+  };
   return (
     <div>
       {/* HEADING */}
       <Box
         display='flex'
-        flexDirection={{ base: 'column', md: 'column', lg: 'row' }}
+        flexDirection={{ base: 'column', md: 'row' }}
         justifyContent='center'
-        marginBottom={{ base: '20px', md: '50px', lg: '50px' }}
-        marginTop={{ base: '25px', lg: '60px' }}
+        marginLeft={{ base: '35px', lg: '30px', xl: '0' }}
+        marginBottom={{ base: '20px', md: '50px' }}
+        marginTop={{ base: '40px', lg: '25px' }}
       >
         <Image
           src={drinking}
-          width='150px'
-          height='150px'
-          alignSelf={{ base: 'center', md: 'center', lg: 'center' }}
-          marginLeft={{ base: '0' }}
-          marginRight={{ xl: '50px' }}
-          marginBottom='10px'
+          width={{ base: '250px', lg: '150px' }}
+          height={{ base: '210px', lg: '150px' }}
+          alignSelf='center'
+          marginRight={{ lg: '50px' }}
+          marginBottom={{ base: '0', xl: '10px' }}
           display={{ base: 'flex', md: 'flex', lg: 'none' }}
         />
 
         <Flex
           flexDirection='column'
           justifyContent='left'
-          marginLeft={{ base: '0', lg: '0px' }}
-          width={{ base: '100%', lg: '50%' }}
+          marginTop={{ base: '40px' }}
+          marginRight={{ md: '85px', lg: '0px' }}
+          width={{ base: '80%', md: '50%' }}
         >
           <Text
             fontFamily='Gluten'
-            marginTop={{ base: '20px', md: '20px', lg: '45px' }}
-            marginBottom={{ lg: '20px' }}
-            width={{ lg: '90%' }}
-            lineHeight={{ base: '1em', md: '1m', lg: '1em' }}
-            fontSize={{ base: '3xl', md: '3xl', lg: '5xl' }}
+            marginTop={{ lg: '80px' }}
+            marginBottom={{ base: '10px', lg: '20px' }}
+            lineHeight='1em'
+            fontSize={{ base: '3xl', lg: '5xl' }}
             textAlign='left'
           >
-            How to taste coffee?
+            How to{' '}
+            <span style={{ color: '#028AEB', fontFamily: 'Gluten' }}>
+              taste
+            </span>{' '}
+            coffee?
           </Text>
           <Text
             textAlign='left'
             fontSize='16px'
-            width={{ base: '100%', md: '100%', lg: '90%' }}
-            lineHeight={{ base: '1.2em', md: '1m', lg: '1em' }}
+            width={{ base: '100%', lg: '80%' }}
+            lineHeight={{ base: '1.2em', md: '1.4em' }}
             marginBottom='18px'
           >
             Welcome to our coffee tasting guide, where we uncover the secrets to
@@ -59,45 +79,72 @@ function HowToTaste() {
 
         <Image
           src={drinking}
-          width='390px'
-          height='320px'
+          width='480px'
+          height='400px'
           display={{ base: 'none', md: 'none', lg: 'flex' }}
         />
       </Box>
 
+      <Text
+        marginTop={{ base: '25px', md: '20px', lg: '80px' }}
+        marginLeft={{ base: '35px', md: '75px', lg: '110px', xl: '120px' }}
+        width={{ lg: '90%' }}
+        lineHeight='1em'
+        fontSize={{ base: 'lg', lg: '3xl' }}
+        textAlign='left'
+        fontFamily='Gluten'
+      >
+        First things first!
+      </Text>
+
       {/* FIRST TOPIC */}
       <Box
         display='flex'
-        justifyContent='space-between'
+        justifyContent='center'
         flexDirection={{ base: 'column', md: 'column', lg: 'row' }}
+        marginTop={{ md: '20px', lg: '0' }}
+        marginBottom={{ base: '30px', md: '30px' }}
       >
-        <Image
-          src={beans}
-          width={{ base: '250px', lg: '320px' }}
-          height={{ base: '190px', lg: '200px' }}
-          marginLeft={{ base: '0', lg: '80px', xl: '150px' }}
-          alignSelf='center'
-        />
         <Flex
           flexDirection='column'
           justifyContent='flex-end'
-          marginLeft={{ base: '0', xl: '10px' }}
-          width={{ base: '100%', lg: '50%', xl: '50%' }}
+          marginLeft={{ base: '35px', md: '40px', xl: '10px' }}
+          width={{ base: '70%', lg: '85%', xl: '80%' }}
         >
-          <Text
-            marginTop={{ base: '10px', md: '10px', lg: '45px' }}
-            marginBottom={{ base: '10px', lg: '15px' }}
-            width={{ lg: '90%' }}
-            lineHeight={{ base: '1em', md: '1m', lg: '1em' }}
-            fontSize={{ base: 'lg', md: 'lg', lg: 'lg' }}
-            textAlign='left'
-            fontWeight='700'
-          >
-            Difference between an arabica and robusta coffee
-          </Text>
+          <Box display='flex' flexDirection='row' alignItems='baseline'>
+            <Text
+              fontFamily='Gluten'
+              bg='rgba(240, 130, 41, 0.64)' // Adicionando cor de fundo
+              color='#0B0B03' // Definindo cor do texto
+              borderRadius='50%' // Transformando em um círculo
+              display='inline-flex' // Definindo para ser exibido como elemento inline flexível
+              alignItems='center' // Alinhando o conteúdo verticalmente
+              justifyContent='center' // Alinhando o conteúdo horizontalmente
+              width='30px' // Definindo largura fixa
+              height='30px' // Definindo altura fixa
+              fontSize='lg' // Definindo tamanho da fonte
+              fontWeight='bold' // Definindo peso da fonte
+              marginRight={{ base: '8px', lg: '20px' }} // Adicionando margem à direita para separar do conteúdo seguinte
+              marginBottom={{ base: '10px', lg: '0' }}
+            >
+              1.
+            </Text>
+            <Text
+              marginTop={{ base: '10px', md: '10px', lg: '45px' }}
+              marginBottom={{ base: '10px', lg: '15px' }}
+              width={{ lg: '90%' }}
+              lineHeight={{ base: '1em', md: '1m', lg: '1em' }}
+              fontSize={{ base: 'lg', md: 'lg', lg: 'lg' }}
+              textAlign='left'
+              fontWeight='700'
+            >
+              There is a difference between Arabica and Robusta
+            </Text>
+          </Box>
           <Text
             marginBottom={{ base: '25px', lg: '20px' }}
-            width={{ lg: '70%' }}
+            marginLeft={{ base: '25px', md: '45px', xl: '50px' }}
+            width={{ lg: '90%' }}
             lineHeight={{ base: '1.2em', md: '1.4em', lg: '1.4em' }}
             textAlign='left'
           >
@@ -114,44 +161,62 @@ function HowToTaste() {
         </Flex>
       </Box>
 
+      {/* WHEELS IMAGES */}
+      <Image
+        src={wheels2}
+        width={{ base: '380px', md: '420px', lg: '565px', xl: '830px' }}
+        marginLeft={{ base: '20px', md: '120px', lg: '274px', xl: '240px' }}
+        align='center'
+      />
+
       {/* SECOND TOPIC */}
       <Box
         display='flex'
-        justifyContent='space-between'
+        justifyContent='center'
         flexDirection={{ base: 'column', md: 'column', lg: 'row' }}
-        marginLeft={{ base: '0', lg: '85px', xl: '100px' }}
-        marginBottom={{ base: '30px', md: '0' }}
+        marginBottom={{ base: '30px', md: '30px' }}
+        marginTop={{ base: '50px' }}
       >
-        <Image
-          src={flavorwheel}
-          width='350px'
-          height='300px'
-          marginRight={{ lg: '215px' }}
-          marginTop={{ base: '20px' }}
-          alignSelf='center'
-          display={{ base: 'flex', md: 'none', lg: 'none' }}
-        />
-
         <Flex
           flexDirection='column'
           justifyContent='flex-end'
-          marginLeft={{ base: '0', xl: '10px' }}
-          width={{ base: '100%', lg: '40%', xl: '50%' }}
+          marginLeft={{ base: '35px', xl: '10px' }}
+          width={{ base: '70%', lg: '85%', xl: '80%' }}
         >
+          <Box display='flex' flexDirection='row' alignItems='baseline'>
+            <Text
+              fontFamily='Gluten'
+              bg='rgba(240, 130, 41, 0.64)' // Adicionando cor de fundo
+              color='#0B0B03' // Definindo cor do texto
+              borderRadius='50%' // Transformando em um círculo
+              display='inline-flex' // Definindo para ser exibido como elemento inline flexível
+              alignItems='center' // Alinhando o conteúdo verticalmente
+              justifyContent='center' // Alinhando o conteúdo horizontalmente
+              width='30px' // Definindo largura fixa
+              height='30px' // Definindo altura fixa
+              fontSize='lg' // Definindo tamanho da fonte
+              fontWeight='bold' // Definindo peso da fonte
+              marginRight={{ base: '8px', lg: '20px' }} // Adicionando margem à direita para separar do conteúdo seguinte
+              marginBottom={{ base: '10px', lg: '0' }}
+            >
+              2.
+            </Text>
+            <Text
+              marginTop={{ base: '10px', md: '10px', lg: '45px' }}
+              marginBottom={{ base: '10px', lg: '15px' }}
+              width={{ lg: '90%' }}
+              lineHeight={{ base: '1em', md: '1m', lg: '1em' }}
+              fontSize={{ base: 'lg', md: 'lg', lg: 'lg' }}
+              textAlign='left'
+              fontWeight='700'
+            >
+              Flavor Wheel and Character Wheel
+            </Text>
+          </Box>
           <Text
-            marginTop={{ base: '40px', md: '20px', lg: '120px' }}
-            marginBottom={{ base: '10px', lg: '15px' }}
+            marginBottom={{ base: '25px', lg: '20px' }}
+            marginLeft={{ base: '30px', md: '50px', xl: '50px' }}
             width={{ lg: '90%' }}
-            lineHeight={{ base: '1em', md: '1m', lg: '1em' }}
-            fontSize='lg'
-            textAlign='left'
-            fontWeight='700'
-          >
-            Flavor Wheel
-          </Text>
-          <Text
-            marginBottom={{ base: '15px', lg: '20px' }}
-            width={{ xl: '70%' }}
             lineHeight={{ base: '1.2em', md: '1.4em', lg: '1.4em' }}
             textAlign='left'
           >
@@ -165,70 +230,71 @@ function HowToTaste() {
             different coffee varieties. For further information, we recommend
             reading the article by the Specialty Coffee Association of America.
           </Text>
-
-          <Box align='left' marginBottom={{ base: '25px' }}>
-            <a
-              href={`https://sca.coffee/sca-news/how-to-use-the-flavor-wheel-in-eight-steps#:~:text='Flavor' is defined as a,that only can be smelled`}
-            >
-              <Button
-                variant='outline'
-                colorScheme='#028AEB'
-                color='#0B0B03'
-                _hover={{
-                  bgColor: '#0B0B03',
-                  color: '#FFEFD6',
-                }}
-              >
-                Read more
-              </Button>
-            </a>
-          </Box>
+          <Text
+            marginBottom={{ base: '25px', lg: '20px' }}
+            marginLeft={{ base: '30px', md: '45px', lg: '50px' }}
+            width={{ lg: '90%' }}
+            lineHeight={{ base: '1.2em', md: '1.4em', lg: '1.4em' }}
+            textAlign='left'
+          >
+            Recent studies backed by an Australian government agricultural body
+            have led to the creatiob of the Coffer Character wheel. This
+            innovative instrument offers a comprehensive method for depicting or
+            pinpointing coffee, focusing on the idea of terroir. The Coffee
+            Character distinguishes itself by offering specific terms to
+            describe the characteristics of coffee such as acidity, mouthfeel,
+            and aftertaste, rather than flavour alone.
+          </Text>
         </Flex>
-
-        <Image
-          src={flavorwheel}
-          width='350px'
-          height='300px'
-          marginRight={{ lg: '190px', xl: '215px' }}
-          alignSelf='center'
-          display={{ base: 'none', md: 'none', lg: 'flex' }}
-        />
       </Box>
 
       {/* THIRD TOPIC */}
       <Box
         display='flex'
-        justifyContent='space-between'
+        justifyContent='flex-start'
         flexDirection={{ base: 'column', md: 'column', lg: 'row' }}
+        marginLeft={{ base: '40px', md: '75px', lg: '105px', xl: '140px' }}
+        marginBottom={{ base: '30px', md: '0' }}
       >
-        <Image
-          src={cupping2}
-          width='190px'
-          height='230px'
-          marginLeft={{ lg: '160px', xl: '260px' }}
-          margintop={{ lg: '80px' }}
-          alignSelf='center'
-        />
         <Flex
           flexDirection='column'
           justifyContent='flex-end'
-          marginLeft={{ base: '0', lg: '10px' }}
-          width={{ base: '100%', lg: '50%' }}
+          marginLeft={{ base: '0', xl: '10px' }}
+          width={{ base: '100%', lg: '50%', xl: '60%' }}
         >
+          <Box display='flex' flexDirection='row' alignItems='baseline'>
+            <Text
+              fontFamily='Gluten'
+              bg='rgba(240, 130, 41, 0.64)' // Adicionando cor de fundo
+              color='#0B0B03' // Definindo cor do texto
+              borderRadius='50%' // Transformando em um círculo
+              display='inline-flex' // Definindo para ser exibido como elemento inline flexível
+              alignItems='center' // Alinhando o conteúdo verticalmente
+              justifyContent='center' // Alinhando o conteúdo horizontalmente
+              width='30px' // Definindo largura fixa
+              height='30px' // Definindo altura fixa
+              fontSize='lg' // Definindo tamanho da fonte
+              fontWeight='bold' // Definindo peso da fonte
+              marginRight={{ base: '8px', lg: '20px' }} // Adicionando margem à direita para separar do conteúdo seguinte
+              marginBottom={{ base: '10px', lg: '0' }}
+            >
+              3.
+            </Text>
+            <Text
+              marginTop={{ base: '10px', md: '10px', lg: '45px' }}
+              marginBottom={{ base: '10px', lg: '15px' }}
+              lineHeight={{ base: '1em', md: '1m', lg: '1em' }}
+              fontSize={{ base: 'lg', md: 'lg', lg: 'lg' }}
+              textAlign='left'
+              fontWeight='700'
+            >
+              Coffee Cupping
+            </Text>
+          </Box>
           <Text
-            marginTop={{ base: '25px', md: '20px', lg: '120px' }}
-            marginBottom={{ base: '10px', lg: '15px' }}
-            width={{ lg: '90%' }}
-            lineHeight={{ base: '1em', md: '1m', lg: '1em' }}
-            fontSize={{ base: 'lg', md: 'lg', lg: 'lg' }}
-            textAlign='left'
-            fontWeight='700'
-          >
-            Coffee Cupping
-          </Text>
-          <Text
-            marginBottom={{ base: '10px', lg: '20px' }}
-            width={{ lg: '70%' }}
+            marginBottom={{ base: '25px', lg: '20px' }}
+            marginLeft={{ base: '30px', md: '40px', lg: '50px' }}
+            width='70%'
             lineHeight={{ base: '1.2em', md: '1.4em', lg: '1.4em' }}
             textAlign='left'
           >
@@ -239,135 +305,129 @@ function HowToTaste() {
             reaches its peak flavor. To learn more about coffee cupping, check
             out the article provided.
           </Text>
-
-          <Box align='left' marginBottom={{ base: '25px' }}>
-            <a
-              href={`https://methodicalcoffee.com/blogs/coffee-culture/coffee-cupping-a-step-by-step-guide`}
-            >
-              <Button
-                variant='outline'
-                colorScheme='#028AEB'
-                color='#0B0B03'
-                _hover={{
-                  bgColor: '#0B0B03',
-                  color: '#FFEFD6',
-                }}
-              >
-                Read more
-              </Button>
-            </a>
-          </Box>
         </Flex>
+        <Image
+          src={cupping2}
+          width='230px'
+          height='275px'
+          margintop={{ lg: '80px' }}
+          marginRight={{ base: '80px', md: '120px' }}
+          alignSelf='center'
+        />
       </Box>
 
       {/* LAST TOPIC */}
+      <Text
+        marginTop={{ base: '40px', md: '60px', lg: '80px', xl: '120px' }}
+        marginLeft={{ base: '35px', md: '65px', lg: '100px', xl: '120px' }}
+        width={{ lg: '90%' }}
+        lineHeight='1em'
+        fontSize={{ base: 'lg', lg: '3xl' }}
+        textAlign='left'
+        fontFamily='Gluten'
+      >
+        How our{' '}
+        <span style={{ color: '#028AEB', fontFamily: 'Gluten' }}>
+          coffee taste
+        </span>{' '}
+        form works
+      </Text>
+
+      <Grid
+        templateColumns={{
+          base: '1fr',
+          md: 'repeat(2, 1fr)',
+        }}
+        marginTop='35px'
+        marginBottom={{ base: '45px', lg: '50px', xl: '70px' }}
+        gap={5}
+        width='85%'
+        marginLeft={{ base: '35px', md: '60px', lg: '95px', xl: '120px' }}
+      >
+        <Square
+          title='1. Coffee Info'
+          text='Completing the key fields in the provided form is crucial for a thorough tasting experience. These fields, often found on the coffee label or seller website, directly impact the coffees flavor profile. If uncertain about any field, a quick online search can offer clarity.'
+        />
+        <Square
+          title='2. Coffee Recipe'
+          text='After completing the necessary details, prepare your coffee using your preferred method. If new to this, find basic recipes suited to your brewing method. With your tools in hand, begin your tasting journey.'
+        />
+        <Square
+          title='3. Coffee Taste'
+          text='Utilize the online taste wheel to pinpoint flavor nuances. Remember the insights gained about the tasting process, relax, and start noting your observations. This methodical approach guarantees a comprehensive and pleasurable tasting experience.'
+        />
+        <Square
+          title='4. General Info'
+          text='After completing your tasting journey, we encourage you to share key details about the coffee. This involves mentioning the store of purchase, uploading a photo, and deciding whether to share your experience publicly or privately. Your contribution enriches our coffee community and enhances the experience for fellow enthusiasts.'
+        />
+      </Grid>
+
+      {/* FINAL SECTION */}
       <Box
         display='flex'
-        justifyContent='space-between'
-        flexDirection={{ base: 'column', md: 'column', lg: 'column' }}
-        marginLeft={{ base: '0', lg: '90px', xl: '150px' }}
-        width={{ base: '100%', lg: '80%' }}
+        flexDirection={{ base: 'column', md: 'row' }}
+        justifyContent='flex-start'
+        marginLeft={{ base: '35px', md: '60px', lg: '100px', xl: '120px' }}
+        marginBottom={{ base: '55px', md: '20px', lg: '50px', xl: '85px' }}
+        // marginTop={{ base: '40px', lg: '60px' }}
       >
-        <Text
-          marginTop={{ base: '40px', md: '20px', lg: '80px', xl: '120px' }}
-          marginBottom={{ base: '20px', lg: '20px' }}
-          width={{ lg: '90%' }}
-          lineHeight={{ base: '1em', md: '1m', lg: '1em' }}
-          fontSize={{ base: 'lg', md: 'lg', lg: 'lg' }}
-          textAlign='left'
-          fontWeight='700'
+        <Flex
+          flexDirection='column'
+          justifyContent='left'
+          // marginTop={{ base: '40px' }}
+          marginRight={{ md: '25px', lg: '125px', xl: '0px' }}
+          width={{ base: '90%', md: '50%', lg: '45%', xl: '50%' }}
         >
-          How to fill the coffee taste track form
-        </Text>
-
-        <Box
-          textAlign='left'
-          bgColor='rgba(161, 84, 30, 0.3)'
-          borderRadius='5px'
-        >
-          <Text fontWeight='700' marginTop='10px' marginLeft='20px'>
-            1. Coffee Info Fields
+          <Text
+            fontFamily='Gluten'
+            // marginTop={{ xl: '45px' }}
+            marginBottom={{ base: '10px', lg: '20px' }}
+            paddingTop={{ md: '30px', xl: '50px' }}
+            lineHeight='1em'
+            fontSize={{ base: 'lg', lg: '3xl' }}
+            textAlign='left'
+          >
+            Ready to{' '}
+            <span style={{ color: '#028AEB', fontFamily: 'Gluten' }}>
+              start
+            </span>{' '}
+            your journey with us?
           </Text>
           <Text
-            marginTop='5px'
-            marginLeft='20px'
-            marginBottom='20px'
-            width='90%'
+            textAlign='left'
+            fontSize='16px'
+            width={{ base: '100%', xl: '80%' }}
+            lineHeight={{ base: '1.2em', md: '1.4em' }}
+            marginBottom='18px'
           >
-            Completing the key fields in the provided form is crucial for a
-            thorough tasting experience. These fields, often found on the coffee
-            label or seller website, directly impact the coffees flavor profile.
-            If uncertain about any field, a quick online search can offer
-            clarity.
+            Join our vibrant coffee community, where enthusiasts gather to
+            explore tasting, recipes, and more.
           </Text>
-        </Box>
+          <Link to={'/signup'}>
+            <Button
+              width={{ base: '100%', md: '50%', xl: '20%' }}
+              variant='outline'
+              colorScheme='#028AEB'
+              bgColor='#FFB82E'
+              borderColor='#0B0B03'
+              color='#0B0B03'
+              _hover={{
+                bgColor: '#0B0B03',
+                color: '#FFEFD6',
+              }}
+            >
+              Join us
+            </Button>
+          </Link>
+        </Flex>
 
-        <Box
-          textAlign='left'
-          bgColor='rgba(240, 130, 41, 0.64)'
-          borderRadius='5px'
-          marginTop='22px'
-        >
-          <Text fontWeight='700' marginTop='10px' marginLeft='20px'>
-            2. Coffee Recipe
-          </Text>
-          <Text
-            marginTop='5px'
-            marginLeft='20px'
-            marginBottom='20px'
-            width='90%'
-          >
-            After completing the necessary details, prepare your coffee using
-            your preferred method. If new to this, find basic recipes suited to
-            your brewing method. With your tools in hand, begin your tasting
-            journey.
-          </Text>
-        </Box>
-
-        <Box
-          textAlign='left'
-          bgColor='rgba(2, 138, 235, 0.64)'
-          borderRadius='5px'
-          marginTop='22px'
-        >
-          <Text fontWeight='700' marginTop='10px' marginLeft='20px'>
-            3. Coffee Tasty
-          </Text>
-          <Text
-            marginTop='5px'
-            marginLeft='20px'
-            marginBottom='20px'
-            width='90%'
-          >
-            Utilize the online taste wheel to pinpoint flavor nuances. Remember
-            the insights gained about the tasting process, relax, and start
-            noting your observations. This methodical approach guarantees a
-            comprehensive and pleasurable tasting experience.
-          </Text>
-        </Box>
-
-        <Box
-          textAlign='left'
-          bgColor='rgba(255, 184, 46, 1)'
-          borderRadius='5px'
-          marginTop='22px'
-        >
-          <Text fontWeight='700' marginTop='10px' marginLeft='20px'>
-            4. General Info
-          </Text>
-          <Text
-            marginTop='5px'
-            marginLeft='20px'
-            marginBottom='20px'
-            width='90%'
-          >
-            After completing your tasting journey, we encourage you to share key
-            details about the coffee. This involves mentioning the store of
-            purchase, uploading a photo, and deciding whether to share your
-            experience publicly or privately. Your contribution enriches our
-            coffee community and enhances the experience for fellow enthusiasts.
-          </Text>
-        </Box>
+        <Image
+          src={cheersblack}
+          width={{ md: '250px', xl: '360px' }}
+          height={{ md: '220px', xl: '290px' }}
+          display={{ base: 'none', md: 'flex', lg: 'flex' }}
+          marginRight={{ md: '60px' }}
+        />
       </Box>
     </div>
   );
