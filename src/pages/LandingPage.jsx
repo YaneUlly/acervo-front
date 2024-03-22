@@ -72,7 +72,7 @@ function LandingPage() {
           </Text>
           <Link to={'/signup'}>
             <Button
-              width={{ lg: '20%' }}
+              width={{ base: '100%', md: '50%', xl: '20%' }}
               variant='outline'
               colorScheme='#028AEB'
               bgColor='#FFB82E'
