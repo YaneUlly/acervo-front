@@ -97,7 +97,7 @@ function CreateCoffee() {
   }
 
   const handleModalClose = () => {
-    setShowModal(false); // Fechar modal
+    setShowModal(false);
   };
 
   const totalSteps = 4;

@@ -1,7 +1,19 @@
 import { useState, useEffect } from 'react';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { addWishlist, removeCoffeeWishlist } from '../api/coffees.api.js';
-import { Flex, Box, Image, Text, Button } from '@chakra-ui/react';
+import {
+  Flex,
+  Box,
+  Image,
+  Text,
+  Button,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+} from '@chakra-ui/react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useWishlist } from '../context/wishlist.context';
 import { deleteCoffeeTaste } from '../api/coffees.api.js';
@@ -9,6 +21,7 @@ import { deleteCoffeeTaste } from '../api/coffees.api.js';
 function CoffeeDetails({ ...props }) {
   const wishlist = useWishlist();
   const [isInWishlist, setIsInWishlist] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const {
     coffeeId,
     coffeeName,
@@ -69,6 +82,14 @@ function CoffeeDetails({ ...props }) {
     } catch (error) {
       console.error('Error deleting the coffee:', error);
     }
+  };
+
+  const handleShowDeleteModal = () => {
+    setShowDeleteModal(true);
+  };
+
+  const handleCloseDeleteModal = () => {
+    setShowDeleteModal(false);
   };
 
   return (
@@ -202,7 +223,7 @@ function CoffeeDetails({ ...props }) {
                     borderColor='#0B0B03'
                     border='1px'
                   >
-                    Delete
+                    Buy coffee
                   </Button>
                 </a>
               </div>
@@ -224,7 +245,7 @@ function CoffeeDetails({ ...props }) {
                   </Button>
                 </Link>
                 <Button
-                  onClick={handleDelete}
+                  onClick={handleShowDeleteModal}
                   width='20%'
                   variant='outline'
                   color='#0B0B03'
@@ -236,6 +257,28 @@ function CoffeeDetails({ ...props }) {
                 >
                   Delete
                 </Button>
+
+                {/* Modal de confirmação de exclusão */}
+                <Modal
+                  isOpen={showDeleteModal}
+                  onClose={handleCloseDeleteModal}
+                >
+                  <ModalOverlay />
+                  <ModalContent>
+                    <ModalHeader>Confirm Deletion</ModalHeader>
+                    <ModalBody>
+                      Are you sure you want to delete the coffee "{coffeeName}"?
+                    </ModalBody>
+                    <ModalFooter>
+                      <Button colorScheme='red' onClick={handleDelete}>
+                        Delete
+                      </Button>
+                      <Button variant='ghost' onClick={handleCloseDeleteModal}>
+                        Cancel
+                      </Button>
+                    </ModalFooter>
+                  </ModalContent>
+                </Modal>
               </div>
             )}
           </Flex>
