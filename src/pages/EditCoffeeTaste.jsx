@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import {
   getCoffeeTaste,
   updateCoffeeTaste,
@@ -17,6 +17,12 @@ import {
   Flex,
   Button,
   Image,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
 } from '@chakra-ui/react';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react';
 import ProgressBar from '../components/ProgressBar.jsx';
@@ -43,6 +49,8 @@ function EditCoffeeTaste() {
   const [image, setImage] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [progress, setProgress] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const { coffeeId } = useParams();
   // console.log(coffeeId);
@@ -91,6 +99,18 @@ function EditCoffeeTaste() {
     }
   };
 
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
+
+  const handleShowDeleteModal = () => {
+    setShowDeleteModal(true);
+  };
+
+  const handleCloseDeleteModal = () => {
+    setShowDeleteModal(false);
+  };
+
   useEffect(() => {
     // console.log('useEffect triggered');
     getSingleCoffee();
@@ -136,10 +156,10 @@ function EditCoffeeTaste() {
       // console.log('Request body:', requestBody);
 
       await updateCoffeeTaste(requestBody);
-
+      setShowModal(true);
       // console.log('Coffee taste updated successfully');
 
-      navigate(`/coffeetaste/${coffeeId}`);
+      // navigate(`/coffeetaste/${coffeeId}`);
     } catch (error) {
       console.log(error);
     }
@@ -724,7 +744,7 @@ function EditCoffeeTaste() {
                 gap={20}
               >
                 <Button
-                  onClick={handleDelete}
+                  onClick={handleShowDeleteModal}
                   width='20%'
                   variant='outline'
                   color='#0B0B03'
@@ -756,6 +776,46 @@ function EditCoffeeTaste() {
           )}
         </form>
       </Flex>
+
+      {/* Modal */}
+      <Modal isOpen={showModal} onClose={handleModalClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Coffee Updated Succesfully!</ModalHeader>
+          <ModalBody>
+            Your coffee has been successfully created! You now have the ability
+            to edit and delete it at any time. Feel free to explore your new
+            coffee creation, or continue to craft additional coffee recipes.
+          </ModalBody>
+          <ModalFooter>
+            <Button>
+              <Link to='/coffeetaste/create'>New coffee</Link>
+            </Button>
+            <Button variant='ghost'>
+              <Link to='/coffeetaste'>My track</Link>
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
+      {/* Modal de confirmação de exclusão */}
+      <Modal isOpen={showDeleteModal} onClose={handleCloseDeleteModal}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Confirm Deletion</ModalHeader>
+          <ModalBody>
+            Are you sure you want to delete the coffee "{coffeeName}"?
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme='red' onClick={handleDelete}>
+              Delete
+            </Button>
+            <Button variant='ghost' onClick={handleCloseDeleteModal}>
+              Cancel
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </div>
   );
 }
