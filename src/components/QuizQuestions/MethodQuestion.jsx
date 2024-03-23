@@ -316,7 +316,7 @@ function MethodQuestion() {
           <Button
             onClick={prevStep}
             variant='outline'
-            width={{ base: '80%', md: '20%', xl: '10%' }}
+            width={{ base: '80%', md: '15%' }}
             colorScheme='#028AEB'
             color='#0B0B03'
             _hover={{
@@ -329,7 +329,7 @@ function MethodQuestion() {
           <Button
             onClick={nextStep}
             variant='outline'
-            width={{ base: '80%', md: '20%', xl: '10%' }}
+            width={{ base: '80%', md: '15%' }}
             borderColor='#0B0B03'
             bgColor='#FFB82E'
             color='#0B0B03'
