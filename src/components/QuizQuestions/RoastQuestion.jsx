@@ -22,11 +22,19 @@ function RoastQuestion() {
         display='Flex'
         flexDirection='column'
         alignItems='center'
-        width='100%'
-        marginTop='150px'
+        width={{ base: '90%', md: '100%' }}
+        marginTop={{ base: '80px', lg: '150px' }}
       >
-        <Text marginBottom='60px' fontSize='2xl' fontWeight='600'>
-          What is your go-to roast preference when buying coffee?
+        <Text
+          marginBottom='60px'
+          fontSize='2xl'
+          fontWeight='700'
+          marginLeft={{ base: '35px', md: '15px' }}
+          textAlign={{ base: 'center' }}
+          width={{ md: '70%' }}
+        >
+          What is your go-to <span style={{ color: '#028AEB' }}>roast</span>{' '}
+          preference when buying coffee?
         </Text>
 
         <Box
@@ -35,14 +43,19 @@ function RoastQuestion() {
           gap={8}
           justifyContent='center'
           width={{ base: '100%', lg: '80%' }}
+          marginLeft={{ base: '30px', md: '0' }}
           alignItems={{ base: 'center' }}
         >
           <Button
             onClick={() => handleOptionClick('light roast')}
             variant={selectedOption === 'light roast' ? 'solid' : 'outline'}
-            bg={selectedOption === 'light roast' ? '#F08229' : 'transparent'}
-            _hover={{ bg: '#F08229' }}
-            width={{ base: '40%', lg: '20%' }}
+            bg={
+              selectedOption === 'light roast'
+                ? 'rgba(240, 130, 41, 0.64)'
+                : 'transparent'
+            }
+            _hover={{ bg: 'rgba(240, 130, 41, 0.64)' }}
+            width={{ base: '70%', md: '40%', lg: '20%' }}
             height='100px'
             textAlign='center'
             colorScheme='#028AEB'
@@ -54,9 +67,13 @@ function RoastQuestion() {
           <Button
             onClick={() => handleOptionClick('medium roast')}
             variant={selectedOption === 'medium roast' ? 'solid' : 'outline'}
-            bg={selectedOption === 'medium roast' ? '#F08229' : 'transparent'}
-            _hover={{ bg: '#F08229' }}
-            width={{ base: '40%', lg: '20%' }}
+            bg={
+              selectedOption === 'medium roast'
+                ? 'rgba(240, 130, 41, 0.64)'
+                : 'transparent'
+            }
+            _hover={{ bg: 'rgba(240, 130, 41, 0.64)' }}
+            width={{ base: '70%', md: '40%', lg: '20%' }}
             height='100px'
             textAlign='center'
             colorScheme='#028AEB'
@@ -68,9 +85,13 @@ function RoastQuestion() {
           <Button
             onClick={() => handleOptionClick('dark roast')}
             variant={selectedOption === 'dark roast' ? 'solid' : 'outline'}
-            bg={selectedOption === 'dark roast' ? '#F08229' : 'transparent'}
-            _hover={{ bg: '#F08229' }}
-            width={{ base: '40%', lg: '20%' }}
+            bg={
+              selectedOption === 'dark roast'
+                ? 'rgba(240, 130, 41, 0.64)'
+                : 'transparent'
+            }
+            _hover={{ bg: 'rgba(240, 130, 41, 0.64)' }}
+            width={{ base: '70%', md: '40%', lg: '20%' }}
             height='100px'
             textAlign='center'
             colorScheme='#028AEB'
@@ -82,9 +103,13 @@ function RoastQuestion() {
           <Button
             onClick={() => handleOptionClick('noroast')}
             variant={selectedOption === 'noroast' ? 'solid' : 'outline'}
-            bg={selectedOption === 'noroast' ? '#F08229' : 'transparent'}
-            _hover={{ bg: '#F08229' }}
-            width={{ base: '40%', lg: '20%' }}
+            bg={
+              selectedOption === 'noroast'
+                ? 'rgba(240, 130, 41, 0.64)'
+                : 'transparent'
+            }
+            _hover={{ bg: 'rgba(240, 130, 41, 0.64)' }}
+            width={{ base: '70%', md: '40%', lg: '20%' }}
             height='100px'
             textAlign='center'
             colorScheme='#028AEB'
@@ -95,11 +120,12 @@ function RoastQuestion() {
         </Box>
 
         <Text
-          marginTop='70px'
+          marginTop={{ base: '55px', md: '70px' }}
           marginBottom='50px'
-          width='60%'
+          width={{ base: '75%', md: '60%' }}
           fontSize='sm'
           textAlign='left'
+          marginLeft={{ base: '50px', md: '25px' }}
         >
           *Coffee roasting is a transformative process, breaking down bean
           structures, removing moisture, and triggering intricate chemical
@@ -111,14 +137,18 @@ function RoastQuestion() {
 
         <Box
           display='flex'
+          flexDirection={{ base: 'column', md: 'row' }}
           justifyContent='space-between'
+          gap={5}
           width='80%'
           marginTop='20px'
+          marginBottom='70px'
+          marginLeft={{ base: '90px', md: '20px' }}
         >
           <Button
             onClick={prevStep}
             variant='outline'
-            width='10%'
+            width={{ base: '80%', md: '20%', xl: '10%' }}
             colorScheme='#028AEB'
             color='#0B0B03'
             _hover={{
@@ -131,7 +161,7 @@ function RoastQuestion() {
           <Button
             onClick={nextStep}
             variant='outline'
-            width='10%'
+            width={{ base: '80%', md: '20%', xl: '10%' }}
             borderColor='#0B0B03'
             bgColor='#FFB82E'
             color='#0B0B03'
