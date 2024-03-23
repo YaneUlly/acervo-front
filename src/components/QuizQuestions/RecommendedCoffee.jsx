@@ -13,35 +13,47 @@ function RecommendedCoffee({ recommendedCoffee, resetQuiz }) {
           display='Flex'
           flexDirection='column'
           alignItems='center'
-          width='100%'
+          width={{ base: '90%', md: '100%' }}
           marginTop={{ base: '20%', md: '100px' }}
+          marginBottom='100px'
         >
-          <Text marginBottom='30px' fontSize='2xl' fontWeight='600'>
+          <Text
+            marginBottom='40px'
+            fontSize='2xl'
+            fontWeight='700'
+            marginLeft={{ base: '35px', md: '0px' }}
+            textAlign={{ base: 'center' }}
+            width={{ md: '70%' }}
+          >
             Recommended Coffee
           </Text>
           <Text
             marginBottom='30px'
             width={{ base: '80%', md: '60%', lg: '40%' }}
             textAlign='center'
+            marginLeft={{ base: '30px', md: '0' }}
           >
             Based on your answers, here is your personalized coffee
             recommendation crafted by our vibrant community!
           </Text>
-          {/* Desestruturação aqui dentro do bloco if */}
-          <CoffeeCard
-            coffeeName={recommendedCoffee.coffeeName}
-            coffeeImgUrl={recommendedCoffee.coffeeImgUrl}
-            region={recommendedCoffee.region}
-            varieties={recommendedCoffee.varieties}
-            process={recommendedCoffee.process}
-            method={recommendedCoffee.method}
-            storeUrl={recommendedCoffee.storeUrl}
-            share={recommendedCoffee.share}
-            coffeeId={recommendedCoffee.coffeeId}
-          />
+
+          <Box marginLeft={{ base: '40px', md: '0' }}>
+            <CoffeeCard
+              coffeeName={recommendedCoffee.coffeeName}
+              coffeeImgUrl={recommendedCoffee.coffeeImgUrl}
+              region={recommendedCoffee.region}
+              varieties={recommendedCoffee.varieties}
+              process={recommendedCoffee.process}
+              method={recommendedCoffee.method}
+              storeUrl={recommendedCoffee.storeUrl}
+              share={recommendedCoffee.share}
+              coffeeId={recommendedCoffee.coffeeId}
+            />
+          </Box>
           <Text
             marginTop='40px'
-            marginBottom='30px'
+            marginBottom={{ base: '15px', md: '30px' }}
+            marginLeft={{ base: '20px', md: '0' }}
             width={{ base: '90%', md: '60%', lg: '50%' }}
             fontSize='md'
             textAlign='center'
@@ -53,15 +65,17 @@ function RecommendedCoffee({ recommendedCoffee, resetQuiz }) {
           </Text>
           <Box
             display='flex'
+            flexDirection={{ base: 'column', md: 'row' }}
             justifyContent='space-between'
-            width={{ base: '80%', md: '60%', lg: '40%' }}
-            marginTop='30px'
-            marginBottom='100px'
+            gap={5}
+            width={{ base: '40%', md: '60%' }}
+            marginTop='40px'
+            marginLeft={{ base: '50px', md: '25px', xl: '55px' }}
           >
             <Button
               onClick={resetQuiz}
               variant='outline'
-              width={{ base: '40%', md: '30%' }}
+              width={{ base: '80%', md: '25%', xl: '20%' }}
               colorScheme='#028AEB'
               color='#0B0B03'
               _hover={{
@@ -72,21 +86,19 @@ function RecommendedCoffee({ recommendedCoffee, resetQuiz }) {
               Restart Quiz
             </Button>
 
-            <Link to={`/signup`} width='30%'>
-              <Button
-                variant='outline'
-                width='100%'
-                borderColor='#0B0B03'
-                bgColor='#FFB82E'
-                color='#0B0B03'
-                _hover={{
-                  bgColor: '#0B0B03',
-                  color: '#FFEFD6',
-                }}
-              >
-                Sign up
-              </Button>
-            </Link>
+            <Button
+              variant='outline'
+              width={{ base: '80%', md: '25%', xl: '20%' }}
+              borderColor='#0B0B03'
+              bgColor='#FFB82E'
+              color='#0B0B03'
+              _hover={{
+                bgColor: '#0B0B03',
+                color: '#FFEFD6',
+              }}
+            >
+              <Link to={`/signup`}>Sign up</Link>
+            </Button>
           </Box>
         </Box>
       ) : (

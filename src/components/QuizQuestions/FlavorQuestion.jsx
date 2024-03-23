@@ -217,7 +217,7 @@ function FlavorQuestion() {
           flexDirection={{ base: 'column', md: 'row' }}
           justifyContent='space-between'
           gap={5}
-          width='80%'
+          width='70%'
           marginTop='20px'
           marginBottom='70px'
           marginLeft={{ base: '90px', md: '20px' }}
@@ -225,7 +225,7 @@ function FlavorQuestion() {
           <Button
             onClick={prevStep}
             variant='outline'
-            width={{ base: '80%', md: '20%', xl: '10%' }}
+            width={{ base: '80%', md: '15%' }}
             colorScheme='#028AEB'
             color='#0B0B03'
             _hover={{
@@ -238,7 +238,7 @@ function FlavorQuestion() {
           <Button
             onClick={handleSubmit}
             variant='outline'
-            width={{ base: '80%', md: '20%', xl: '10%' }}
+            width={{ base: '80%', md: '15%' }}
             borderColor='#0B0B03'
             bgColor='#FFB82E'
             color='#0B0B03'

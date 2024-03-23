@@ -14,7 +14,7 @@ function NoCoffeeMatch() {
         flexDirection='column'
         alignItems='center'
         width={{ base: '90%', md: '100%' }}
-        marginTop={{ base: '20%', md: '120px' }}
+        marginTop={{ base: '20%', md: '100px' }}
         marginBottom='100px'
       >
         <Text
