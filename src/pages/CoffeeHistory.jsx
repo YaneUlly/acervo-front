@@ -49,33 +49,33 @@ function CoffeeHistory() {
     <div>
       <Box
         display='flex'
-        flexDirection={{ base: 'column', md: 'column', lg: 'row' }}
+        flexDirection={{ base: 'column', md: 'row' }}
         justifyContent='center'
-        marginBottom={{ base: '20px', md: '50px', lg: '50px' }}
-        marginTop={{ base: '25px', lg: '60px' }}
+        marginLeft={{ md: '35px', lg: '0px' }}
+        marginBottom={{ base: '20px', md: '50px' }}
+        marginTop={{ base: '40px', lg: '60px' }}
       >
         <Image
           src={roast}
-          width='150px'
-          height='150px'
+          width='250px'
+          height='250px'
           alignSelf='center'
-          marginBottom='10px'
-          display={{ base: 'flex', md: 'none', lg: 'none' }}
+          display={{ base: 'flex', md: 'none' }}
         />
 
         <Flex
           flexDirection='column'
           justifyContent='left'
-          marginLeft={{ base: '0', lg: '10px' }}
-          width={{ base: '100%', lg: '50%' }}
+          marginTop={{ base: '40px', md: '80px', xl: '0' }}
+          marginLeft={{ base: '45px', md: '70px', xl: '0' }}
+          width={{ base: '100%', lg: '52%' }}
         >
           <Text
             fontFamily='Gluten'
-            marginTop={{ base: '20px', md: '20px', lg: '45px' }}
-            marginBottom={{ lg: '20px' }}
-            width={{ lg: '90%' }}
-            lineHeight={{ base: '1em', md: '1m', lg: '1em' }}
-            fontSize={{ base: '3xl', md: '3xl', lg: '5xl' }}
+            marginTop={{ xl: '45px' }}
+            marginBottom={{ base: '10px', lg: '20px' }}
+            lineHeight='1em'
+            fontSize={{ base: '3xl', lg: '5xl' }}
             textAlign='left'
           >
             Coffee History
@@ -83,7 +83,7 @@ function CoffeeHistory() {
           <Text
             textAlign='left'
             fontSize='16px'
-            width={{ base: '100%', md: '100%', lg: '90%' }}
+            width='75%'
             marginBottom='18px'
           >
             Discover the intriguing world of coffee species with us. From the
@@ -94,9 +94,10 @@ function CoffeeHistory() {
 
         <Image
           src={roast}
-          width='390px'
-          height='320px'
-          display={{ base: 'none', md: 'none', lg: 'flex' }}
+          width={{ md: '300px', xl: '390px' }}
+          height={{ md: '300px', xl: '320px' }}
+          marginRight={{ md: '120px', xl: '0' }}
+          display={{ base: 'none', md: 'flex', lg: 'flex' }}
         />
       </Box>
       <div>
@@ -116,13 +117,15 @@ function CoffeeHistory() {
                   justifyContent='space-around'
                   flexDirection={{ base: 'column', md: 'row' }}
                   marginTop={{ base: '20px', lg: '60px' }}
+                  marginLeft={{ base: '45px', md: '0' }}
+                  marginBottom={{ md: '60px' }}
                 >
                   <Text
                     fontSize='3xl'
                     width='400px'
                     fontWeight='700'
                     align={{ base: 'left', md: 'center' }}
-                    marginLeft={{ base: '0', md: '70px' }}
+                    marginLeft={{ md: '80px' }}
                     marginBottom={{ base: '5px', md: '0px' }}
                   >
                     {coffee.type}
@@ -132,7 +135,7 @@ function CoffeeHistory() {
                     flexDirection='column'
                     align='left'
                     marginLeft={{ base: '0px', md: '100px' }}
-                    marginRight={{ base: '100px', md: '100px' }}
+                    marginRight={{ base: '100px', md: '200px' }}
                     width='90%'
                     maxW={{ base: '100%', md: '800px' }}
                     overflow='auto'

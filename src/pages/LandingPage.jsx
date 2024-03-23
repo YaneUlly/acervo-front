@@ -42,7 +42,7 @@ function LandingPage() {
           justifyContent='left'
           marginTop={{ base: '40px' }}
           marginRight={{ md: '85px', xl: '0px' }}
-          width={{ base: '80%', md: '50%', lg: '50%' }}
+          width={{ base: '80%', md: '50%' }}
         >
           <Text
             fontFamily='Gluten'
