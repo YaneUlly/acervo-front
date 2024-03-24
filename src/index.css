@@ -33,6 +33,10 @@ a[href='/coffeetaste'] {
   font-weight: 600;
 }
 
+a[href='/wishlist'] {
+  font-weight: 600;
+}
+
 .css-onkibi {
   color: #0b0b03;
 }

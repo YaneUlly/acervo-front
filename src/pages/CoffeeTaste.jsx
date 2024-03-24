@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import {
   Text,
   Flex,
+  Box,
   Button,
   Image,
   Input,
@@ -13,7 +14,7 @@ import {
   Icon,
 } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
-import sparkle from '../assets/sparkle.png';
+import portafilter from '../assets/portafilter.png';
 
 function CoffeeTaste() {
   const [coffees, setCoffees] = useState([]);
@@ -39,49 +40,59 @@ function CoffeeTaste() {
 
   return (
     <div>
-      <Flex flexDirection='column'>
-        <Text
-          fontSize={{ base: '3xl', md: '3xl', lg: '5xl' }}
-          marginTop={{ base: '20px', md: '20px', lg: '150px' }}
-          marginBottom={{ lg: '10px' }}
-          marginLeft={{ base: '5px' }}
-          align={{ base: 'left', md: 'left', lg: 'center' }}
-          fontFamily='Gluten'
+      <Box
+        display='flex'
+        flexDirection={{ base: 'column', md: 'row' }}
+        justifyContent={{ md: 'center', xl: 'left' }}
+        marginLeft={{ base: '65px', md: '0px', lg: '0px', xl: '190px' }}
+        marginTop={{ base: '40px', md: '45px', lg: '80px' }}
+        marginBottom={{ base: '25px', md: '45px', lg: '80px' }}
+      >
+        <Image
+          src={portafilter}
+          display={{ base: 'flex', md: 'none' }}
+          alignSelf='center'
+          width={{ base: '190px' }}
+          height={{ base: '220px' }}
+          marginRight='50px'
+        />
+        <Flex
+          flexDirection='column'
+          justifyContent='left'
+          width={{ base: '80%', md: '50%' }}
         >
-          My Coffees Track
-        </Text>
-        <Text
-          marginBottom={{ base: '30px', md: '40px', lg: '60px', xl: '120px' }}
-          align={{ base: 'left', md: 'left', lg: 'center' }}
-          marginLeft={{ base: '5px', md: '5px', lg: '240px', xl: '420px' }}
-          marginRight={{ base: '40px', md: '80px', lg: '240px', xl: '420px' }}
-        >
-          Welcome to your personal recipe center! Here, you can begin creating
-          your own recipes and keep track of all the delightful coffees you
-          taste and register!
-        </Text>
-      </Flex>
-      <Image
-        src={sparkle}
-        width='100px'
-        height='100px'
-        display={{ base: 'none', md: 'none', lg: 'none', xl: 'flex' }}
-        position='absolute'
-        top='160px'
-        left='360px'
-      ></Image>
-      <Image
-        src={sparkle}
-        width='100px'
-        height='100px'
-        display={{ base: 'none', md: 'none', lg: 'none', xl: 'flex' }}
-        position='absolute'
-        top='400px'
-        left='1000px'
-      ></Image>
+          <Text
+            fontFamily='Gluten'
+            marginTop={{ base: '30px', md: '65px', lg: '50px' }}
+            marginBottom={{ base: '10px', lg: '20px' }}
+            lineHeight='1em'
+            fontSize={{ base: '3xl', lg: '5xl' }}
+            textAlign='left'
+          >
+            My Coffees Track
+          </Text>
+          <Text
+            textAlign='left'
+            fontSize='16px'
+            width={{ base: '100%', md: '80%', xl: '80%' }}
+            lineHeight={{ base: '1.2em', md: '1.4em' }}
+            marginBottom='18px'
+          >
+            Welcome to your personal recipe center! Here, you can begin creating
+            your own recipes and keep track of all the delightful coffees you
+            taste and register!
+          </Text>
+        </Flex>
+        <Image
+          src={portafilter}
+          display={{ base: 'none', md: 'flex' }}
+          width={{ md: '180px', lg: '175px', xl: '200px' }}
+          height={{ md: '220px', lg: '235px', xl: '275px' }}
+        />
+      </Box>
 
       <InputGroup
-        marginLeft={{ base: '5px', md: '5px', lg: '260px', xl: '320px' }}
+        marginLeft={{ base: '65px', md: '140px', lg: '200px', xl: '190px' }}
       >
         <InputLeftAddon backgroundColor='#0B0B03'>
           <Icon as={SearchIcon} color='#FFEFD6' backgroundColor='#0B0B03' />
@@ -91,8 +102,8 @@ function CoffeeTaste() {
           placeholder='Search'
           variant='outline'
           borderColor='#0B0B03'
-          width='50%'
-          marginBottom={{ base: '40px', md: '80px', lg: '120px' }}
+          width={{ base: '60%', md: '60%', xl: '70%' }}
+          marginBottom={{ base: '40px', md: '60px', lg: '100px' }}
           value={search}
           onChange={handleSearch}
         ></Input>
@@ -102,9 +113,9 @@ function CoffeeTaste() {
         flexDirection='row'
         flexWrap='wrap'
         gap='10'
-        justifyContent={{ base: 'left', md: 'left', lg: 'center' }}
+        justifyContent='center'
         marginLeft={{ base: '5px', md: '15px', lg: '0px' }}
-        marginBottom='50px'
+        marginBottom='100px'
       >
         <Link to='/coffeetaste/create'>
           <Button
