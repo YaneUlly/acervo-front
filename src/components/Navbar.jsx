@@ -63,32 +63,35 @@ function Navbar() {
               {isLoggedIn ? (
                 <>
                   <MenuItem>
-                    <Link to='/howtotaste'>How to taste</Link>
+                    <Link to='/coffeehistory'>Coffee History</Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link to='/howtotaste'>Tasting</Link>
                   </MenuItem>
                   <MenuItem>
                     <Link to='/coffeequiz'>Coffee Quiz</Link>
                   </MenuItem>
                   <MenuItem>
-                    <Link to='/coffeehub'>Coffee Hub</Link>
+                    <Link to='/coffeehub'>Community Hub</Link>
                   </MenuItem>
                   <MenuItem>
-                    <Link to='/coffeehistory'>Coffee History</Link>
+                    <Link to='/coffeetaste'>Coffee Track</Link>
                   </MenuItem>
                   <MenuItem>
-                    <Link to='/coffeetaste'>My Coffee Track</Link>
+                    <Link to='/wishlist'>Wishlist</Link>
                   </MenuItem>
                   <MenuItem onClick={logoutUser}>Logout</MenuItem>
                 </>
               ) : (
                 <>
                   <MenuItem>
-                    <Link to='/howtotaste'>How to taste</Link>
+                    <Link to='/coffeehistory'>Coffee History</Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link to='/howtotaste'>Tasting</Link>
                   </MenuItem>
                   <MenuItem>
                     <Link to='/coffeequiz'>Coffee Quiz</Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link to='/coffeehistory'>Coffee History</Link>
                   </MenuItem>
                   <MenuItem>
                     <Link to='/login'>Login</Link>
@@ -105,28 +108,12 @@ function Navbar() {
         {/* Desktop Navigation */}
         <Box
           display={{ base: 'none', lg: 'flex' }}
-          width={isLoggedIn ? '680px' : '550px'}
+          width={isLoggedIn ? '720px' : '550px'}
           justifyContent='space-between'
           alignItems='center'
         >
           {isLoggedIn ? (
             <>
-              <Link
-                to='/howtotaste'
-                style={{
-                  color: activeLink === '/howtotaste' ? '#f08229' : '#FADCAF',
-                }}
-              >
-                How to taste
-              </Link>
-              <Link
-                to='/coffeequiz'
-                style={{
-                  color: activeLink === '/coffeequiz' ? '#f08229' : '#FADCAF',
-                }}
-              >
-                Coffee Quiz
-              </Link>
               <Link
                 to='/coffeehistory'
                 style={{
@@ -137,12 +124,28 @@ function Navbar() {
                 Coffee History
               </Link>
               <Link
+                to='/howtotaste'
+                style={{
+                  color: activeLink === '/howtotaste' ? '#f08229' : '#FADCAF',
+                }}
+              >
+                Tasting
+              </Link>
+              <Link
+                to='/coffeequiz'
+                style={{
+                  color: activeLink === '/coffeequiz' ? '#f08229' : '#FADCAF',
+                }}
+              >
+                Coffee Quiz
+              </Link>
+              <Link
                 to='/coffeehub'
                 style={{
                   color: activeLink === '/coffeehub' ? '#f08229' : '#FADCAF',
                 }}
               >
-                Coffee Hub
+                Community Hub
               </Link>
               <Link
                 to='/coffeetaste'
@@ -150,7 +153,15 @@ function Navbar() {
                   color: activeLink === '/coffeetaste' ? '#f08229' : '#FADCAF',
                 }}
               >
-                My Coffee Track
+                My Track
+              </Link>
+              <Link
+                to='/wishlist'
+                style={{
+                  color: activeLink === '/wishlist' ? '#f08229' : '#FADCAF',
+                }}
+              >
+                Wishlist
               </Link>
               <Button
                 onClick={logoutUser}

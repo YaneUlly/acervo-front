@@ -42,23 +42,25 @@ function CoffeeHub() {
           width={{ base: '250px', lg: '350px' }}
           height={{ base: '180px', lg: '250px' }}
           marginTop={{ base: '20px', md: '20px', lg: '50px' }}
-          alignSelf={{ lg: 'center' }}
+          alignSelf='center'
         />
         <Text
           fontSize={{ base: '3xl', md: '3xl', lg: '5xl' }}
           marginTop={{ base: '20px', md: '20px', lg: '15px' }}
           marginBottom={{ lg: '10px' }}
-          marginLeft={{ base: '5px' }}
-          align={{ base: 'left', md: 'left', lg: 'center' }}
+          align='center'
           fontFamily='Gluten'
         >
-          Coffee Hub Community
+          Coffee Hub{' '}
+          <span style={{ color: '#028AEB', fontFamily: 'Gluten' }}>
+            Community
+          </span>
         </Text>
         <Text
           marginBottom={{ base: '30px', md: '40px', lg: '60px', xl: '90px' }}
-          align={{ base: 'left', md: 'left', lg: 'center' }}
-          marginLeft={{ base: '5px', md: '5px', lg: '240px', xl: '420px' }}
-          marginRight={{ base: '40px', md: '80px', lg: '240px', xl: '420px' }}
+          align={{ base: 'center', md: 'center', lg: 'center' }}
+          marginLeft={{ base: '15px', md: '240px', xl: '420px' }}
+          marginRight={{ base: '20px', md: '240px', xl: '420px' }}
         >
           Welcome to our coffee community, here you can discover amazing coffees
           and recipes. Explore, savor, and enjoy the journey!
@@ -66,7 +68,7 @@ function CoffeeHub() {
       </Flex>
 
       <InputGroup
-        marginLeft={{ base: '5px', md: '5px', lg: '260px', xl: '320px' }}
+        marginLeft={{ base: '50px', md: '130px', lg: '195px', xl: '265px' }}
       >
         <InputLeftAddon backgroundColor='#0B0B03'>
           <Icon as={SearchIcon} color='#FFEFD6' backgroundColor='#0B0B03' />
@@ -76,7 +78,7 @@ function CoffeeHub() {
           placeholder='Search'
           variant='outline'
           borderColor='#0B0B03'
-          width='50%'
+          width='60%'
           marginBottom={{ base: '40px', md: '80px', lg: '120px' }}
           value={search}
           onChange={handleSearch}
@@ -87,9 +89,8 @@ function CoffeeHub() {
         flexDirection='row'
         flexWrap='wrap'
         gap='10'
-        justifyContent={{ base: 'left', md: 'left', lg: 'center' }}
-        marginLeft={{ base: '5px', md: '15px', lg: '0px' }}
-        marginBottom='50px'
+        justifyContent='center'
+        marginBottom='100px'
       >
         {userCoffees
           .filter(
