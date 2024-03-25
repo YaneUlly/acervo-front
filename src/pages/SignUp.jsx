@@ -2,6 +2,10 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { signup, upload } from '../api/auth.api';
 import SingUpImage from '../assets/SingUpImage.png';
+import signuppage from '../assets/signuppage.png';
+import teste3 from '../assets/test3.png';
+import teste4 from '../assets/teste4.png';
+
 import {
   Box,
   Flex,
@@ -69,13 +73,15 @@ function SignUp() {
         display='flex'
         flexDirection='column'
         alignItems='center'
+        marginTop='100px'
+        marginBottom='100px'
         padding={{ base: '20px', md: '0 20px' }}
       >
         <Text fontFamily='Gluten' fontSize='5xl' marginBottom='20px'>
           {' '}
           Sign Up{' '}
         </Text>
-        <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+        <form onSubmit={handleSubmit} style={{ width: '80%' }}>
           <FormControl isRequired marginBottom='20px' width='100%'>
             <FormLabel>Name:</FormLabel>
             <Input
@@ -147,10 +153,12 @@ function SignUp() {
             <Button
               as='span'
               width='100%'
-              bgColor='#028AEB'
-              color='#FFEFD6'
+              variant='outline'
+              colorScheme='#028AEB'
+              color='#0B0B03'
               _hover={{
                 bgColor: '#0B0B03',
+                color: '#FFEFD6',
               }}
             >
               Upload Photo
@@ -167,10 +175,13 @@ function SignUp() {
             marginTop='5'
             marginBottom='5'
             width='100%'
-            bgColor='#028AEB'
-            color='#FFEFD6'
+            variant='outline'
+            colorScheme='#028AEB'
+            bgColor='#FFB82E'
+            color='#0B0B03'
             _hover={{
               bgColor: '#0B0B03',
+              color: '#FFEFD6',
             }}
           >
             {' '}
@@ -180,16 +191,20 @@ function SignUp() {
 
         {error && <p>{error}</p>}
 
-        <Text fontSize='md'>Already have an account?</Text>
-        <Link to={'/login'}>Login</Link>
+        <Text fontSize='md' marginTop='25px'>
+          Already have an account?
+        </Text>
+        <Link to={'/login'} style={{ textDecoration: 'underline' }}>
+          Login
+        </Link>
       </Box>
 
       {/* Display image only for desktop  */}
       <Box
-        display={{ base: 'none', md: 'block' }}
+        display={{ base: 'none', xl: 'block' }}
         width={{ base: '0', md: '40%' }}
       >
-        <img src={SingUpImage} alt='coffe-hi' width='100%'></img>
+        <img src={teste3} alt='coffe-hi' width='80%'></img>
       </Box>
     </Flex>
   );

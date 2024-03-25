@@ -10,6 +10,7 @@ import {
   Button,
   InputGroup,
   InputRightAddon,
+  textDecoration,
 } from '@chakra-ui/react';
 import { FormControl, FormLabel, FormErrorMessage } from '@chakra-ui/react';
 import LoginImageTest from '../assets/LoginImageTest.png';
@@ -47,17 +48,17 @@ function Login() {
   return (
     <Flex
       flexDirection={{ base: 'column', md: 'row' }}
-      justifyContent='space-around'
+      justifyContent='center'
       alignItems='center'
       alignContent='center'
       minHeight='80vh'
     >
       {/* Display image only for desktop */}
       <Box
-        display={{ base: 'none', md: 'block' }}
+        display={{ base: 'none', xl: 'block' }}
         width={{ base: '0', md: '40%' }}
       >
-        <img src={LoginImageTest} alt='dog-drinking-coffee' width='100%' />
+        <img src={LoginImageTest} alt='dog-drinking-coffee' width='80%' />
       </Box>
       <Box
         width={{ base: '100%', md: '40%' }}
@@ -70,7 +71,7 @@ function Login() {
           Login
         </Text>
 
-        <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+        <form onSubmit={handleSubmit} style={{ width: '80%' }}>
           <FormControl isRequired marginBottom='20px' width='100%'>
             <FormLabel>Email:</FormLabel>
             <Input
@@ -116,10 +117,13 @@ function Login() {
             marginTop='10px'
             marginBottom='15px'
             width='100%'
-            bgColor='#028AEB'
-            color='#FFEFD6'
+            variant='outline'
+            colorScheme='#028AEB'
+            bgColor='#FFB82E'
+            color='#0B0B03'
             _hover={{
               bgColor: '#0B0B03',
+              color: '#FFEFD6',
             }}
             type='submit'
           >
@@ -129,8 +133,12 @@ function Login() {
 
         {error && <p>{error}</p>}
 
-        <Text fontSize='md'>Do not have an account?</Text>
-        <Link to={'/signup'}>Sign up</Link>
+        <Text fontSize='md' marginTop='25px'>
+          Do not have an account?
+        </Text>
+        <Link to={'/signup'} style={{ textDecoration: 'underline' }}>
+          Sign up
+        </Link>
       </Box>
     </Flex>
   );
