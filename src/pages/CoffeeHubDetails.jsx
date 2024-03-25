@@ -90,9 +90,9 @@ function CoffeeHubDetails() {
   return (
     <div>
       <Breadcrumb
-        marginLeft='5px'
+        marginLeft='50px'
         fontSize='14px'
-        marginTop={{ base: '3vh', md: '6vh', lg: '10vh' }}
+        marginTop={{ base: '3vh', md: '4vh', lg: '5vh', xl: '10vh' }}
       >
         <BreadcrumbItem>
           <BreadcrumbLink href='/'>Home</BreadcrumbLink>
@@ -132,7 +132,7 @@ function CoffeeHubDetails() {
           fontSize='2xl'
           fontWeight='700'
           align='left'
-          marginLeft={{ base: '10px', lg: '205px', xl: '205px' }}
+          marginLeft={{ base: '50px', lg: '205px', xl: '205px' }}
           marginTop={{ base: '90px', lg: '120px' }}
           marginBottom='30px'
         >
@@ -141,8 +141,8 @@ function CoffeeHubDetails() {
         <Flex
           justifyContent='center'
           flexDirection='column'
-          marginBottom='20px'
-          marginLeft={{ base: '10px', lg: '205px' }}
+          marginBottom={{ md: '50px', lg: '60px', xl: '100px' }}
+          marginLeft={{ base: '50px', lg: '205px' }}
         >
           <form onSubmit={handleAddComment}>
             <Input
@@ -150,7 +150,7 @@ function CoffeeHubDetails() {
               placeholder='Add a comment...'
               backgroundColor='#FADCAF'
               borderColor='#0B0B03'
-              width={{ base: '220px', lg: '600px', xl: '800px' }}
+              width={{ base: '220px', md: '430px', lg: '600px', xl: '800px' }}
               value={newComment}
               onChange={e => setNewComment(e.target.value)}
             />
@@ -171,14 +171,28 @@ function CoffeeHubDetails() {
           </form>
         </Flex>
       </div>
+      {comments.length === 0 && (
+        <Text
+          align={{ base: 'left', md: 'center' }}
+          width={{ base: '50%', md: '100%' }}
+          marginTop='20px'
+          marginBottom='100px'
+          marginLeft={{ base: '50px', md: '0' }}
+          color='#0B0B03'
+          fontStyle='italic'
+        >
+          No comments yet! Be the first to share your thoughts on this amazing
+          coffee!
+        </Text>
+      )}
       {comments.length > 0 && (
         <div>
           <Box
             display='flex'
-            marginLeft={{ base: '0px', lg: '200px' }}
+            marginLeft={{ base: '0px', lg: '150px', xl: '185px' }}
             flexDirection='column'
             justifyContent='center'
-            marginBottom={{ base: '90px', lg: '190px' }}
+            marginBottom={{ base: '90px', lg: '130px', xl: '190px' }}
             width={{ base: '100%', lg: '70%' }}
           >
             {comments.map(comment => (
@@ -186,12 +200,18 @@ function CoffeeHubDetails() {
                 <Divider
                   borderColor='#0B0B03'
                   alignSelf='center'
-                  marginTop='70px'
+                  marginTop={{ base: '70px', md: '45px' }}
                   marginBottom='30px'
+                  marginLeft={{ md: '50px', lg: '17px' }}
+                  width={{ md: '85%', lg: '100%' }}
                 />
-                <Flex alignItems='center' margin='15px'>
+                <Flex
+                  alignItems='center'
+                  margin='15px'
+                  marginLeft={{ md: '50px', lg: '0', xl: '15px' }}
+                >
                   <Avatar src={comment.user.photoUrl} />
-                  <Flex gap={{ base: '10', xl: '490' }}>
+                  <Flex gap={{ base: '10', xl: '650' }}>
                     <Text fontWeight='700' marginLeft='15px'>
                       {comment.user.name}
                     </Text>

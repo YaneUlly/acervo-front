@@ -835,13 +835,7 @@ function EditCoffeeTaste() {
       </Modal>
 
       {/* Modal de confirmação de exclusão */}
-      <Modal
-        isOpen={showDeleteModal}
-        onClose={handleCloseDeleteModal}
-        width={{ lg: '70%', xl: '60%' }}
-        backgroundColor='rgba(250, 220, 175, 1)'
-        marginTop={{ lg: '120px', xl: '60px' }}
-      >
+      <Modal isOpen={showDeleteModal} onClose={handleCloseDeleteModal}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader lineHeight='2em' fontSize='lg' fontWeight='700'>
