@@ -17,6 +17,7 @@ import {
 import { Link, useNavigate } from 'react-router-dom';
 import { useWishlist } from '../context/wishlist.context';
 import { deleteCoffeeTaste } from '../api/coffees.api.js';
+import '../index.css';
 
 function CoffeeDetails({ ...props }) {
   const wishlist = useWishlist();
@@ -98,7 +99,7 @@ function CoffeeDetails({ ...props }) {
         fontFamily='Gluten'
         marginTop={{ base: '2vh', md: '2vh', lg: '3vh' }}
         marginBottom={{ lg: '3vh' }}
-        marginLeft='5px'
+        marginLeft='50px'
         width={{ lg: '80%' }}
         lineHeight={{ base: '1em', md: '1em', lg: '1em' }}
         fontSize={{ base: '3xl', md: '3xl', lg: '5xl' }}
@@ -108,8 +109,9 @@ function CoffeeDetails({ ...props }) {
       </Text>
 
       <Flex
-        flexDirection={{ base: 'column', lg: 'row' }}
+        flexDirection={{ base: 'column', md: 'row' }}
         marginTop={{ base: '4vh', md: '4vh', lg: '4vh', xl: '15vh' }}
+        marginLeft='50px'
         width={{ base: '90%', lg: '100%' }}
         alignItems='flex-start'
       >
@@ -117,7 +119,7 @@ function CoffeeDetails({ ...props }) {
         <Box width={{ base: '90%', lg: '50%' }}>
           <Image
             src={image}
-            boxSize={{ base: '70vw', md: '50vw', lg: '40vw' }}
+            boxSize={{ base: '70vw', md: '45vw', lg: '40vw' }}
             borderRadius='5px'
             objectFit='contain'
           ></Image>
@@ -126,9 +128,9 @@ function CoffeeDetails({ ...props }) {
         {/* COFFEE DETAILS */}
         <Box
           align='left'
-          width={{ base: '90%', lg: '50%' }}
+          width={{ base: '90%', lg: '30%' }}
           marginLeft={{ base: '0', lg: '2vw' }}
-          marginTop={{ base: '3vh', lg: '0vh' }}
+          marginTop={{ base: '3vh', md: '0' }}
         >
           <Text
             fontSize='4xl'
@@ -206,9 +208,12 @@ function CoffeeDetails({ ...props }) {
                 <Button
                   onClick={toggleWishlist}
                   bgColor='transparent'
-                  border='none'
+                  border='1px'
+                  marginRight='10px'
                   _hover={{ cursor: 'pointer' }}
                 >
+                  Add to wishlist
+                  <span style={{ marginLeft: '5px' }}></span>
                   {isInWishlist ? <AiFillHeart /> : <AiOutlineHeart />}
                 </Button>
 
@@ -231,51 +236,79 @@ function CoffeeDetails({ ...props }) {
 
             {route === 'CoffeeTaste' && (
               <div>
-                <Link to={`/coffeetaste/edit/${coffeeId}`}>
+                <Box display='flex' flexDirection='row'>
                   <Button
+                    onClick={handleShowDeleteModal}
+                    width='60%'
+                    marginRight='10px'
                     variant='outline'
-                    colorScheme='#028AEB'
                     color='#0B0B03'
+                    borderColor='#0B0B03'
                     _hover={{
                       bgColor: '#0B0B03',
                       color: '#FFEFD6',
                     }}
                   >
-                    Edit
+                    Delete
                   </Button>
-                </Link>
-                <Button
-                  onClick={handleShowDeleteModal}
-                  width='20%'
-                  variant='outline'
-                  color='#0B0B03'
-                  borderColor='#0B0B03'
-                  _hover={{
-                    bgColor: '#0B0B03',
-                    color: '#FFEFD6',
-                  }}
-                >
-                  Delete
-                </Button>
+                  <Button
+                    bgColor='#FFB82E'
+                    color='#0B0B03'
+                    _hover={{
+                      bgColor: '#0B0B03',
+                      color: '#FFEFD6',
+                    }}
+                    borderColor='#0B0B03'
+                    border='1px'
+                  >
+                    <Link to={`/coffeetaste/edit/${coffeeId}`}>Edit</Link>
+                  </Button>
+                </Box>
 
                 {/* Modal de confirmação de exclusão */}
                 <Modal
                   isOpen={showDeleteModal}
                   onClose={handleCloseDeleteModal}
+                  className='modal'
+                  width={{ lg: '70%', xl: '60%' }}
+                  backgroundColor='rgba(250, 220, 175, 1)'
+                  marginTop={{ lg: '120px', xl: '60px' }}
                 >
                   <ModalOverlay />
                   <ModalContent>
-                    <ModalHeader>Confirm Deletion</ModalHeader>
+                    <ModalHeader
+                      lineHeight='2em'
+                      fontSize='lg'
+                      fontWeight='700'
+                    >
+                      Confirm Deletion
+                    </ModalHeader>
                     <ModalBody>
                       Are you sure you want to delete the coffee "{coffeeName}"?
                     </ModalBody>
                     <ModalFooter>
-                      <Button colorScheme='red' onClick={handleDelete}>
-                        Delete
-                      </Button>
-                      <Button variant='ghost' onClick={handleCloseDeleteModal}>
-                        Cancel
-                      </Button>
+                      <Box justifyContent={{ base: 'center', md: 'flex-end' }}>
+                        <Button
+                          colorScheme='red'
+                          onClick={handleDelete}
+                          marginRight='10px'
+                        >
+                          Delete
+                        </Button>
+                        <Button
+                          onClick={handleCloseDeleteModal}
+                          variant='outline'
+                          marginRight='10px'
+                          colorScheme='#028AEB'
+                          color='#0B0B03'
+                          _hover={{
+                            bgColor: '#0B0B03',
+                            color: '#FFEFD6',
+                          }}
+                        >
+                          Cancel
+                        </Button>
+                      </Box>
                     </ModalFooter>
                   </ModalContent>
                 </Modal>

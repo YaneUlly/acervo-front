@@ -37,6 +37,11 @@ a[href='/wishlist'] {
   font-weight: 600;
 }
 
+.chakra-modal__content {
+  width: 60% !important;
+  margin-top: 220px !important;
+}
+
 .css-onkibi {
   color: #0b0b03;
 }
