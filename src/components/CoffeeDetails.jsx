@@ -212,8 +212,6 @@ function CoffeeDetails({ ...props }) {
                   marginRight='10px'
                   _hover={{ cursor: 'pointer' }}
                 >
-                  Add to wishlist
-                  <span style={{ marginLeft: '5px' }}></span>
                   {isInWishlist ? <AiFillHeart /> : <AiOutlineHeart />}
                 </Button>
 

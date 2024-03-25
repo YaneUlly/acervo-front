@@ -13,7 +13,7 @@ import {
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { SearchIcon } from '@chakra-ui/icons';
-import emptywishlist from '../assets/emptywishlist.png';
+import emptycoffee from '../assets/emptycoffee.png';
 import methods from '../assets/methods.png';
 import CoffeeCard from '../components/CoffeeCard';
 
@@ -36,7 +36,7 @@ function CoffeeWishlist() {
           marginTop={{ base: '40px', lg: '80px' }}
         >
           <Image
-            src={emptywishlist}
+            src={emptycoffee}
             display={{ base: 'flex', md: 'none' }}
             alignSelf='center'
             width={{ base: '295px' }}
@@ -51,7 +51,7 @@ function CoffeeWishlist() {
           >
             <Text
               fontFamily='Gluten'
-              marginTop={{ xl: '45px' }}
+              marginTop={{ xl: '35px' }}
               paddingTop={{ md: '30px', xl: '50px' }}
               marginBottom={{ base: '10px', lg: '20px' }}
               lineHeight='1em'
@@ -90,9 +90,9 @@ function CoffeeWishlist() {
             </Link>
           </Flex>
           <Image
-            src={emptywishlist}
+            src={emptycoffee}
             display={{ base: 'none', md: 'flex' }}
-            width={{ md: '260px', lg: '220px', xl: '240px' }}
+            width={{ md: '260px', lg: '220px', xl: '380px' }}
             height={{ md: '240px', lg: '295px', xl: '340px' }}
           />
         </Box>
@@ -225,7 +225,7 @@ function CoffeeWishlist() {
 
               .map(coffee => {
                 const createdBy = coffee.createdBy && coffee.createdBy[0];
-                const isInWishlist = true; // Todos os cafés na lista de desejos estão na lista de desejos
+                const isInWishlist = true;
                 const wishlistId = coffee._id;
                 console.log(wishlistId);
                 return (

@@ -1,5 +1,6 @@
 import { Text, Flex, Button, Box, Image, Grid } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import plantcoffee from '../assets/plantcoffee.png';
 
 function LandingPage() {
@@ -19,6 +20,11 @@ function LandingPage() {
     );
   };
 
+  const variants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <div>
       {/* HEADING */}
@@ -28,7 +34,7 @@ function LandingPage() {
         justifyContent='center'
         marginLeft={{ base: '35px', lg: '0px' }}
         marginBottom={{ base: '20px', md: '50px' }}
-        marginTop={{ base: '40px', lg: '60px' }}
+        marginTop={{ base: '40px', lg: '60px', xl: '45px' }}
       >
         <Image
           src={plantcoffee}
@@ -97,9 +103,9 @@ function LandingPage() {
 
       {/* FIRST SECTION */}
       <Text
-        marginTop={{ base: '40px', md: '20px', lg: '80px', xl: '120px' }}
+        marginTop={{ base: '40px', md: '20px', lg: '80px', xl: '90px' }}
         marginBottom='20px'
-        marginLeft={{ base: '35px', lg: '70px', xl: '95px' }}
+        marginLeft={{ base: '35px', lg: '70px', xl: '90px' }}
         width={{ lg: '90%' }}
         lineHeight='1em'
         fontSize={{ base: 'lg', lg: '3xl' }}
@@ -120,29 +126,60 @@ function LandingPage() {
         marginBottom={{ base: '65px', lg: '130px' }}
         gap={5}
         width='85%'
-        marginLeft={{ base: '35px', lg: '70px', xl: '95px' }}
+        marginLeft={{ base: '35px', lg: '70px', xl: '90px' }}
       >
-        <Square
-          title='Coffee History'
-          text='Start by discovering more about the coffee species around the world and have a solid understand about coffee flavors and production.'
-        />
-        <Square
-          title='Improve your tasting skills'
-          text=' New to coffee tasting? Do not fret! Our dedicated page offers simple
+        <motion.div
+          initial='hidden'
+          animate='visible'
+          variants={variants}
+          transition={{ duration: 0.5 }}
+        >
+          <Square
+            title='Coffee History'
+            text='Start by discovering more about the coffee species around the world and have a solid understand about coffee flavors and production. All of this awaits you on our Coffee History page.'
+          />
+        </motion.div>
+
+        <motion.div
+          initial='hidden'
+          animate='visible'
+          variants={variants}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <Square
+            title='Improve your tasting skills'
+            text=' New to coffee tasting? Do not fret! Our dedicated page offers simple
             explanations and recommended articles to kickstart your journey into
             the world of coffee tasting.'
-        />
-        <Square
-          title='Help choosing a coffee'
-          text='Unsure which
+          />
+        </motion.div>
+
+        <motion.div
+          initial='hidden'
+          animate='visible'
+          variants={variants}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          <Square
+            title='Help choosing a coffee'
+            text='Unsure which
             coffee to try? Let us guide you! Take our coffee quiz, answer a few quick questions, and
             we will suggest a community-recommended coffee just for you. Get
             started - it is quick and easy, taking only 1 minute!'
-        />
-        <Square
-          title='Supportive Community'
-          text='Discover a welcoming community where you can share knowledge, explore new recipes, enhance your tasting skills, uncover unique coffee blends, and discover innovative brewing techniques. '
-        />
+          />
+        </motion.div>
+
+        <motion.div
+          initial='hidden'
+          animate='visible'
+          variants={variants}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
+          <Square
+            title='Supportive Community'
+            text='Discover a welcoming community where you can share knowledge, explore new recipes, enhance your tasting skills, uncover unique coffee blends, and discover innovative brewing techniques. '
+          />
+        </motion.div>
       </Grid>
     </div>
   );
