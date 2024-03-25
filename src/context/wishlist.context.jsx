@@ -17,6 +17,7 @@ const WishlistProvider = props => {
     const fetchWishlist = async () => {
       try {
         const response = await getWishlist();
+        console.log('wishilist:', response);
         setWishlist(response.data);
       } catch (error) {
         console.log('error fetching the wishlist', error);

@@ -102,13 +102,21 @@ function CoffeeHistory() {
       </Box>
       <div>
         {showCoffeeHistory.length === 0 ? (
-          <Spinner
-            thickness='4px'
-            speed='0.65s'
-            emptyColor='gray.200'
-            color='#F08229'
-            size='xl'
-          />
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Spinner
+              thickness='4px'
+              speed='0.65s'
+              emptyColor='gray.200'
+              color='#F08229'
+              size='xl'
+            />
+          </div>
         ) : (
           <div>
             {showCoffeeHistory.map((coffee, index) => (
