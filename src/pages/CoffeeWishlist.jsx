@@ -105,7 +105,7 @@ function CoffeeWishlist() {
             marginLeft={{ base: '35px', md: '0', xl: '40px' }}
             marginTop={{ base: '40px', lg: '100px' }}
             width={{ xl: '90%' }}
-            marginBottom={{ base: '30px', md: '40px', lg: '60px', xl: '100px' }}
+            marginBottom={{ base: '30px', md: '40px', lg: '60px', xl: '65px' }}
           >
             <Image
               src={methods}
@@ -137,14 +137,13 @@ function CoffeeWishlist() {
               <Text
                 textAlign='left'
                 fontSize='16px'
-                width={{ base: '100%', md: '80%', xl: '80%' }}
+                width={{ base: '100%', md: '80%', xl: '60%' }}
                 lineHeight={{ base: '1.2em', md: '1.4em' }}
                 marginBottom='18px'
               >
-                Uh-oh, looks like your coffee wishlist is running on empty! No
-                worries, though. Dive into our vibrant community and discover
-                the brew of your dreams! Let's fill up that cup with some
-                caffeinated magic!
+                Get ready for a coffee journey! Here's your wishlist of top
+                picks. Dive in, explore, and find your perfect brew in our
+                coffee-loving community!
               </Text>
             </Flex>
             <Image

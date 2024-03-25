@@ -21,8 +21,7 @@ import {
   ModalBody,
 } from '@chakra-ui/react';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react';
-import createcoffee from '../assets/createcoffee.png';
-import finalForm from '../assets/final-form.png';
+import coffeerecipe from '../assets/coffeerecipe.png';
 import ProgressBar from '../components/ProgressBar.jsx';
 import '../index.css';
 
@@ -93,8 +92,31 @@ function CreateCoffee() {
   const navigate = useNavigate();
 
   function handleClick() {
-    navigate('/coffeetaste/create');
+    console.log('handleclick');
+    clearForm(); // Chame a função para limpar os campos do formulário
+    setShowModal(false); // Feche o modal
   }
+
+  const clearForm = () => {
+    setCoffeeName('');
+    setRegion('africa');
+    setCountry('');
+    setRoast('light roast');
+    setCaffeine('regular');
+    setVarieties([]);
+    setAltitude([]);
+    setProcess([]);
+    setAromas([]);
+    setFlavor('sweet');
+    setBody('aquoso');
+    setMethod('espresso-machine');
+    setRecipe('');
+    setDescription('');
+    setShare(false);
+    setStoreUrl('');
+    setImage('');
+    setProgress(0);
+  };
 
   const handleModalClose = () => {
     setShowModal(false);
@@ -117,13 +139,14 @@ function CreateCoffee() {
         flexDirection={{ base: 'column', md: 'column', lg: 'row' }}
         justifyContent='center'
         marginBottom={{ base: '50px', md: '50px', lg: '50px' }}
-        marginTop='60px'
+        marginLeft={{ xl: '20px' }}
+        marginTop={{ base: '20px', lg: '50px', xl: '60px' }}
       >
         <Flex
           flexDirection='column'
           justifyContent='left'
-          marginLeft='20px'
-          width='40%'
+          marginLeft={{ base: '45px', xl: '55px' }}
+          width={{ base: '75%', lg: '45%', xl: '40%' }}
         >
           <Breadcrumb fontSize='14px' marginTop='25px'>
             <BreadcrumbItem>
@@ -145,7 +168,11 @@ function CreateCoffee() {
             fontSize={{ base: '3xl', md: '3xl', lg: '5xl' }}
             textAlign='left'
           >
-            Create your coffee recipe!
+            Create your{' '}
+            <span style={{ color: '#028AEB', fontFamily: 'Gluten' }}>
+              coffee recipe
+            </span>
+            !
           </Text>
           <Text
             textAlign='left'
@@ -175,20 +202,29 @@ function CreateCoffee() {
         </Flex>
 
         <Image
-          src={createcoffee}
+          src={coffeerecipe}
           display={{ base: 'none', md: 'none', lg: 'flex' }}
-          width='400px'
+          width='375px'
           height='420px'
         ></Image>
       </Box>
 
       {/* STARTING THE FORM */}
-      <Flex flexDirection='column' alignItems='center' width='100%'>
-        <ProgressBar progress={progress} totalSteps={totalSteps} />
+      <Flex
+        flexDirection='column'
+        alignItems='center'
+        width='100%'
+        marginBottom='100px'
+      >
+        <ProgressBar progress={progress} totalSteps={totalSteps} width='75%' />
         <form
           onSubmit={handleSubmit}
           className='form'
-          style={{ backgroundColor: '#FADCAF', borderRadius: '5px' }}
+          style={{
+            backgroundColor: '#FADCAF',
+            borderRadius: '5px',
+            marginTop: '20px',
+          }}
         >
           {progress === 0 && (
             <Box
@@ -647,7 +683,7 @@ function CreateCoffee() {
           {progress === totalSteps && (
             <Box
               paddingBottom='70px'
-              marginTop='20px'
+              marginTop='50px'
               padding='20px'
               align='center'
             >
@@ -664,17 +700,12 @@ function CreateCoffee() {
                 step. Otherwise, proceed ahead and bring your new recipe to
                 life!
               </Text>
-              <Image
-                src={finalForm}
-                display={{ base: 'none', md: 'flex' }}
-                width='50%'
-              ></Image>
 
               <Box
                 display='flex'
                 flexDirection={{ base: 'column', md: 'row' }}
                 justifyContent='space-between'
-                marginTop='20px'
+                marginTop='80px'
               >
                 <Button
                   onClick={handlePrevStep}
@@ -711,20 +742,51 @@ function CreateCoffee() {
       </Flex>
 
       {/* Modal */}
-      <Modal isOpen={showModal} onClose={handleModalClose}>
+      <Modal
+        isOpen={showModal}
+        onClose={handleModalClose}
+        width={{ lg: '70%', xl: '60%' }}
+        backgroundColor='rgba(250, 220, 175, 1)'
+        marginTop={{ lg: '120px', xl: '60px' }}
+      >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Coffee Created Succesfully!</ModalHeader>
+          <ModalHeader lineHeight='2em' fontSize='lg' fontWeight='700'>
+            Coffee Created Succesfully!
+          </ModalHeader>
           <ModalBody>
             Your coffee has been successfully created! You now have the ability
             to edit and delete it at any time. Feel free to explore your new
             coffee creation, or continue to craft additional coffee recipes.
           </ModalBody>
           <ModalFooter>
-            <button onClick={handleClick}>New coffee</button>
-            <Button variant='ghost'>
-              <Link to='/coffeetaste'>My track</Link>
-            </Button>
+            <Box justifyContent={{ base: 'center', md: 'flex-end' }}>
+              <Button
+                onClick={handleClick}
+                variant='outline'
+                marginRight='10px'
+                colorScheme='#028AEB'
+                color='#0B0B03'
+                _hover={{
+                  bgColor: '#0B0B03',
+                  color: '#FFEFD6',
+                }}
+              >
+                New coffee
+              </Button>
+              <Button
+                bgColor='#FFB82E'
+                color='#0B0B03'
+                variant='outline'
+                borderColor='#0B0B03'
+                _hover={{
+                  bgColor: '#0B0B03',
+                  color: '#FFEFD6',
+                }}
+              >
+                <Link to='/coffeetaste'>My track</Link>
+              </Button>
+            </Box>
           </ModalFooter>
         </ModalContent>
       </Modal>
