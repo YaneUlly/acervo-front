@@ -83,3 +83,31 @@ a[href='/wishlist'] {
   opacity: 0;
   cursor: pointer;
 }
+
+@media screen and (max-width: 30em) {
+  /* sm */
+  .form {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 48em) {
+  /* md */
+  .form {
+    width: 88%;
+  }
+}
+
+@media screen and (max-width: 62em) {
+  /* lg */
+  .form {
+    width: 88%;
+  }
+}
+
+@media screen and (max-width: 80em) {
+  /* xl */
+  .form {
+    width: 75%;
+  }
+}

@@ -59,7 +59,7 @@ function CoffeeTaste() {
         <Flex
           flexDirection='column'
           justifyContent='left'
-          width={{ base: '80%', md: '50%' }}
+          width={{ base: '80%', md: '50%', xl: '45%' }}
         >
           <Text
             fontFamily='Gluten'
@@ -74,7 +74,7 @@ function CoffeeTaste() {
           <Text
             textAlign='left'
             fontSize='16px'
-            width={{ base: '100%', md: '80%', xl: '80%' }}
+            width={{ base: '100%', md: '80%', xl: '60%' }}
             lineHeight={{ base: '1.2em', md: '1.4em' }}
             marginBottom='18px'
           >
@@ -86,8 +86,8 @@ function CoffeeTaste() {
         <Image
           src={portafilter}
           display={{ base: 'none', md: 'flex' }}
-          width={{ md: '180px', lg: '175px', xl: '200px' }}
-          height={{ md: '220px', lg: '235px', xl: '275px' }}
+          width={{ md: '180px', lg: '175px', xl: '190px' }}
+          height={{ md: '220px', lg: '235px', xl: '245px' }}
         />
       </Box>
 
