@@ -87,7 +87,7 @@ function HowToTaste() {
 
       <Text
         marginTop={{ base: '25px', md: '20px', lg: '80px' }}
-        marginLeft={{ base: '35px', md: '75px', lg: '110px', xl: '120px' }}
+        marginLeft={{ base: '35px', md: '75px', lg: '110px', xl: '80px' }}
         width={{ lg: '90%' }}
         lineHeight='1em'
         fontSize={{ base: 'lg', lg: '3xl' }}
@@ -108,8 +108,8 @@ function HowToTaste() {
         <Flex
           flexDirection='column'
           justifyContent='flex-end'
-          marginLeft={{ base: '35px', md: '40px', xl: '10px' }}
-          width={{ base: '70%', lg: '85%', xl: '80%' }}
+          marginLeft={{ base: '35px', md: '40px', xl: '0px' }}
+          width={{ base: '70%', lg: '85%', xl: '85%' }}
         >
           <Box display='flex' flexDirection='row' alignItems='baseline'>
             <Text
@@ -186,8 +186,8 @@ function HowToTaste() {
         <Flex
           flexDirection='column'
           justifyContent='flex-end'
-          marginLeft={{ base: '35px', xl: '10px' }}
-          width={{ base: '70%', lg: '85%', xl: '80%' }}
+          marginLeft={{ base: '35px', xl: '0px' }}
+          width={{ base: '70%', lg: '85%', xl: '85%' }}
         >
           <Box display='flex' flexDirection='row' alignItems='baseline'>
             <Text
@@ -264,13 +264,13 @@ function HowToTaste() {
         display='flex'
         justifyContent='flex-start'
         flexDirection={{ base: 'column', lg: 'row' }}
-        marginLeft={{ base: '40px', md: '75px', lg: '105px', xl: '140px' }}
+        marginLeft={{ base: '40px', md: '75px', lg: '105px', xl: '115px' }}
         marginBottom={{ base: '30px', md: '0' }}
       >
         <Flex
           flexDirection='column'
           justifyContent='flex-end'
-          marginLeft={{ base: '0', xl: '10px' }}
+          marginLeft={{ base: '0', xl: '0px' }}
           width={{ base: '100%', lg: '50%', xl: '60%' }}
         >
           <Box display='flex' flexDirection='row' alignItems='baseline'>

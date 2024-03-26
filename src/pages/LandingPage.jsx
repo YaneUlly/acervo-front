@@ -105,7 +105,7 @@ function LandingPage() {
       <Text
         marginTop={{ base: '40px', md: '20px', lg: '80px', xl: '90px' }}
         marginBottom='20px'
-        marginLeft={{ base: '35px', lg: '70px', xl: '90px' }}
+        marginLeft={{ base: '35px', lg: '70px', xl: '50px' }}
         width={{ lg: '90%' }}
         lineHeight='1em'
         fontSize={{ base: 'lg', lg: '3xl' }}
@@ -126,7 +126,7 @@ function LandingPage() {
         marginBottom={{ base: '65px', lg: '130px' }}
         gap={5}
         width='85%'
-        marginLeft={{ base: '35px', lg: '70px', xl: '90px' }}
+        marginLeft={{ base: '35px', lg: '70px', xl: '50px' }}
       >
         <motion.div
           initial='hidden'
