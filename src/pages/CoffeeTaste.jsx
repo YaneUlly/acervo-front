@@ -19,6 +19,11 @@ import portafilter from '../assets/portafilter.png';
 function CoffeeTaste() {
   const [coffees, setCoffees] = useState([]);
   const [search, setSearch] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const coffeesPerPage = 6;
+  const totalCoffees = coffees.length;
+  const totalPages = Math.ceil(totalCoffees / coffeesPerPage);
 
   const getCoffeesTaste = async () => {
     try {
@@ -34,9 +39,50 @@ function CoffeeTaste() {
     setSearch(event.target.value);
   };
 
+  const handlePrevClick = () => {
+    setCurrentPage(prevPage => Math.max(prevPage - 1, 1));
+  };
+
+  const handleNextClick = () => {
+    setCurrentPage(currentPage => Math.min(currentPage + 1, totalPages));
+  };
+
   useEffect(() => {
     getCoffeesTaste();
-  }, []);
+  }, [currentPage]);
+
+  const filteredCoffees = coffees.filter(
+    coffee =>
+      coffee.coffeeName.toLowerCase().includes(search.toLowerCase()) ||
+      coffee.region.toLowerCase().includes(search.toLowerCase()) ||
+      coffee.method.toLowerCase().includes(search.toLowerCase()) ||
+      coffee.country.toLowerCase().includes(search.toLowerCase()) ||
+      coffee.roast.toLowerCase().includes(search.toLowerCase()) ||
+      coffee.caffeine.toLowerCase().includes(search.toLowerCase()) ||
+      coffee.flavor.toLowerCase().includes(search.toLowerCase()) ||
+      coffee.body.toLowerCase().includes(search.toLowerCase()) ||
+      (coffee.varieties &&
+        coffee.varieties.some(variety =>
+          variety.toLowerCase().includes(search.toLowerCase())
+        )) ||
+      (coffee.altitude &&
+        coffee.altitude.some(altitude =>
+          altitude.toLowerCase().includes(search.toLowerCase())
+        )) ||
+      (coffee.process &&
+        coffee.process.some(process =>
+          process.toLowerCase().includes(search.toLowerCase())
+        )) ||
+      (coffee.aromas &&
+        coffee.aromas.some(aroma =>
+          aroma.toLowerCase().includes(search.toLowerCase())
+        ))
+  );
+
+  const startIndex = (currentPage - 1) * coffeesPerPage;
+  const endIndex = Math.min(startIndex + coffeesPerPage, totalCoffees);
+
+  const coffeesToShow = filteredCoffees.slice(startIndex, endIndex);
 
   return (
     <div>
@@ -128,67 +174,81 @@ function CoffeeTaste() {
             Add
           </Button>
         </Link>
-        {coffees
-          .filter(
-            coffee =>
-              coffee.coffeeName.toLowerCase().includes(search.toLowerCase()) ||
-              coffee.region.toLowerCase().includes(search.toLowerCase()) ||
-              coffee.method.toLowerCase().includes(search.toLowerCase()) ||
-              coffee.country.toLowerCase().includes(search.toLowerCase()) ||
-              coffee.roast.toLowerCase().includes(search.toLowerCase()) ||
-              coffee.caffeine.toLowerCase().includes(search.toLowerCase()) ||
-              coffee.flavor.toLowerCase().includes(search.toLowerCase()) ||
-              coffee.body.toLowerCase().includes(search.toLowerCase()) ||
-              (coffee.varieties &&
-                coffee.varieties.some(variety =>
-                  variety.toLowerCase().includes(search.toLowerCase())
-                )) ||
-              (coffee.altitude &&
-                coffee.altitude.some(altitude =>
-                  altitude.toLowerCase().includes(search.toLowerCase())
-                )) ||
-              (coffee.process &&
-                coffee.process.some(process =>
-                  process.toLowerCase().includes(search.toLowerCase())
-                )) ||
-              (coffee.aromas &&
-                coffee.aromas.some(aroma =>
-                  aroma.toLowerCase().includes(search.toLowerCase())
-                ))
-          )
+        {coffeesToShow.map(coffee => {
+          const createdBy = coffee.createdBy && coffee.createdBy[0];
+          <Link to={'/coffeetaste/create'}>
+            <Button
+              width={{ base: '300px', md: '300px', lg: '500px' }}
+              height={{ base: '100px', md: '356px', lg: '400px' }}
+              opacity='0.5'
+              borderRadius='5px'
+              fontSize='2xl'
+            >
+              Add
+            </Button>
+          </Link>;
 
-          .map(coffee => {
-            const createdBy = coffee.createdBy && coffee.createdBy[0];
-            <Link to={'/coffeetaste/create'}>
-              <Button
-                width={{ base: '300px', md: '300px', lg: '500px' }}
-                height={{ base: '100px', md: '356px', lg: '400px' }}
-                opacity='0.5'
-                borderRadius='5px'
-                fontSize='2xl'
-              >
-                Add
-              </Button>
-            </Link>;
+          return (
+            <div key={coffee._id}>
+              <CoffeeCard
+                coffeeId={coffee._id}
+                coffeeName={coffee.coffeeName}
+                coffeeImgUrl={coffee.coffeeImgUrl}
+                region={coffee.region}
+                varieties={coffee.varieties}
+                process={coffee.process}
+                method={coffee.method}
+                storeUrl={coffee.storeUrl}
+                createdBy={createdBy}
+                share={coffee.share}
+                route='CoffeeTaste'
+              />
+            </div>
+          );
+        })}
+      </Flex>
 
-            return (
-              <div key={coffee._id}>
-                <CoffeeCard
-                  coffeeId={coffee._id}
-                  coffeeName={coffee.coffeeName}
-                  coffeeImgUrl={coffee.coffeeImgUrl}
-                  region={coffee.region}
-                  varieties={coffee.varieties}
-                  process={coffee.process}
-                  method={coffee.method}
-                  storeUrl={coffee.storeUrl}
-                  createdBy={createdBy}
-                  share={coffee.share}
-                  route='CoffeeTaste'
-                />
-              </div>
-            );
-          })}
+      <Flex
+        flexDirection='row'
+        justifyContent='center'
+        gap='15px'
+        alignItems='center'
+        paddingTop='50px'
+        paddingBottom='50px'
+      >
+        {currentPage > 1 && (
+          <Button
+            onClick={handlePrevClick}
+            variant='outline'
+            colorScheme='#028AEB'
+            color='#0B0B03'
+            _hover={{
+              bgColor: '#0B0B03',
+              color: '#FFEFD6',
+            }}
+          >
+            Return
+          </Button>
+        )}
+        <Text color='#0B0B03' fontSize='18px' fontWeight='600'>
+          Page {currentPage} of {totalPages}
+        </Text>
+        {currentPage < totalPages && (
+          <Button
+            onClick={handleNextClick}
+            variant='outline'
+            colorScheme='#028AEB'
+            bgColor='#FFB82E'
+            color='#0B0B03'
+            borderColor='#0B0B03'
+            _hover={{
+              bgColor: '#FFEFD6',
+              color: '#0B0B03',
+            }}
+          >
+            Next
+          </Button>
+        )}
       </Flex>
     </div>
   );
