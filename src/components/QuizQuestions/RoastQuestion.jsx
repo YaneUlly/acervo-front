@@ -23,7 +23,7 @@ function RoastQuestion() {
         flexDirection='column'
         alignItems='center'
         width={{ base: '90%', md: '100%' }}
-        marginTop={{ base: '80px', lg: '150px' }}
+        marginTop={{ base: '80px', lg: '100px' }}
       >
         <Text
           marginBottom='60px'

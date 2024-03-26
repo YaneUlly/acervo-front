@@ -108,7 +108,7 @@ function Navbar() {
         {/* Desktop Navigation */}
         <Box
           display={{ base: 'none', lg: 'flex' }}
-          width={isLoggedIn ? '720px' : '550px'}
+          width={isLoggedIn ? '720px' : '500px'}
           justifyContent='space-between'
           alignItems='center'
         >
@@ -180,12 +180,21 @@ function Navbar() {
           ) : (
             <>
               <Link
+                to='/coffeehistory'
+                style={{
+                  color:
+                    activeLink === '/coffeehistory' ? '#f08229' : '#FADCAF',
+                }}
+              >
+                Coffee History
+              </Link>
+              <Link
                 to='/howtotaste'
                 style={{
                   color: activeLink === '/howtotaste' ? '#f08229' : '#FADCAF',
                 }}
               >
-                How to taste
+                Tasting
               </Link>
               <Link
                 to='/coffeequiz'
@@ -195,15 +204,7 @@ function Navbar() {
               >
                 Coffee Quiz
               </Link>
-              <Link
-                to='/coffeehistory'
-                style={{
-                  color:
-                    activeLink === '/coffeehistory' ? '#f08229' : '#FADCAF',
-                }}
-              >
-                Coffee History
-              </Link>
+
               <Link to='signup'>
                 <Button
                   bgColor='#FFB82E'
