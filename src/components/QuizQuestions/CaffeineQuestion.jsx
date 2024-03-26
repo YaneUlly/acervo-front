@@ -23,7 +23,7 @@ function CaffeineQuestion() {
         flexDirection='column'
         alignItems='center'
         width={{ base: '90%', md: '100%' }}
-        marginTop={{ base: '80px', lg: '150px' }}
+        marginTop={{ base: '80px', lg: '100px' }}
       >
         <Text
           marginBottom='60px'
@@ -118,7 +118,7 @@ function CaffeineQuestion() {
           gap={5}
           width='70%'
           marginTop='20px'
-          marginBottom='70px'
+          marginBottom='50px'
           marginLeft={{ base: '90px', md: '20px' }}
         >
           <Button

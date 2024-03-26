@@ -164,8 +164,7 @@ function LandingPage() {
             title='Help choosing a coffee'
             text='Unsure which
             coffee to try? Let us guide you! Take our coffee quiz, answer a few quick questions, and
-            we will suggest a community-recommended coffee just for you. Get
-            started - it is quick and easy, taking only 1 minute!'
+            we will suggest a community-recommended coffee just for you!'
           />
         </motion.div>
 
