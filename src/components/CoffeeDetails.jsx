@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { WishlistContext } from '../context/wishlist.context.jsx';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { addWishlist, removeCoffeeWishlist } from '../api/coffees.api.js';
 import {
@@ -15,12 +16,11 @@ import {
   ModalBody,
 } from '@chakra-ui/react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useWishlist } from '../context/wishlist.context';
 import { deleteCoffeeTaste } from '../api/coffees.api.js';
 import '../index.css';
 
 function CoffeeDetails({ ...props }) {
-  const wishlist = useWishlist();
+  const { wishlist } = useContext(WishlistContext);
   const [isInWishlist, setIsInWishlist] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const {
@@ -46,6 +46,7 @@ function CoffeeDetails({ ...props }) {
   } = props;
 
   useEffect(() => {
+    console.log('Wishlist:', wishlist);
     const coffeeInWishlist = wishlist.some(
       item => item.coffeeTaste._id === coffeeId
     );

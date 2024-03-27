@@ -1,4 +1,4 @@
-import { useWishlist } from '../context/wishlist.context';
+// import { useWishlist } from '../context/wishlist.context';
 import {
   Text,
   Flex,
@@ -12,14 +12,15 @@ import {
   Icon,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { WishlistContext } from '../context/wishlist.context';
 import { SearchIcon } from '@chakra-ui/icons';
 import emptycoffee from '../assets/emptycoffee.png';
 import methods from '../assets/methods.png';
 import CoffeeCard from '../components/CoffeeCard';
 
 function CoffeeWishlist() {
-  const wishlist = useWishlist();
+  const { wishlist } = useContext(WishlistContext);
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
 
