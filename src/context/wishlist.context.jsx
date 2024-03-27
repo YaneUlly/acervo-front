@@ -1,13 +1,8 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { getWishlist } from '../api/coffees.api';
 
 // Context
 const WishlistContext = createContext();
-
-// Access the context
-const useWishlist = () => {
-  return useContext(WishlistContext);
-};
 
 // Provide the context
 const WishlistProvider = props => {
@@ -28,10 +23,10 @@ const WishlistProvider = props => {
   }, []);
 
   return (
-    <WishlistContext.Provider value={wishlist}>
+    <WishlistContext.Provider value={{ wishlist }}>
       {props.children}
     </WishlistContext.Provider>
   );
 };
 
-export { useWishlist, WishlistProvider };
+export { WishlistContext, WishlistProvider };
