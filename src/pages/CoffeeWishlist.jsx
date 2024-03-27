@@ -20,7 +20,7 @@ import methods from '../assets/methods.png';
 import CoffeeCard from '../components/CoffeeCard';
 
 function CoffeeWishlist() {
-  const { wishlist } = useContext(WishlistContext);
+  const { wishlist, fetchWishlist } = useContext(WishlistContext);
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
 
@@ -29,6 +29,7 @@ function CoffeeWishlist() {
   };
 
   useEffect(() => {
+    fetchWishlist();
     setLoading(false);
   }, []);
 

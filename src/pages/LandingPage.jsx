@@ -15,7 +15,9 @@ function LandingPage() {
         <Text fontSize='lg' fontWeight='bold'>
           {title}
         </Text>
-        <Text mt={2}>{text}</Text>
+        <Text mt={2} noOfLines={3}>
+          {text}
+        </Text>
       </Box>
     );
   };
