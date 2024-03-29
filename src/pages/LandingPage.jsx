@@ -1,4 +1,5 @@
 import { Text, Flex, Button, Box, Image, Grid } from '@chakra-ui/react';
+import { TypeAnimation } from 'react-type-animation';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import plantcoffee from '../assets/plantcoffee.png';
@@ -62,9 +63,25 @@ function LandingPage() {
             textAlign='left'
           >
             We talk about{' '}
-            <span style={{ color: '#028AEB', fontFamily: 'Gluten' }}>
-              coffee
-            </span>
+            <TypeAnimation
+              sequence={[
+                'coffee',
+                3000, // wait 1s before replacing "Mice" with "Hamsters"
+                'tasting',
+                3000,
+                'recipes',
+                3000,
+                'methods',
+                3000,
+                'history',
+                3000,
+              ]}
+              wrapper='span'
+              speed={25}
+              cursor={false}
+              repeat={Infinity}
+              style={{ color: '#028AEB', fontFamily: 'Gluten' }}
+            />
           </Text>
           <Text
             textAlign='left'
