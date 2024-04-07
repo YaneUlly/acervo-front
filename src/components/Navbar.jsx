@@ -205,6 +205,17 @@ function Navbar() {
                 Coffee Quiz
               </Link>
 
+              <Button
+                variant='outline'
+                colorScheme='#028AEB'
+                color='#FFEFD6'
+                _hover={{
+                  bgColor: '#0B0B03',
+                  color: '#FFEFD6',
+                }}
+              >
+                <Link to='/login'>Login</Link>
+              </Button>
               <Link to='signup'>
                 <Button
                   bgColor='#FFB82E'
@@ -218,17 +229,6 @@ function Navbar() {
                   Sign up
                 </Button>
               </Link>
-              <Button
-                variant='outline'
-                colorScheme='#028AEB'
-                color='#FFEFD6'
-                _hover={{
-                  bgColor: '#0B0B03',
-                  color: '#FFEFD6',
-                }}
-              >
-                <Link to='/login'>Login</Link>
-              </Button>
             </>
           )}
         </Box>

@@ -1,10 +1,12 @@
 import { Text, Flex, Button, Box, Image, Grid } from '@chakra-ui/react';
+import { useBreakpointValue } from '@chakra-ui/react';
 import { TypeAnimation } from 'react-type-animation';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import plantcoffee from '../assets/plantcoffee.png';
 
 function LandingPage() {
+  const isMobile = useBreakpointValue({ base: true, md: false });
   const Square = ({ title, text }) => {
     return (
       <Box
@@ -57,31 +59,61 @@ function LandingPage() {
             fontFamily='Gluten'
             marginTop={{ xl: '45px' }}
             paddingTop={{ md: '30px', xl: '50px' }}
-            marginBottom={{ base: '10px', lg: '20px' }}
+            marginBottom={{ lg: '20px' }}
+            width={{ base: '70%', md: '100%' }}
             lineHeight='1em'
             fontSize={{ base: '3xl', lg: '5xl' }}
             textAlign='left'
           >
             We talk about{' '}
-            <TypeAnimation
-              sequence={[
-                'coffee',
-                3000, // wait 1s before replacing "Mice" with "Hamsters"
-                'tasting',
-                3000,
-                'recipes',
-                3000,
-                'methods',
-                3000,
-                'history',
-                3000,
-              ]}
-              wrapper='span'
-              speed={25}
-              cursor={false}
-              repeat={Infinity}
-              style={{ color: '#028AEB', fontFamily: 'Gluten' }}
-            />
+            {isMobile ? (
+              <div
+                style={{
+                  height: '50px',
+                  overflow: 'hidden',
+                }}
+              >
+                <TypeAnimation
+                  sequence={[
+                    'coffee',
+                    3000,
+                    'tasting',
+                    3000,
+                    'recipes',
+                    3000,
+                    'methods',
+                    3000,
+                    'history',
+                    3000,
+                  ]}
+                  wrapper='span'
+                  speed={25}
+                  cursor={false}
+                  repeat={Infinity}
+                  style={{ color: '#028AEB', fontFamily: 'Gluten' }}
+                />
+              </div>
+            ) : (
+              <TypeAnimation
+                sequence={[
+                  'coffee',
+                  3000,
+                  'tasting',
+                  3000,
+                  'recipes',
+                  3000,
+                  'methods',
+                  3000,
+                  'history',
+                  3000,
+                ]}
+                wrapper='span'
+                speed={25}
+                cursor={false}
+                repeat={Infinity}
+                style={{ color: '#028AEB', fontFamily: 'Gluten' }}
+              />
+            )}
           </Text>
           <Text
             textAlign='left'
