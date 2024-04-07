@@ -1,6 +1,6 @@
 # Acervo
 
-<img href='./src/assets/homepage.png'>
+<img href='./src/assets/homepage.png'></img>
 
 ## Description
 
